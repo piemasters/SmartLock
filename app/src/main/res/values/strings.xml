@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Security App</string>
+    <string name="app_name">SmartLock</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="menu_title_array">
+        <item>Main</item>
+        <item>Security</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="menu_items_array">
+        <item>Profiles</item>
+        <item>Triggers</item>
+        <item>Activity Log</item>
+
+        <item>Passwords</item>
+        <item>Biometrics</item>
+        <item>Locations</item>
+        <item>Networks</item>
+        <item>NFC</item>
+
+
+        <item>About</item>
+        <item>Advanced Settings</item>
+        <item>Help</item>
+    </string-array>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+
+    <string name="profiles">This is the profiles page...</string>
+    <string name="triggers">This is the triggers page...</string>
+    <string name="activity_log">This is the activity log...</string>
+    <string name="passwords">This is the passwords page...</string>
+    <string name="biometrics">This is the biometrics page...</string>
+    <string name="locations">This is the locations page...</string>
+    <string name="networks">This is the networks page...</string>
+    <string name="nfc">This is the NFC page...</string>
+    <string name="about">This is the about page...</string>
+    <string name="advanced_settings">This is the advanced settings page...</string>
+    <string name="help">This is the help page...</string>
 
 </resources>
