@@ -41,8 +41,38 @@
     <string name="locations">This is the locations page...</string>
     <string name="networks">This is the networks page...</string>
     <string name="nfc">This is the NFC page...</string>
-    <string name="about">This is the about page...</string>
-    <string name="advanced_settings">This is the advanced settings page...</string>
-    <string name="help">This is the help page...</string>
+
+
+    <!-- About Page -->
+    <string name="about_name"><b>SmartLock</b></string>
+    <string name="about_copyright">Copyright &#169; 2014 by David Norton</string>
+    <string name="about_version">Version 0.0.2</string>
+    <string name="about_website"><a href="http://www.davidnorton.net">http://www.davidnorton.net</a></string>
+    <string name="about_bug_title">Report Bug or Suggest Feature</string>
+    <string name="about_bug_website">Visit the following link for a list of known issues: <a href="https://github.com/piemasters/SecurityApp/issues">https://github.com/piemasters/SecurityApp/issues</a>.</string>
+    <string name="about_bug_contact">To report a bug or an enhancement, please contact <a href="david2.norton@live.uwe.ac.uk">david2.norton@live.uwe.ac.uk</a></string>
+    <string name="about_uwe">UWE</string>
+    <string name="about_uwe_description">This application is a Computer Security final year project at the University of the West of England. It is currently in the alpha phase of development. </string>
+
+    <!-- Advanced Settings -->
+    <string name="advanced_settings_intro">Below are the advanced settings:</string>
+
+    <!-- Help -->
+    <string name="help_faq">F.A.Q</string>
+    <string name="help_question_01">What is a profile?</string>
+    <string name="help_answer_01">Profiles allow you to configure a range of different lock screens with different security levels. Other settings can also be configured, such as connectivity, display and sound settings. These profiles can be set to dynamically activate using triggers.</string>
+    <string name="help_question_02">What is a trigger?</string>
+    <string name="help_answer_02">Triggers control when Profiles are activated. Triggers include time, entering and leaving defined locations, connecting to a network and scanning a configured device.</string>
+    <string name="help_question_03">What lock screen security methods are available?</string>
+    <string name="help_answer_03"><ul>
+                                    <li>None\n</li>
+                                    <li>Swipe\n</li>
+                                    <li>Pattern\n</li>
+                                    <li>PIN\n</li>
+                                    <li>Password\n</li>
+                                    <li>Biometrics (Fingerprint, Face Recognition)\n</li>
+                                    <li>NFC (Scan NFC tag or wearable to unlock)\n</li>
+                                  </ul>
+     </string>
 
 </resources>

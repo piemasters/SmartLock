@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,9 +27,10 @@ public class AdvancedSettings extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_advanced_settings, container, false);
+        Button myButton = (Button) view.findViewById(R.id.my_button);
 
         ivIcon = (ImageView) view.findViewById(R.id.advanced_settings_icon);
-        tvItemName = (TextView) view.findViewById(R.id.advanced_settings_text);
+        tvItemName = (TextView) view.findViewById(R.id.advanced_settings_title);
 
         tvItemName.setText(getArguments().getString(ITEM_NAME));
         ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));
