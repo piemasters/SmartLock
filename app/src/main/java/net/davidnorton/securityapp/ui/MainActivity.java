@@ -3,8 +3,6 @@ package net.davidnorton.securityapp.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.animation.Animator;
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -30,7 +28,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -225,14 +222,17 @@ public class MainActivity extends Activity {
         dataList.add(new DrawerItem(mMenuTitles[1]));// adding a header to the list
         dataList.add(new DrawerItem(mMenuItems[3], R.drawable.ic_action_secure));
         dataList.add(new DrawerItem(mMenuItems[4], R.drawable.ic_action_add_person));
-        dataList.add(new DrawerItem(mMenuItems[5], R.drawable.ic_action_location_found));
-        dataList.add(new DrawerItem(mMenuItems[6], R.drawable.ic_action_network_wifi));
-        dataList.add(new DrawerItem(mMenuItems[7], R.drawable.ic_action_labels));
+        dataList.add(new DrawerItem(mMenuItems[5], R.drawable.ic_action_labels));
 
-        dataList.add(new DrawerItem(mMenuTitles[2])); // adding a header to the list
-        dataList.add(new DrawerItem(mMenuItems[8], R.drawable.ic_action_about));
-        dataList.add(new DrawerItem(mMenuItems[9], R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem(mMenuItems[10], R.drawable.ic_action_help));
+        dataList.add(new DrawerItem(mMenuTitles[2]));// adding a header to the list
+        dataList.add(new DrawerItem(mMenuItems[6], R.drawable.ic_action_location_found));
+        dataList.add(new DrawerItem(mMenuItems[7], R.drawable.ic_action_network_wifi));
+        dataList.add(new DrawerItem(mMenuItems[8], R.drawable.ic_action_bluetooth));
+
+        dataList.add(new DrawerItem(mMenuTitles[3])); // adding a header to the list
+        dataList.add(new DrawerItem(mMenuItems[9], R.drawable.ic_action_about));
+        dataList.add(new DrawerItem(mMenuItems[10], R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(mMenuItems[11], R.drawable.ic_action_help));
     }
 
     private void setIconColour() {
@@ -248,11 +248,13 @@ public class MainActivity extends Activity {
         myIcon.setColorFilter(filter);
         myIcon = getResources().getDrawable( R.drawable.ic_action_add_person );
         myIcon.setColorFilter(filter);
+        myIcon = getResources().getDrawable( R.drawable.ic_action_labels );
+        myIcon.setColorFilter(filter);
         myIcon = getResources().getDrawable(R.drawable.ic_action_location_found);
         myIcon.setColorFilter(filter);
         myIcon = getResources().getDrawable( R.drawable.ic_action_network_wifi );
         myIcon.setColorFilter(filter);
-        myIcon = getResources().getDrawable( R.drawable.ic_action_labels );
+        myIcon = getResources().getDrawable( R.drawable.ic_action_bluetooth );
         myIcon.setColorFilter(filter);
         myIcon = getResources().getDrawable( R.drawable.ic_action_about );
         myIcon.setColorFilter(filter);
@@ -294,31 +296,36 @@ public class MainActivity extends Activity {
                 args.putInt(Biometrics.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
             case 7:
-                fragment = new Locations();
-                args.putString(Locations.ITEM_NAME, dataList.get(position).getItemName());
-                args.putInt(Locations.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
-                break;
-            case 8:
-                fragment = new Networks();
-                args.putString(Networks.ITEM_NAME, dataList.get(position).getItemName());
-                args.putInt(Networks.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
-                break;
-            case 9:
                 fragment = new NFC();
                 args.putString(NFC.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(NFC.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
+            case 9:
+                fragment = new Locations();
+                args.putString(Locations.ITEM_NAME, dataList.get(position).getItemName());
+                args.putInt(Locations.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
+                break;
+            case 10:
+                fragment = new Networks();
+                args.putString(Networks.ITEM_NAME, dataList.get(position).getItemName());
+                args.putInt(Networks.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
+                break;
             case 11:
+                fragment = new Devices();
+                args.putString(Devices.ITEM_NAME, dataList.get(position).getItemName());
+                args.putInt(Devices.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
+                break;
+            case 13:
                 fragment = new About();
                 args.putString(About.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(About.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
-            case 12:
+            case 14:
                 fragment = new AdvancedSettings();
                 args.putString(AdvancedSettings.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(AdvancedSettings.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
-            case 13:
+            case 15:
                 fragment = new Help();
                 args.putString(Help.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(Help.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());

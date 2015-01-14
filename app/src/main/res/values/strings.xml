@@ -14,7 +14,8 @@
     <!-- Drawer Items -->
     <string-array name="menu_title_array">
         <item>Main</item>
-        <item>Security</item>
+        <item>Lock Screens</item>
+        <item>Stored Details</item>
         <item>Other</item>
     </string-array>
 
@@ -25,9 +26,11 @@
 
         <item>Passwords</item>
         <item>Biometrics</item>
+        <item>NFC</item>
+
         <item>Locations</item>
         <item>Networks</item>
-        <item>NFC</item>
+        <item>Bluetooth Devices</item>
 
         <item>About</item>
         <item>Advanced Settings</item>
@@ -66,6 +69,11 @@
     <string name="biometrics_title">Title</string>
     <string name="biometrics">This is the biometrics page...</string>
 
+    <!-- NFC -->
+    <string name="nfc_intro">A list of stored NFC devices.</string>
+    <string name="nfc_title">Title</string>
+    <string name="nfc">This is the NFC page...</string>
+
     <!-- Locations -->
     <string name="locations_intro">A list of stored locations.</string>
     <string name="locations_title">Title</string>
@@ -76,10 +84,10 @@
     <string name="networks_title">Title</string>
     <string name="networks">This is the networks page...</string>
 
-    <!-- NFC -->
-    <string name="nfc_intro">A list of stored NFC devices.</string>
-    <string name="nfc_title">Title</string>
-    <string name="nfc">This is the NFC page...</string>
+    <!-- Devices -->
+    <string name="devices_intro">A list of stored bluetooth devices.</string>
+    <string name="devices_title">Title</string>
+    <string name="devices">This is the devices page...</string>
 
     <!-- About Page -->
     <string name="about_name"><b>SmartLock</b></string>
