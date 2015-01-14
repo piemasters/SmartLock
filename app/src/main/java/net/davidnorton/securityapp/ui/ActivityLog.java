@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,7 +29,7 @@ public class ActivityLog extends Fragment {
         View view = inflater.inflate(R.layout.fragment_activity_log, container, false);
 
         ivIcon = (ImageView) view.findViewById(R.id.activity_log_icon);
-        tvItemName = (TextView) view.findViewById(R.id.activity_log_text);
+        tvItemName = (TextView) view.findViewById(R.id.activity_log_title);
 
         tvItemName.setText(getArguments().getString(ITEM_NAME));
         ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));

@@ -35,5 +35,4 @@ public class DrawerItem {
     public void setTitle(String title) {
         this.title = title;
     }
-
 }

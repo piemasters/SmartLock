@@ -28,7 +28,7 @@ public class Triggers extends Fragment {
         View view = inflater.inflate(R.layout.fragment_triggers, container, false);
 
         ivIcon = (ImageView) view.findViewById(R.id.triggers_icon);
-        tvItemName = (TextView) view.findViewById(R.id.triggers_text);
+        tvItemName = (TextView) view.findViewById(R.id.triggers_title);
 
         tvItemName.setText(getArguments().getString(ITEM_NAME));
         ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));

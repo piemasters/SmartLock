@@ -1,10 +1,3 @@
-<ScrollView
-    style="@style/ScrollView"
-    android:id="@+id/activityView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         style="@style/RelativeLayout"
         xmlns:tools="http://schemas.android.com/tools"
@@ -24,7 +17,7 @@
             <!-- Advanced Settings Title -->
             <TextView
                 style="@style/TextView.Title"
-                android:id="@+id/advanced_settings_title" />
+                android:id="@+id/advanced_settings_title"/>
 
             <!--Text Container -->
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -42,38 +35,34 @@
 
         </android.support.v7.widget.CardView>
 
-        <!--Text Container -->
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            style="@style/LinearLayout.TopCard"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_below="@id/card_1"
-            tools:context=".MyActivity">
+        <!-- Permanent Notification Card -->
+        <android.support.v7.widget.CardView
+            style="@style/CardView"
+            android:id="@+id/card_2"
+            android:layout_below="@id/card_1">
 
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/listView"
-                android:layout_below="@id/card_1"
-                android:layout_centerHorizontal="true"
-                android:text="@string/advanced_settings_intro"/>
+            <fragment android:id="@+id/fragment_permanent_notification"
+                android:layout_width="fill_parent"
+                android:name="net.davidnorton.securityapp.ui.AdvancedSettings$PermanentNotificationFragment"
+                android:layout_height="fill_parent" />
 
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner"
-                android:layout_below="@id/listView"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
+        </android.support.v7.widget.CardView>
 
-            <Button android:id="@+id/my_button"
-                android:layout_below="@id/spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hello"/>
+        <!-- Dark Theme Card -->
+        <android.support.v7.widget.CardView
+            style="@style/CardView"
+            android:id="@+id/card_3"
+            android:layout_below="@id/card_2">
 
-        </LinearLayout>
+            <fragment android:id="@+id/fragment_dark_theme"
+                android:layout_width="fill_parent"
+                android:name="net.davidnorton.securityapp.ui.AdvancedSettings$DarkThemeFragment"
+                android:layout_height="fill_parent" />
 
+        </android.support.v7.widget.CardView>
 
     </RelativeLayout>
-</ScrollView>
+
+
+
 

@@ -28,7 +28,7 @@ public class Profiles extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profiles, container, false);
 
         ivIcon = (ImageView) view.findViewById(R.id.profiles_icon);
-        tvItemName = (TextView) view.findViewById(R.id.profiles_text);
+        tvItemName = (TextView) view.findViewById(R.id.profiles_title);
 
         tvItemName.setText(getArguments().getString(ITEM_NAME));
         ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));

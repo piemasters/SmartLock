@@ -20,8 +20,7 @@ public class DrawerAdapter extends ArrayAdapter<DrawerItem> {
     List<DrawerItem> drawerItemList;
     int layoutResID;
 
-    public DrawerAdapter(Context context, int layoutResourceID,
-                         List<DrawerItem> listItems) {
+    public DrawerAdapter(Context context, int layoutResourceID, List<DrawerItem> listItems) {
         super(context, layoutResourceID, listItems);
         this.context = context;
         this.drawerItemList = listItems;
@@ -55,7 +54,6 @@ public class DrawerAdapter extends ArrayAdapter<DrawerItem> {
 
         } else {
             drawerHolder = (DrawerItemHolder) view.getTag();
-
         }
 
         DrawerItem dItem = (DrawerItem) this.drawerItemList.get(position);
@@ -70,10 +68,8 @@ public class DrawerAdapter extends ArrayAdapter<DrawerItem> {
             drawerHolder.headerLayout.setVisibility(LinearLayout.INVISIBLE);
             drawerHolder.itemLayout.setVisibility(LinearLayout.VISIBLE);
 
-            drawerHolder.icon.setImageDrawable(view.getResources().getDrawable(
-                    dItem.getImgResID()));
+            drawerHolder.icon.setImageDrawable(view.getResources().getDrawable( dItem.getImgResID()));
             drawerHolder.ItemName.setText(dItem.getItemName());
-
         }
         return view;
     }

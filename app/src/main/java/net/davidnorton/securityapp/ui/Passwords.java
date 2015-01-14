@@ -28,7 +28,7 @@ public class Passwords extends Fragment {
         View view = inflater.inflate(R.layout.fragment_passwords, container, false);
 
         ivIcon = (ImageView) view.findViewById(R.id.passwords_icon);
-        tvItemName = (TextView) view.findViewById(R.id.passwords_text);
+        tvItemName = (TextView) view.findViewById(R.id.passwords_title);
 
         tvItemName.setText(getArguments().getString(ITEM_NAME));
         ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));

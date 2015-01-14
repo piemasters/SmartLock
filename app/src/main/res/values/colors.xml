@@ -2,9 +2,25 @@
 <resources>
     <color name="primary">#259b24</color>
     <color name="primary_dark">#0a7e07</color>
-    <color name="accent">#ffe082</color>
-    <color name="background_primary">#f5f5f5</color>
+    <color name="accent">#80d8ff</color>
     <color name="text_primary">#f5f5f5</color>
-    <color name="text_secondary">#259b24</color>
-    <color name="text_main">#212121</color>
+    <color name="text_secondary">#212121</color>
+    <color name="text_tertiary">#ffd740</color>
+    <color name="text_main">#259b24</color>
+
+    <color name="dark_primary">#0277bd</color>
+    <color name="dark_primary_dark">#01579b</color>
+    <color name="dark_accent">#ffd740</color>
+    <color name="dark_text_primary">#f5f5f5</color>
+    <color name="dark_text_secondary">#212121</color>
+    <color name="dark_text_tertiary">#80d8ff</color>
+    <color name="dark_text_main">#0277bd</color>
+
+    <color name="sidebar_background">#f5f5f5</color>
+    <color name="dark_sidebar_background">#ff000000</color>
+    <color name="notification_icon">#FFFFFF</color>
+    <color name="notification_background">#259b24</color>
+
+
+
 </resources>

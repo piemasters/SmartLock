@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Main App -->
     <string name="app_name">SmartLock</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Drawer -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+
+    <!-- Drawer Items -->
     <string-array name="menu_title_array">
         <item>Main</item>
         <item>Security</item>
@@ -22,26 +29,57 @@
         <item>Networks</item>
         <item>NFC</item>
 
-
         <item>About</item>
         <item>Advanced Settings</item>
         <item>Help</item>
     </string-array>
 
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
-    <string name="action_websearch">Web search</string>
-    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <!-- Profiles -->
+    <string name="profiles_intro">A list of current available profiles:</string>
+    <string name="profiles_title">Title</string>
+    <string name="profiles">This is the profiles page</string>
+    <string name="profiles_default_none">This is the profiles page...</string>
+    <string name="profiles_default_swipe">This is the profiles page...</string>
+    <string name="profiles_default_pattern">This is the profiles page...</string>
+    <string name="profiles_default_pin">This is the profiles page...</string>
+    <string name="profiles_default_password">This is the profiles page...</string>
+    <string name="profiles_default_nfc">This is the profiles page...</string>
+    <string name="profileApplied">was applied!</string>
 
-    <string name="profiles">This is the profiles page...</string>
-    <string name="triggers">This is the triggers page...</string>
+    <!-- Triggers -->
+    <string name="triggers_intro">A list of available triggers.</string>
+    <string name="triggers_title">Title</string>
+    <string name="triggers">This is the triggers page</string>
+
+    <!-- Activity Log -->
+    <string name="activity_log_intro">A log of the latest profile changes.</string>
+    <string name="activity_log_title">Title</string>
     <string name="activity_log">This is the activity log...</string>
-    <string name="passwords">This is the passwords page...</string>
-    <string name="biometrics">This is the biometrics page...</string>
-    <string name="locations">This is the locations page...</string>
-    <string name="networks">This is the networks page...</string>
-    <string name="nfc">This is the NFC page...</string>
 
+    <!-- Passwords -->
+    <string name="passwords_intro">A list of available passwords.</string>
+    <string name="passwords_title">Title</string>
+    <string name="passwords">This is the passwords page...</string>
+
+    <!-- Biometrics -->
+    <string name="biometrics_intro">A list of available biometrics.</string>
+    <string name="biometrics_title">Title</string>
+    <string name="biometrics">This is the biometrics page...</string>
+
+    <!-- Locations -->
+    <string name="locations_intro">A list of stored locations.</string>
+    <string name="locations_title">Title</string>
+    <string name="locations">This is the locations page...</string>
+
+    <!-- Networks -->
+    <string name="networks_intro">A list of stored networks.</string>
+    <string name="networks_title">Title</string>
+    <string name="networks">This is the networks page...</string>
+
+    <!-- NFC -->
+    <string name="nfc_intro">A list of stored NFC devices.</string>
+    <string name="nfc_title">Title</string>
+    <string name="nfc">This is the NFC page...</string>
 
     <!-- About Page -->
     <string name="about_name"><b>SmartLock</b></string>
@@ -56,6 +94,11 @@
 
     <!-- Advanced Settings -->
     <string name="advanced_settings_intro">Below are the advanced settings:</string>
+    <string name="pref_title_notification">Enable Permanent Notification</string>
+    <string name="pref_description_notification">Enables permanent status bar notification to view current profile.</string>
+    <string name="pref_title_dark_theme">Dark Theme</string>
+    <string name="pref_on_dark_theme">Dark theme is enabled.</string>
+    <string name="pref_off_dark_theme">Dark theme is disabled.</string>
 
     <!-- Help -->
     <string name="help_faq">F.A.Q</string>
@@ -74,5 +117,13 @@
                                     <li>NFC (Scan NFC tag or wearable to unlock)\n</li>
                                   </ul>
      </string>
+
+    <!-- Notifications -->
+    <string name="notification_title">Current Profile</string>
+    <string name="notification_content">Touch to change profile</string>
+
+    <!-- Other -->
+    <string name="textListDialogTitle">Choose a profile</string>
+    <string name="settings">Settings</string>
 
 </resources>

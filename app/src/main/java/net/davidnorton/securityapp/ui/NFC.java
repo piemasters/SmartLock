@@ -28,7 +28,7 @@ public class NFC extends Fragment {
         View view = inflater.inflate(R.layout.fragment_nfc, container, false);
 
         ivIcon = (ImageView) view.findViewById(R.id.nfc_icon);
-        tvItemName = (TextView) view.findViewById(R.id.nfc_text);
+        tvItemName = (TextView) view.findViewById(R.id.nfc_title);
 
         tvItemName.setText(getArguments().getString(ITEM_NAME));
         ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));
