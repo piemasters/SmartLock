@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Drawer -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+
+    <!-- Drawer Items -->
+    <string-array name="menu_title_array">
+        <item>Main</item>
+        <item>Lock Screens</item>
+        <item>Stored Details</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="menu_items_array">
+        <item>Profiles</item>
+        <item>Triggers</item>
+        <item>Activity Log</item>
+
+        <item>Passwords</item>
+        <item>Biometrics</item>
+        <item>NFC</item>
+
+        <item>Locations</item>
+        <item>Networks</item>
+        <item>Bluetooth Devices</item>
+
+        <item>About</item>
+        <item>Advanced Settings</item>
+        <item>Help</item>
+    </string-array>
+
+</resources>

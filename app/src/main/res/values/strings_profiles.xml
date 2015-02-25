@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Profiles -->
+    <string name="profile_intro">Select a profile to activate it, or tap to edit.
+                                 Press &amp; hold a profile to delete it.</string>
+    <string name="profile_create_new">+</string>
+    <string name="profile_create_new_2">[+] New Profile</string>
+    <string name="profile_edit_title">Edit Profile</string>
+    <string name="profile_delete">Delete</string>
+    <string name="profile_applied">was applied!</string>
+
+    <!-- Profile Menu -->
+    <string name="profile_default_name">Insert Profile Name…</string>
+    <string name="profile_default_name_new">Insert Name</string>
+    <string name="profile_item_edit">Edit</string>
+
+    <string name="profile_alert_name_title">Profile Name</string>
+    <string name="profile_alert_name_text">Please enter a valid profile name!</string>
+    <string name="profile_alert_name_button">Okay</string>
+    <string name="profile_alert_discard_title">Discard Changes?</string>
+    <string name="profile_alert_discard_text">Do you want to discard these changes?</string>
+    <string name="profile_alert_discard_yes">Yes</string>
+    <string name="profile_alert_discard_no">No</string>
+    <string name="profile_pref_unchanged">unchanged</string>
+
+
+    <!-- Profile Preference Page -->
+
+    <!-- Settings: General -->
+    <string name="profile_pref_header_general">General</string>
+
+    <string name="profile_pref_title_name">Name</string>
+    <string name="profile_pref_default_name">Insert name</string>
+
+    <string name="profile_pref_title_lockscreen">Lock Screen</string>
+    <string-array name="profile_pref_titles_lockscreen">
+        <item>Enabled</item>
+        <item>Disabled</item>
+        <item>Unchanged</item>
+    </string-array>
+    <string-array name="profile_pref_values_lockscreen">
+        <item>enabled</item>
+        <item>disabled</item>
+        <item>unchanged</item>
+    </string-array>
+
+
+    <!-- Settings: Wireless & Networks -->
+    <string name="profile_pref_header_connectivity">Wireless &amp; Networks</string>
+
+    <!-- WiFi -->
+    <string name="profile_pref_title_wifi">WiFi</string>
+    <string-array name="profile_pref_titles_wifi">
+        <item>Enabled</item>
+        <item>Disabled</item>
+        <item>Unchanged</item>
+    </string-array>
+    <string-array name="profile_pref_values_wifi">
+        <item>enabled</item>
+        <item>disabled</item>
+        <item>unchanged</item>
+    </string-array>
+
+    <!-- Mobile Data -->
+    <string name="profile_pref_title_mobile_data">Mobile Data</string>
+    <string-array name="profile_pref_titles_mobile_data">
+        <item>Enabled</item>
+        <item>Disabled</item>
+        <item>Unchanged</item>
+    </string-array>
+    <string-array name="profile_pref_values_mobile_data">
+        <item>enabled</item>
+        <item>disabled</item>
+        <item>unchanged</item>
+    </string-array>
+
+    <!-- Bluetooth -->
+    <string name="profile_pref_title_bluetooth">Bluetooth</string>
+    <string-array name="profile_pref_titles_bluetooth">
+        <item>Enabled</item>
+        <item>Disabled</item>
+        <item>Unchanged</item>
+    </string-array>
+    <string-array name="profile_pref_values_bluetooth">
+        <item>enabled</item>
+        <item>disabled</item>
+        <item>unchanged</item>
+    </string-array>
+
+
+    <!-- Settings: Display -->
+    <string name="profile_pref_header_display">Display</string>
+
+    <!-- Automatic Brightness -->
+    <string name="profile_pref_title_display_auto_mode">Automatic Brightness</string>
+    <string-array name="profile_pref_titles_display_auto_mode">
+        <item>Enabled</item>
+        <item>Disabled</item>
+        <item>Unchanged</item>
+    </string-array>
+    <string-array name="profile_pref_values_display_auto_mode">
+        <item>enabled</item>
+        <item>disabled</item>
+        <item>unchanged</item>
+    </string-array>
+
+    <!-- Screen Time Out -->
+    <string name="profile_pref_title_time_out">Display Time Out</string>
+    <string-array name="profile_pref_titles_time_out">
+        <item>15 seconds</item>
+        <item>30 seconds</item>
+        <item>1 minute</item>
+        <item>2 minutes</item>
+        <item>5 minutes</item>
+        <item>10 minutes</item>
+        <item>30 minutes</item>
+        <item>Unchanged</item>
+    </string-array>
+    <string-array name="profile_pref_values_time_out">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>-1</item>
+    </string-array>
+
+
+    <!-- Settings: Sound -->
+    <string name="profile_pref_header_sound">Sound</string>
+
+    <!-- Ringer Mode -->
+    <string name="profile_pref_title_ringer_mode">Ringer Mode</string>
+    <string-array name="profile_pref_titles_ringer_mode">
+        <item>Normal</item>
+        <item>Vibrate</item>
+        <item>Silent</item>
+        <item>Unchanged</item>
+    </string-array>
+    <string-array name="profile_pref_values_ringer_mode">
+        <item>normal</item>
+        <item>vibrate</item>
+        <item>silent</item>
+        <item>unchanged</item>
+    </string-array>
+
+</resources>

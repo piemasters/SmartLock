@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="@string/trigger_pref_title_time">
+
+        <net.davidnorton.securityapp.trigger.TimePickerPreference
+            android:title="@string/trigger_pref_title_start_time"
+            android:key="start_time"
+            android:dialogMessage="@string/trigger_pref_message_start_time" />
+
+        <net.davidnorton.securityapp.trigger.TimePickerPreference
+            android:title="@string/trigger_pref_title_end_time"
+            android:key="end_time"
+            android:dialogMessage="@string/trigger_pref_message_end_time" />
+
+        <MultiSelectListPreference
+            android:title="@string/trigger_pref_title_weekday"
+            android:defaultValue="@array/trigger_pref_values_weekday"
+            android:key="weekdays"
+            android:summary="@string/trigger_pref_summary_weekday"
+            android:entries="@array/trigger_pref_entries_weekday"
+            android:entryValues="@array/trigger_pref_values_weekday"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

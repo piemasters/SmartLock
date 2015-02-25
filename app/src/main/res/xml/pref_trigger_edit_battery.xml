@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="@string/trigger_pref_title_battery_state">
+
+        <ListPreference
+            android:title="@string/trigger_pref_title_battery_state"
+            android:defaultValue="@string/ignored"
+            android:key="battery_state"
+            android:entries="@array/trigger_pref_titles_battery_state"
+            android:entryValues="@array/trigger_pref_values_battery_state"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null" />
+
+       <CheckBoxPreference
+           android:title="@string/trigger_pref_title_battery_level_enable"
+           android:summary="@string/trigger_pref_summary_battery_level_enable"
+           android:key="battery_level_check"
+           android:defaultValue="false"/>
+
+        <SeekBarPreference
+            android:title="@string/trigger_pref_title_battery_level_start"
+            android:defaultValue="0"
+            android:key="battery_start_level"
+            android:dialogMessage="@string/trigger_pref_message_battery_level_start"
+            android:max="100" />
+
+        <SeekBarPreference
+            android:title="@string/trigger_pref_title_battery_level_end"
+            android:defaultValue="0"
+            android:key="battery_end_level"
+            android:dialogMessage="@string/trigger_pref_message_battery_level_end"
+            android:max="100" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,15 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="@string/profile_pref_header_sound">
+
+        <ListPreference
+            android:title="@string/profile_pref_title_ringer_mode"
+            android:defaultValue="pref_profile_unchanged"
+            android:key="ringer_mode"
+            android:entries="@array/profile_pref_titles_ringer_mode"
+            android:entryValues="@array/profile_pref_values_ringer_mode"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

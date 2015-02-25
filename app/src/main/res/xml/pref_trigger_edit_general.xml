@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="@string/trigger_pref_header_general">
+
+        <EditTextPreference
+            android:title="@string/trigger_pref_title_name"
+            android:defaultValue="@string/trigger_pref_default_name"
+            android:key="name_trigger"
+            android:selectAllOnFocus="true"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/text_secondary"/>
+
+        <ListPreference
+            android:title="@string/trigger_pref_title_profile"
+            android:defaultValue="@string/trigger_pref_default_profile"
+            android:key="profile"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"/>
+
+        <EditTextPreference
+            android:title="@string/trigger_pref_title_priority"
+            android:defaultValue="0"
+            android:inputType="number"
+            android:key="priority"
+            android:dialogMessage="@string/trigger_pref_message_priority"
+            android:maxLines="1"
+            android:maxLength="2"
+            android:singleLine="true"
+            android:textColor="@color/text_secondary"
+            android:selectAllOnFocus="true"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

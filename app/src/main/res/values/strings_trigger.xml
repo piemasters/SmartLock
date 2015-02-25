@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Triggers -->
+    <string name="trigger_intro">Edit a trigger by selecting its settings button.
+                                 Press &amp; hold a trigger to disable or delete it.</string>
+    <string name="trigger_create_new">+</string>
+    <string name="trigger_create_new_2">[+] New Trigger</string>
+    <string name="trigger_edit_title">Edit Trigger</string>
+    <string name="trigger_delete">Delete</string>
+
+    <!-- Trigger Menu -->
+    <string name="trigger_default_name_new">Insert Name</string>
+    <string name="trigger_item_edit">Edit</string>
+
+    <string name="trigger_alert_name_title">Trigger Name</string>
+    <string name="trigger_alert_name_text">Please enter a valid trigger name!</string>
+    <string name="trigger_alert_profile_text">Please select a Profile!</string>
+    <string name="trigger_alert_battery_title">Battery Level</string>
+    <string name="trigger_alert_battery_text">Battery [low] must be less than battery [high]!</string>
+    <string name="trigger_alert_battery_exact_text">For an exact level, only select battery [low]!</string>
+    <string name="trigger_alert_name_button">Okay</string>
+    <string name="trigger_alert_discard_title">Discard Changes?</string>
+    <string name="trigger_alert_discard_text">Do you want to discard these changes?</string>
+    <string name="trigger_alert_discard_yes">Yes</string>
+    <string name="trigger_alert_discard_no">No</string>
+    <string name="trigger_pref_unchanged">unchanged</string>
+
+    <!-- Trigger Preference Page -->
+
+    <!-- Settings: General -->
+    <string name="trigger_pref_header_general">General</string>
+
+    <string name="trigger_pref_title_name">Name</string>
+    <string name="trigger_pref_default_name">Insert Name</string>
+
+    <string name="trigger_pref_title_profile">Profile</string>
+    <string name="trigger_pref_default_profile">Choose a profile</string>
+
+    <string name="trigger_pref_title_priority">Priority</string>
+    <string name="trigger_pref_message_priority">Select a priority between 0-99. Higher values have greater priority.</string>
+
+    <!-- Settings: Location -->
+    <string name="trigger_location_edit_title">Set Location</string>
+    <string name="trigger_pref_title_location">Location</string>
+    <string name="trigger_pref_location_lat">Latitude</string>
+    <string name="trigger_pref_location_lng">Longitude</string>
+    <string name="trigger_pref_location_radius">Radius</string>
+    <string name="trigger_pref_map_radius">Radius (meters):</string>
+    <string name="trigger_pref_map_radius_default">50</string>
+    <string name="trigger_pref_map_clear">Clear</string>
+    <string name="trigger_pref_map_sat">Change to satellite.</string>
+    <string name="trigger_pref_map_norm">Change to normal.</string>
+
+
+
+    <!-- Settings: Time -->
+    <string name="trigger_pref_title_time">Time</string>
+    <string name="trigger_pref_message_time_change">Change Value</string>
+    <string name="trigger_pref_title_start_time">Start Time</string>
+    <string name="trigger_pref_message_start_time">Check the box and adjust the sliders to select the start-time.</string>
+    <string name="trigger_pref_title_end_time">End Time</string>
+    <string name="trigger_pref_message_end_time">Check the box and adjust the sliders to select the end-time.</string>
+    <string name="trigger_pref_title_weekday">Weekday</string>
+    <string-array name="trigger_pref_values_weekday">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string name="trigger_pref_summary_weekday">Select at least one day.</string>
+    <string-array name="trigger_pref_entries_weekday">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+    <string name="trigger_pref_weekday_none">Ignored</string>
+    <string name="trigger_pref_weekday_all">Every day</string>
+    <string name="trigger_pref_weekday_weekdays">Weekdays</string>
+    <string name="trigger_pref_weekday_weekend">Weekend</string>
+    <string name="trigger_pref_mon">Mon</string>
+    <string name="trigger_pref_tue">Tue</string>
+    <string name="trigger_pref_wed">Wed</string>
+    <string name="trigger_pref_thur">Thur</string>
+    <string name="trigger_pref_fri">Fri</string>
+    <string name="trigger_pref_sat">Sat</string>
+    <string name="trigger_pref_sun">Sun</string>
+    <string name="trigger_pref_and">and</string>
+
+    <!-- Settings: Battery -->
+    <string name="trigger_pref_title_battery_state">Battery State</string>
+    <string-array name="trigger_pref_titles_battery_state">
+        <item>Charging</item>
+        <item>Discharging</item>
+        <item>Ignored</item>
+    </string-array>
+    <string-array name="trigger_pref_values_battery_state">
+        <item>charging</item>
+        <item>discharging</item>
+        <item>ignored</item>
+    </string-array>
+    <string name="trigger_pref_title_battery_level_enable">Battery Level</string>
+    <string name="trigger_pref_summary_battery_level_enable">Select to enable battery level ranges.</string>
+    <string name="trigger_pref_title_battery_level_start">Battery Low-Level</string>
+    <string name="trigger_pref_message_battery_level_start">Adjust the slider to select the lower battery level.</string>
+    <string name="trigger_pref_title_battery_level_end">Battery High-Level</string>
+    <string name="trigger_pref_message_battery_level_end">Adjust the slider to select the higher battery level.</string>
+
+    <!-- Settings: Headphones -->
+    <string name="trigger_pref_title_headphone">Headphones</string>
+    <string name="trigger_pref_title_headphone_state">Headphone State</string>
+
+    <string-array name="trigger_pref_titles_headphone_state">
+        <item>Plugged in</item>
+        <item>Unplugged</item>
+        <item>Ignored</item>
+    </string-array>
+    <string-array name="trigger_pref_values_headphone_state">
+        <item>plugged_in</item>
+        <item>unplugged</item>
+        <item>ignored</item>
+    </string-array>
+
+</resources>

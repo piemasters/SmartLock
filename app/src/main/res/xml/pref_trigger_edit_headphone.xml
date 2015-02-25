@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="@string/trigger_pref_title_headphone">
+
+    <ListPreference
+        android:title="@string/trigger_pref_title_headphone_state"
+        android:defaultValue="@string/ignored"
+        android:key="headphone"
+        android:entries="@array/trigger_pref_titles_headphone_state"
+        android:entryValues="@array/trigger_pref_values_headphone_state"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

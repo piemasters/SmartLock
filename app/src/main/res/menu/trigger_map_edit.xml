@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/cancel_location"
+        android:title="@string/cancel"
+        android:icon="@drawable/ic_action_cancel"
+        android:showAsAction="always"
+        android:visible="true">
+    </item>
+
+    <item
+        android:id="@+id/save_location"
+        android:title="@string/save"
+        android:icon="@drawable/ic_action_accept"
+        android:showAsAction="ifRoom"
+        android:visible="true">
+    </item>
+
+    <!-- Satellite view option -->
+    <item
+        android:id="@+id/map_change_sat"
+        android:title="@string/trigger_pref_map_sat"
+        android:showAsAction="never"
+        android:visible="true">
+    </item>
+
+    <!-- Normal view option -->
+    <item
+        android:id="@+id/map_change_norm"
+        android:title="@string/trigger_pref_map_norm"
+        android:showAsAction="never"
+        android:visible="true">
+    </item>
+
+</menu>

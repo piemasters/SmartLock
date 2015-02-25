@@ -1,0 +1,29 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="@string/profile_pref_header_connectivity">
+
+        <ListPreference
+            android:title="@string/profile_pref_title_wifi"
+            android:defaultValue="@string/profile_pref_unchanged"
+            android:key="wifi"
+            android:entries="@array/profile_pref_titles_wifi"
+            android:entryValues="@array/profile_pref_values_wifi"/>
+
+        <ListPreference
+            android:title="@string/profile_pref_title_mobile_data"
+            android:defaultValue="@string/profile_pref_unchanged"
+            android:key="mobile_data"
+            android:entries="@array/profile_pref_titles_mobile_data"
+            android:entryValues="@array/profile_pref_values_mobile_data"/>
+
+        <ListPreference
+            android:title="@string/profile_pref_title_bluetooth"
+            android:defaultValue="@string/profile_pref_unchanged"
+            android:key="bluetooth"
+            android:entries="@array/profile_pref_titles_bluetooth"
+            android:entryValues="@array/profile_pref_values_bluetooth"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

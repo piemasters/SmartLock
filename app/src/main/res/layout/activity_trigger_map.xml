@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MapViewActivity" >
+
+    <fragment android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#99FFFFFF" >
+
+        <TextView
+            android:id="@+id/radius_selection_message"
+            android:text="@string/trigger_pref_map_radius"
+            android:textColor="@color/android:black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/radius_selection"
+            android:inputType="number"
+            android:text="@string/trigger_pref_map_radius_default"
+            android:hint="@string/trigger_pref_map_radius_default"
+            android:ems="5"
+            android:maxLength="6"
+            android:textColor="@color/android:black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:selectAllOnFocus="false" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+        <Button
+            android:id="@+id/clear_map_button"
+            android:text="@string/trigger_pref_map_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</RelativeLayout>

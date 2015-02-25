@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="@string/trigger_pref_title_location">
+
+        <Preference
+            android:title="@string/trigger_pref_title_location"
+            android:key="location" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="net.davidnorton.securityapp.trigger.MapViewActivity"
+                android:targetPackage="net.davidnorton.securityapp" />
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

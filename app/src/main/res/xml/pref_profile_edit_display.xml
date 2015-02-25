@@ -1,0 +1,22 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="@string/profile_pref_header_display">
+
+        <ListPreference
+            android:title="@string/profile_pref_title_display_auto_mode"
+            android:defaultValue="pref_profile_unchanged"
+            android:key="display_auto_mode"
+            android:entries="@array/profile_pref_titles_display_auto_mode"
+            android:entryValues="@array/profile_pref_values_display_auto_mode"/>
+
+        <ListPreference
+            android:title="@string/profile_pref_title_time_out"
+            android:defaultValue="pref_profile_unchanged"
+            android:key="display_time_out"
+            android:entries="@array/profile_pref_titles_time_out"
+            android:entryValues="@array/profile_pref_values_time_out"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
