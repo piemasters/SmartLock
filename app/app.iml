@@ -91,7 +91,6 @@
     <orderEntry type="library" exported="" name="recyclerview-v7-21.0.2" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-21.0.2" level="project" />
     <orderEntry type="library" exported="" name="cardview-v7-21.0.2" level="project" />
-    <orderEntry type="module" module-name="AndroidSliderPreference" exported="" />
   </component>
 </module>
 
