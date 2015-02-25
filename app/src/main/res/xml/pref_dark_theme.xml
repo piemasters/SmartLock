@@ -4,8 +4,8 @@
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="dark_theme"
-        android:title="@string/pref_title_dark_theme"
-        android:summaryOn="@string/pref_on_dark_theme"
-        android:summaryOff="@string/pref_off_dark_theme" />
+        android:title="@string/advanced_settings_pref_title_dark_theme"
+        android:summaryOn="@string/advanced_settings_pref_on_dark_theme"
+        android:summaryOff="@string/advanced_settings_pref_off_dark_theme" />
 
 </PreferenceScreen>

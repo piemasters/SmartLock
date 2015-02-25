@@ -1,5 +1,6 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         style="@style/RelativeLayout"
+        android:id="@+id/advanced_settings_fragment"
         xmlns:tools="http://schemas.android.com/tools"
         tools:context=".MyActivity">
 

@@ -4,55 +4,19 @@
     <!-- Main App -->
     <string name="app_name">SmartLock</string>
     <string name="action_settings">Settings</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="ignored">Ignored</string>
+    <string name="delete">Delete</string>
+    <string name="disabled">Disabled</string>
+    <string name="enabled">Enabled</string>
+    <string name="activity_title_map">Geofence</string>
+    <string name="activity_profile_title_edit">Edit Profile</string>
+    <string name="activity_trigger_title_edit">Edit Trigger</string>
 
-    <!-- Drawer -->
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
-    <string name="action_websearch">Web search</string>
-    <string name="app_not_available">Sorry, there\'s no web browser available</string>
-
-    <!-- Drawer Items -->
-    <string-array name="menu_title_array">
-        <item>Main</item>
-        <item>Lock Screens</item>
-        <item>Stored Details</item>
-        <item>Other</item>
-    </string-array>
-
-    <string-array name="menu_items_array">
-        <item>Profiles</item>
-        <item>Triggers</item>
-        <item>Activity Log</item>
-
-        <item>Passwords</item>
-        <item>Biometrics</item>
-        <item>NFC</item>
-
-        <item>Locations</item>
-        <item>Networks</item>
-        <item>Bluetooth Devices</item>
-
-        <item>About</item>
-        <item>Advanced Settings</item>
-        <item>Help</item>
-    </string-array>
-
-    <!-- Profiles -->
-    <string name="profiles_intro">A list of current available profiles:</string>
-    <string name="profiles_title">Title</string>
-    <string name="profiles">This is the profiles page</string>
-    <string name="profiles_default_none">This is the profiles page...</string>
-    <string name="profiles_default_swipe">This is the profiles page...</string>
-    <string name="profiles_default_pattern">This is the profiles page...</string>
-    <string name="profiles_default_pin">This is the profiles page...</string>
-    <string name="profiles_default_password">This is the profiles page...</string>
-    <string name="profiles_default_nfc">This is the profiles page...</string>
-    <string name="profileApplied">was applied!</string>
-
-    <!-- Triggers -->
-    <string name="triggers_intro">A list of available triggers.</string>
-    <string name="triggers_title">Title</string>
-    <string name="triggers">This is the triggers page</string>
+    <!-- Notifications -->
+    <string name="notification_title_no_profile">None</string>
+    <string name="notification_content">Touch to change profile</string>
 
     <!-- Activity Log -->
     <string name="activity_log_intro">A log of the latest profile changes.</string>
@@ -102,11 +66,11 @@
 
     <!-- Advanced Settings -->
     <string name="advanced_settings_intro">Below are the advanced settings:</string>
-    <string name="pref_title_notification">Enable Permanent Notification</string>
-    <string name="pref_description_notification">Enables permanent status bar notification to view current profile.</string>
-    <string name="pref_title_dark_theme">Dark Theme</string>
-    <string name="pref_on_dark_theme">Dark theme is enabled.</string>
-    <string name="pref_off_dark_theme">Dark theme is disabled.</string>
+    <string name="advanced_settings_pref_title_notification">Enable Permanent Notification</string>
+    <string name="advanced_settings_pref_description_notification">Enables permanent status bar notification to view current profile.</string>
+    <string name="advanced_settings_pref_title_dark_theme">Dark Theme</string>
+    <string name="advanced_settings_pref_on_dark_theme">Dark theme is enabled.</string>
+    <string name="advanced_settings_pref_off_dark_theme">Dark theme is disabled.</string>
 
     <!-- Help -->
     <string name="help_faq">F.A.Q</string>
@@ -125,13 +89,5 @@
                                     <li>NFC (Scan NFC tag or wearable to unlock)\n</li>
                                   </ul>
      </string>
-
-    <!-- Notifications -->
-    <string name="notification_title">Current Profile</string>
-    <string name="notification_content">Touch to change profile</string>
-
-    <!-- Other -->
-    <string name="textListDialogTitle">Choose a profile</string>
-    <string name="settings">Settings</string>
 
 </resources>

@@ -26,105 +26,70 @@
                 style="@style/TextView.Title"
                 android:id="@+id/triggers_title" />
 
+            <!-- Create New Profile Button
+            <Button
+                android:id="@+id/new_trigger_button"
+                android:layout_toRightOf="@id/triggers_title"
+                android:layout_gravity="right"
+                android:layout_width="45sp"
+                android:layout_height="45sp"
+                android:text="@string/trigger_create_new"/> -->
+
             <!-- Text Container -->
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 style="@style/LinearLayout.TopCard"
                 xmlns:tools="http://schemas.android.com/tools"
-                tools:context=".MyActivity">
+                tools:context=".MyActivity"
+                android:paddingBottom="0dp">
 
-                <!-- Triggers Description -->
-                <TextView
-                    style="@style/TextView"
-                    android:id="@+id/triggers_intro"
-                    android:text="@string/triggers_intro"/>
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:paddingBottom="0dp">
+
+                    <!-- Triggers Description -->
+                    <TextView
+                        style="@style/TextView"
+                        android:id="@+id/triggers_intro"
+                        android:text="@string/trigger_intro"
+                        android:paddingBottom="10sp"/>
+
+                    <!--Item border-->
+                    <View
+                        android:id="@+id/triggers_button_border"
+                        android:layout_below="@id/triggers_intro"
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#eeeeee"/>
+
+                    <!-- Create New Trigger Button -->
+                    <Button
+                        android:id="@+id/new_trigger_button"
+                        android:layout_below="@id/triggers_button_border"
+                        android:text="@string/trigger_create_new_2"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:layout_marginBottom="-20dp"/>
+
+                </RelativeLayout>
 
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
-        <!-- Card 2 -->
-        <android.support.v7.widget.CardView
-            style="@style/CardView"
-            android:id="@+id/card_2"
-            android:layout_below="@+id/card_1">
+        <!-- List of Profiles -->
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/ListViewTriggers"
+            android:layout_below="@id/card_1"
+            android:layout_width="match_parent"
+            android:layout_height="330sp"
+            tools:context=".TriggerFragment" >
 
-            <!--Text Container -->
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                style="@style/LinearLayout"
-                xmlns:tools="http://schemas.android.com/tools"
-                tools:context=".MyActivity">
+        </ListView>
 
-                <!-- Title -->
-                <TextView
-                    style="@style/TextView.Paragraph.SubTitle"
-                    android:id="@+id/triggers_title2"
-                    android:text="@string/triggers_title"/>
-
-                <!-- Description -->
-                <TextView
-                    style="@style/TextView"
-                    android:layout_below="@id/triggers_title2"
-                    android:id="@+id/triggers_text2"
-                    android:text="@string/triggers"/>
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <!-- Card 3 -->
-        <android.support.v7.widget.CardView
-            style="@style/CardView"
-            android:id="@+id/card_3"
-            android:layout_below="@+id/card_2">
-
-            <!--Text Container -->
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                style="@style/LinearLayout"
-                xmlns:tools="http://schemas.android.com/tools"
-                tools:context=".MyActivity">
-
-                <!-- Title -->
-                <TextView
-                    style="@style/TextView.Paragraph.SubTitle"
-                    android:id="@+id/triggers_title3"
-                    android:text="@string/triggers_title"/>
-
-                <!-- Description -->
-                <TextView
-                    style="@style/TextView"
-                    android:layout_below="@id/triggers_title3"
-                    android:id="@+id/triggers_text3"
-                    android:text="@string/triggers"/>
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <!-- Card 4 -->
-        <android.support.v7.widget.CardView
-            style="@style/CardView"
-            android:id="@+id/card_4"
-            android:layout_below="@+id/card_3">
-
-            <!--Text Container -->
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                style="@style/LinearLayout"
-                xmlns:tools="http://schemas.android.com/tools"
-                tools:context=".MyActivity">
-
-                <!-- Title -->
-                <TextView
-                    style="@style/TextView.Paragraph.SubTitle"
-                    android:id="@+id/triggers_title4"
-                    android:text="@string/triggers_title"/>
-
-                <!-- Description -->
-                <TextView
-                    style="@style/TextView"
-                    android:layout_below="@id/triggers_title4"
-                    android:id="@+id/triggers_text4"
-                    android:text="@string/triggers"/>
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
 
     </RelativeLayout>
 </ScrollView>

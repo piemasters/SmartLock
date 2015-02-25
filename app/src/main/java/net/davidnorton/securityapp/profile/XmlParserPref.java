@@ -1,58 +1,62 @@
 package net.davidnorton.securityapp.profile;
 
+import android.content.Context;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.util.Xml;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
 import java.io.IOException;
-        import java.io.InputStream;
-        import java.lang.reflect.InvocationTargetException;
-
-        import org.xmlpull.v1.XmlPullParser;
-        import org.xmlpull.v1.XmlPullParserException;
-
-        import android.content.Context;
-        import android.util.Log;
-        import android.util.Xml;
+import java.io.InputStream;
 
 /**
- * Reads an xml input stream created in XmlCreator and applies it
- * using the Setter class.
+ * Stores xml values in shared preferences for Profile edit activity.
  *
  * @author David Norton
  */
-public class XmlParser {
+public class XmlParserPref {
 
-    final static String TAG = "XmlParser";
+	final static String TAG = "XmlParserPref";
 
-    Context context;
-    Setter setter = new Setter();
+	Context context;
+	Editor prefEdit;
+	String profileName;
 
     /**
-     *  Initializes the xml parser with the given context.
+     * Initializes the xml parser with given context.
      *
      * @param cont Context.
+     * @param name Profile Name.
      */
-    public XmlParser(Context cont) {
-        context = cont;
-    }
+	public XmlParserPref(Context cont, String name) {
+		context = cont;
+		prefEdit = PreferenceManager.getDefaultSharedPreferences(context).edit();
+		profileName = name;
+	}
 
     /**
-     * Sets up the xml parser for the inputstream, then hands over to readAndApplyTags to process it.
+     * Initializes the xml parser with given context.
      *
      * @param in Inputstream to parse.
      *
      * @throws XmlPullParserException
      * @throws IOException
      */
-    public void initializeXmlParser(InputStream in) throws XmlPullParserException, IOException {
+	public void initializeXmlParser(InputStream in) throws XmlPullParserException, IOException {
 
         try {
-            XmlPullParser parser = Xml.newPullParser();
-            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-            parser.setInput(in, null);
-            parser.nextTag();
-            readAndApplyTags(parser);
-        } finally {
-            in.close();
-        }
-    }
+			XmlPullParser parser = Xml.newPullParser();
+			parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+			parser.setInput(in, null);
+			parser.nextTag();
+			readAndApplyTags(parser);
+		} finally {
+			in.close();
+		}
+	}
 
     /**
      * Reads and applies settings using setter methods.
@@ -62,21 +66,20 @@ public class XmlParser {
      * @throws XmlPullParserException
      * @throws IOException
      */
-    private void readAndApplyTags(XmlPullParser parser) throws XmlPullParserException, IOException {
+	private void readAndApplyTags(XmlPullParser parser) throws XmlPullParserException, IOException {
 
-        parser.require(XmlPullParser.START_TAG, null, "resources");
+		prefEdit.putString("name", profileName);
 
-        // For each tag.
-        while (parser.next() != XmlPullParser.END_TAG) {
+		parser.require(XmlPullParser.START_TAG, null, "resources");
 
-            // Skip if not a start tag.
+		while (parser.next() != XmlPullParser.END_TAG) {
+
             if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
+				continue;
+			}
 
-            String name = parser.getName();
+			String name = parser.getName();
 
-            // Look for the entry tag.
             switch (name) {
                 case "wifi":
                     setWifi(parser);
@@ -94,12 +97,13 @@ public class XmlParser {
                     setRingerMode(parser);
                     break;
                 default:
-                    Log.w("XmlParser", "Skip!");
+                    Log.i("XmlParser", "Skip!");
                     parser.nextTag();
                     break;
             }
-        }
-    }
+			prefEdit.commit();
+		}
+	}
 
     /**
      * Sets WiFi state.
@@ -117,12 +121,16 @@ public class XmlParser {
         if (parser.getAttributeValue(null, "enabled") != null) {
             // If enabled.
             if (parser.getAttributeValue(null, "enabled").equals("1")) {
-                setter.setWifi(context, true);
+                prefEdit.putString("wifi", "enabled");
                 Log.i(TAG, "WiFi on.");
             // If disabled.
             } else if (parser.getAttributeValue(null, "enabled").equals("0")) {
-                setter.setWifi(context, false);
+                prefEdit.putString("wifi", "disabled");
                 Log.i(TAG, "WiFi off.");
+            // If unchanged.
+            } else if (parser.getAttributeValue(null, "enabled").equals("-1")) {
+                prefEdit.putString("wifi", "unchanged");
+                Log.i(TAG, "WiFi unchanged.");
             // If not valid.
             } else {
                 Log.e(TAG, "WiFi: Invalid Argument!");
@@ -138,6 +146,7 @@ public class XmlParser {
      *  Sets Mobile Data state.
      *
      * @param parser The parser to read the settings.
+     *
      * @throws XmlPullParserException
      * @throws IOException
      */
@@ -145,31 +154,19 @@ public class XmlParser {
 
         parser.require(XmlPullParser.START_TAG, null, "mobile_data");
 
-        // If state has changed.
         if (parser.getAttributeValue(null, "enabled") != null) {
-            // If enabled.
             if (parser.getAttributeValue(null, "enabled").equals("1")) {
-                try {
-                    setter.setMobileData(context, true);
-                } catch (IllegalArgumentException | InvocationTargetException | NoSuchMethodException |
-                        IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+                prefEdit.putString("mobile_data", "enabled");
                 Log.i(TAG, "MobileData on.");
-            // If disabled.
             } else if (parser.getAttributeValue(null, "enabled").equals("0")) {
-                try {
-                    setter.setMobileData(context, false);
-                } catch (IllegalArgumentException | ClassNotFoundException | NoSuchFieldException |
-                        IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-                    Log.i(TAG, String.format(" ERROR: Mobile Data change not supported by Android Version!"));
-                }
+                prefEdit.putString("mobile_data", "disabled");
                 Log.i(TAG, "MobileData off.");
-            // If not valid.
+            } else if (parser.getAttributeValue(null, "enabled").equals("-1")) {
+                prefEdit.putString("mobile_data", "unchanged");
+                Log.i(TAG, "MobileData unchanged.");
             } else {
                 Log.e(TAG, "MobileData: Invalid Argument!");
             }
-        // If state unchanged.
         } else {
             Log.i(TAG, "MobileData: No change.");
         }
@@ -190,11 +187,14 @@ public class XmlParser {
 
         if (parser.getAttributeValue(null, "enabled") != null) {
             if (parser.getAttributeValue(null, "enabled").equals("1")) {
-                setter.setBluetooth(context, true);
+                prefEdit.putString("bluetooth", "enabled");
                 Log.i(TAG, "Bluetooth on.");
             } else if (parser.getAttributeValue(null, "enabled").equals("0")) {
-                setter.setBluetooth(context, false);
+                prefEdit.putString("bluetooth", "disabled");
                 Log.i(TAG, "Bluetooth off.");
+            } else if (parser.getAttributeValue(null, "enabled").equals("-1")) {
+                prefEdit.putString("bluetooth", "unchanged");
+                Log.i(TAG, "Bluetooth unchanged.");
             } else {
                 Log.e(TAG, "Bluetooth: Invalid Argument!");
             }
@@ -219,11 +219,14 @@ public class XmlParser {
         // Auto Brightness
         if (parser.getAttributeValue(null, "auto_mode_enabled") != null) {
             if (parser.getAttributeValue(null, "auto_mode_enabled").equals("1")) {
-                setter.setScreenBrightnessMode(context, true);
+                prefEdit.putString("display_auto_mode", "enabled");
                 Log.i(TAG, "ScreenBrightnessAutoMode on.");
             } else if (parser.getAttributeValue(null, "auto_mode_enabled").equals("0")) {
-                setter.setScreenBrightnessMode(context, false);
+                prefEdit.putString("display_auto_mode", "disabled");
                 Log.i(TAG, "ScreenBrightnessAutoMode off.");
+            } else if (parser.getAttributeValue(null, "auto_mode_enabled").equals("-1")) {
+                prefEdit.putString("display_auto_mode", "unchanged");
+                Log.i(TAG, "ScreenBrightnessAutoMode unchanged.");
             } else {
                 Log.e(TAG, "ScreenBrightnessAutoMode: Invalid Argument!");
             }
@@ -233,9 +236,9 @@ public class XmlParser {
 
         // Device Display Timeout
         if (parser.getAttributeValue(null, "time_out") != null) {
-            if (Integer.parseInt(parser.getAttributeValue(null, "time_out")) >= 0
+            if (Integer.parseInt(parser.getAttributeValue(null, "time_out")) >= -1
                     && Integer.parseInt(parser.getAttributeValue(null, "time_out")) <= 6) {
-                setter.setScreenTimeout(context, Integer.parseInt(parser.getAttributeValue(null, "time_out")));
+                prefEdit.putString("display_time_out", parser.getAttributeValue(null, "time_out"));
                 Log.i(TAG, "TimeOut: " + parser.getAttributeValue(null, "time_out"));
             } else {
                 Log.e(TAG, "TimeOut: Invalid Argument!");
@@ -255,26 +258,30 @@ public class XmlParser {
      * @throws XmlPullParserException
      * @throws IOException
      */
-    private void setRingerMode(XmlPullParser parser) throws XmlPullParserException, IOException {
+	private void setRingerMode(XmlPullParser parser) throws XmlPullParserException, IOException {
 
-        parser.require(XmlPullParser.START_TAG, null, "ringer_mode");
+		parser.require(XmlPullParser.START_TAG, null, "ringer_mode");
 
-        if (parser.getAttributeValue(null, "mode") != null) {
-            if (parser.getAttributeValue(null, "mode").equals("normal")) {
-                setter.setRingerMode(context, Profile.mode.normal);
-                Log.i(TAG, "RingerMode: normal");
-            } else if (parser.getAttributeValue(null, "mode").equals("silent")) {
-                setter.setRingerMode(context, Profile.mode.silent);
-                Log.i(TAG, "RingerMode: silent");
-            } else if (parser.getAttributeValue(null, "mode").equals("vibrate")) {
-                setter.setRingerMode(context, Profile.mode.vibrate);
-                Log.i(TAG, "RingerMode: vibrate");
-            } else {
-                Log.e(TAG, "RingerMode: Invalid Argument!");
-            }
-        } else {
-            Log.i(TAG, "RingerMode: No change.");
-        }
-        parser.nextTag();
-    }
+		if (parser.getAttributeValue(null, "mode") != null) {
+			if (parser.getAttributeValue(null, "mode").equals("normal")) {
+				prefEdit.putString("ringer_mode", "normal");
+				Log.i(TAG, "RingerMode: normal");
+			} else if (parser.getAttributeValue(null, "mode").equals("silent")) {
+				prefEdit.putString("ringer_mode", "silent");
+				Log.i(TAG, "RingerMode: silent");
+			} else if (parser.getAttributeValue(null, "mode").equals("vibrate")) {
+				prefEdit.putString("ringer_mode", "vibrate");
+				Log.i(TAG, "RingerMode: vibrate");
+			} else if (parser.getAttributeValue(null, "mode").equals("unchanged")) {
+				prefEdit.putString("ringer_mode", "unchanged");
+				Log.i(TAG, "RingerMode: unchanged");
+			} else {
+				Log.e(TAG, "RingerMode: Invalid Argument!");
+			}
+		} else {
+			Log.i(TAG, "RingerMode: No change.");
+		}
+
+		parser.nextTag();
+	}
 }
