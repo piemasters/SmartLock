@@ -29,12 +29,6 @@ public class XmlParserPrefTrigger {
 	Editor prefEdit;
 	String triggerName;
 
-	/**
-	 * Initializes the xml parser with the given context.
-	 * 
-	 * @param _context
-	 */
-
     /**
      * Initializes the xml parser with given context.
      *
@@ -46,16 +40,6 @@ public class XmlParserPrefTrigger {
 		prefEdit = PreferenceManager.getDefaultSharedPreferences(context).edit();
 		triggerName = name;
 	}
-
-	/**
-	 * Sets up the xml parser for the given inputstream and then hands it over
-	 * to the readAndApplyTags method to process the stream.
-	 * 
-	 * @param _in
-	 *            the input stream you want to parse.
-	 * @throws org.xmlpull.v1.XmlPullParserException
-	 * @throws java.io.IOException
-	 */
 
     /**
      * Initializes the xml parser with given context.
@@ -77,15 +61,6 @@ public class XmlParserPrefTrigger {
 			in.close();
 		}
 	}
-
-	/**
-	 * Reads the given input stream and saves the read values.
-	 *
-	 * @param _parser
-	 *            the parser which should read the tags
-	 * @throws org.xmlpull.v1.XmlPullParserException
-	 * @throws java.io.IOException
-	 */
 
     /**
      * Reads and applies settings using setter methods.

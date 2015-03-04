@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class TriggerBroadcastReceiver extends BroadcastReceiver {
 
-	final static String TAG = "TriggerBroadcastReceiver";
+	final static String TAG = "TriggerReceiver";
 	
 	TriggerService triggerservice;
 	
@@ -98,7 +98,7 @@ public class TriggerBroadcastReceiver extends BroadcastReceiver {
         // Set location change.
 		if(intent.getAction().equals("net.davidnorton.securityapp.trigger.location_change")){
 
-            Log.i(TAG, "Location change detected - action");
+            Log.i(TAG, "Location change detected");
 
             GeofencingEvent geofencingEvent = GeofencingEvent.fromIntent(intent);
 
@@ -106,7 +106,7 @@ public class TriggerBroadcastReceiver extends BroadcastReceiver {
             if (geofencingEvent.hasError()) {
 
                 int errorCode = geofencingEvent.getErrorCode();
-                Log.e("ReceiveTransitionsIntentService", "Location Services error: " + Integer.toString(errorCode));
+                Log.e("ReceiveTransition", "Location Services error: " + Integer.toString(errorCode));
 
             // If no errors, get transition type and ID/s of the geo-fence/s that triggered the transition.
             } else {
@@ -131,7 +131,7 @@ public class TriggerBroadcastReceiver extends BroadcastReceiver {
 
 				// An invalid transition occurred.
 				} else {
-					Log.e("ReceiveTransitionsIntentService", "Geofence transition error: " + Integer.toString(transition));
+					Log.e("ReceiveTransition", "Geofence transition error: " + Integer.toString(transition));
 				}
 			}
 		}
