@@ -327,18 +327,16 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
             }
 
             // Binds the summary of the location.
-            if (key.equals("geofence_lat") || key.equals("geofence_lng") || key.equals("geofence_radius")) {
+            if (key.equals("geofence_lat") && key.equals("geofence_lng") && key.equals("geofence_radius")) {
 
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-                if (prefs.getInt("geofence_radius", 50) > 0) {
+                if (pref.getInt("geofence_radius", 50) > 0) {
                     findPreference("location").setSummary(
                             getString(R.string.trigger_pref_location_lat) + ": "
-                                    + prefs.getFloat("geofence_lat", 0F) + "\u00B0, "
+                                    + pref.getFloat("geofence_lat", 0F) + "\u00B0, "
                                     + getString(R.string.trigger_pref_location_lng) + ": "
-                                    + prefs.getFloat("geofence_lng", 0F) + "\u00B0, "
+                                    + pref.getFloat("geofence_lng", 0F) + "\u00B0, "
                                     + getString(R.string.trigger_pref_location_radius) + ": "
-                                    + prefs.getInt("geofence_radius", 50) + "m");
+                                    + pref.getInt("geofence_radius", 50) + "m");
                 } else {
                     findPreference("location").setSummary(R.string.ignored);
                 }
@@ -347,27 +345,25 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
             // Binds the summary of the weekday.
             if (key.equals("weekdays")) {
 
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-                int size = prefs.getStringSet("weekdays", null).size();
+                int size = pref.getStringSet("weekdays", null).size();
 
                 // If no days selected set ignored.
-                if (prefs.getStringSet("weekdays", null).isEmpty()) {
+                if (pref.getStringSet("weekdays", null).isEmpty()) {
                     findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_none);
                     // If all days selected set every day.
                 } else if (size == 7) {
                     findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_all);
                     // If week days selected set weekdays.
                 } else if (size == 5 &&
-                        prefs.getStringSet("weekdays", null).contains("1") &&
-                        prefs.getStringSet("weekdays", null).contains("2") &&
-                        prefs.getStringSet("weekdays", null).contains("3") &&
-                        prefs.getStringSet("weekdays", null).contains("4") &&
-                        prefs.getStringSet("weekdays", null).contains("5")) {
+                        pref.getStringSet("weekdays", null).contains("1") &&
+                        pref.getStringSet("weekdays", null).contains("2") &&
+                        pref.getStringSet("weekdays", null).contains("3") &&
+                        pref.getStringSet("weekdays", null).contains("4") &&
+                        pref.getStringSet("weekdays", null).contains("5")) {
                     findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_weekdays);
                     // If week end selected set weekend.
-                } else if (size == 2 && prefs.getStringSet("weekdays", null).contains("6") &&
-                        prefs.getStringSet("weekdays", null).contains("7")) {
+                } else if (size == 2 && pref.getStringSet("weekdays", null).contains("6") &&
+                        pref.getStringSet("weekdays", null).contains("7")) {
                     findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_weekend);
                     // Otherwise list days.
                 } else {
@@ -375,7 +371,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
                     int i = 1;
 
                     // Monday.
-                    if ((prefs.getStringSet("weekdays", null).contains("1"))) {
+                    if ((pref.getStringSet("weekdays", null).contains("1"))) {
                         summary.append(getResources().getString(R.string.trigger_pref_mon));
                         if (i < size - 1) {
                             summary.append(", ");
@@ -387,7 +383,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
                     }
 
                     // Tuesday.
-                    if ((prefs.getStringSet("weekdays", null).contains("2"))) {
+                    if ((pref.getStringSet("weekdays", null).contains("2"))) {
                         summary.append(getResources().getString(R.string.trigger_pref_tue));
                         if (i < size - 1) {
                             summary.append(", ");
@@ -399,7 +395,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
                     }
 
                     // Wednesday.
-                    if ((prefs.getStringSet("weekdays", null).contains("3"))) {
+                    if ((pref.getStringSet("weekdays", null).contains("3"))) {
                         summary.append(getResources().getString(R.string.trigger_pref_wed));
                         if (i < size - 1) {
                             summary.append(", ");
@@ -411,7 +407,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
                     }
 
                     // Thursday.
-                    if ((prefs.getStringSet("weekdays", null).contains("4"))) {
+                    if ((pref.getStringSet("weekdays", null).contains("4"))) {
                         summary.append(getResources().getString(R.string.trigger_pref_thur));
                         if (i < size - 1) {
                             summary.append(", ");
@@ -423,7 +419,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
                     }
 
                     // Friday.
-                    if ((prefs.getStringSet("weekdays", null).contains("5"))) {
+                    if ((pref.getStringSet("weekdays", null).contains("5"))) {
                         summary.append(getResources().getString(R.string.trigger_pref_fri));
                         if (i < size - 1) {
                             summary.append(", ");
@@ -435,7 +431,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
                     }
 
                     // Saturday.
-                    if ((prefs.getStringSet("weekdays", null).contains("6"))) {
+                    if ((pref.getStringSet("weekdays", null).contains("6"))) {
                         summary.append(getResources().getString(R.string.trigger_pref_sat));
                         if (i == size - 1) {
                             summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
@@ -444,7 +440,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
                     }
 
                     // Sunday.
-                    if ((prefs.getStringSet("weekdays", null).contains("7"))) {
+                    if ((pref.getStringSet("weekdays", null).contains("7"))) {
                         summary.append(getResources().getString(R.string.trigger_pref_sun));
                     }
 
