@@ -297,154 +297,158 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
         @Override
         public void onSharedPreferenceChanged(SharedPreferences pref, String key) {
 
-            preferencesChanged = true;
+            // Checks fragment is attached to the activity (to prevent crash.
+            if (isAdded()) {
 
-            // Disables and enables the end time depending on the start time.
-            if (key.equals("start_time") && pref.getString("start_time", getString(R.string.ignored)).equals(getString(R.string.ignored))) {
-                pref.edit().putString("end_time", getString(R.string.ignored)).apply();
-                findPreference("end_time").setEnabled(false);
-                findPreference("end_time").setSummary(getString(R.string.ignored));
-            } else if (key.equals("start_time")&& !pref.getString("start_time", getString(R.string.ignored)).equals(getString(R.string.ignored))) {
-                findPreference("end_time").setEnabled(true);
-            }
+                preferencesChanged = true;
 
-            // Disables and enables the start battery level.
-            if (!pref.getBoolean("battery_level_check", false)) {
-                pref.edit().putInt("battery_start_level", -1).apply();
-                findPreference("battery_start_level").setEnabled(false);
-                //findPreference("battery_start_level").setSummary(getString(R.string.ignored));
-            } else if (pref.getBoolean("battery_level_check", false)) {
-                findPreference("battery_start_level").setEnabled(true);
-            }
-
-            // Disables and enables the end battery level depending on the battery start level.
-            if (key.equals("battery_start_level") && pref.getInt("battery_start_level", -1) == -1) {
-                pref.edit().putInt("battery_end_level", -1).apply();
-                findPreference("battery_end_level").setEnabled(false);
-                //findPreference("battery_end_level").setSummary(getString(R.string.ignored));
-            } else if (key.equals("battery_start_level")&& pref.getInt("battery_start_level", -1) != -1) {
-                findPreference("battery_end_level").setEnabled(true);
-            }
-
-            // Binds the summary of the location.
-            if (key.equals("geofence_lat") && key.equals("geofence_lng") && key.equals("geofence_radius")) {
-
-                if (pref.getInt("geofence_radius", 50) > 0) {
-                    findPreference("location").setSummary(
-                            getString(R.string.trigger_pref_location_lat) + ": "
-                                    + pref.getFloat("geofence_lat", 0F) + "\u00B0, "
-                                    + getString(R.string.trigger_pref_location_lng) + ": "
-                                    + pref.getFloat("geofence_lng", 0F) + "\u00B0, "
-                                    + getString(R.string.trigger_pref_location_radius) + ": "
-                                    + pref.getInt("geofence_radius", 50) + "m");
-                } else {
-                    findPreference("location").setSummary(R.string.ignored);
+                // Disables and enables the end time depending on the start time.
+                if (key.equals("start_time") && pref.getString("start_time", getString(R.string.ignored)).equals(getString(R.string.ignored))) {
+                    pref.edit().putString("end_time", getString(R.string.ignored)).apply();
+                    findPreference("end_time").setEnabled(false);
+                    findPreference("end_time").setSummary(getString(R.string.ignored));
+                } else if (key.equals("start_time") && !pref.getString("start_time", getString(R.string.ignored)).equals(getString(R.string.ignored))) {
+                    findPreference("end_time").setEnabled(true);
                 }
-            }
 
-            // Binds the summary of the weekday.
-            if (key.equals("weekdays")) {
+                // Disables and enables the start battery level.
+                if (!pref.getBoolean("battery_level_check", false)) {
+                    pref.edit().putInt("battery_start_level", -1).apply();
+                    findPreference("battery_start_level").setEnabled(false);
+                    //findPreference("battery_start_level").setSummary(getString(R.string.ignored));
+                } else if (pref.getBoolean("battery_level_check", false)) {
+                    findPreference("battery_start_level").setEnabled(true);
+                }
 
-                int size = pref.getStringSet("weekdays", null).size();
+                // Disables and enables the end battery level depending on the battery start level.
+                if (key.equals("battery_start_level") && pref.getInt("battery_start_level", -1) == -1) {
+                    pref.edit().putInt("battery_end_level", -1).apply();
+                    findPreference("battery_end_level").setEnabled(false);
+                    //findPreference("battery_end_level").setSummary(getString(R.string.ignored));
+                } else if (key.equals("battery_start_level") && pref.getInt("battery_start_level", -1) != -1) {
+                    findPreference("battery_end_level").setEnabled(true);
+                }
 
-                // If no days selected set ignored.
-                if (pref.getStringSet("weekdays", null).isEmpty()) {
-                    findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_none);
-                    // If all days selected set every day.
-                } else if (size == 7) {
-                    findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_all);
-                    // If week days selected set weekdays.
-                } else if (size == 5 &&
-                        pref.getStringSet("weekdays", null).contains("1") &&
-                        pref.getStringSet("weekdays", null).contains("2") &&
-                        pref.getStringSet("weekdays", null).contains("3") &&
-                        pref.getStringSet("weekdays", null).contains("4") &&
-                        pref.getStringSet("weekdays", null).contains("5")) {
-                    findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_weekdays);
-                    // If week end selected set weekend.
-                } else if (size == 2 && pref.getStringSet("weekdays", null).contains("6") &&
-                        pref.getStringSet("weekdays", null).contains("7")) {
-                    findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_weekend);
-                    // Otherwise list days.
-                } else {
-                    StringBuilder summary = new StringBuilder();
-                    int i = 1;
+                // Binds the summary of the location.
+                if (key.equals("geofence_lat") || key.equals("geofence_lng") || key.equals("geofence_radius")) {
 
-                    // Monday.
-                    if ((pref.getStringSet("weekdays", null).contains("1"))) {
-                        summary.append(getResources().getString(R.string.trigger_pref_mon));
-                        if (i < size - 1) {
-                            summary.append(", ");
-                            i++;
-                        } else if (i == size - 1) {
-                            summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
-                            i++;
+                    if (pref.getInt("geofence_radius", 50) > 0) {
+                        findPreference("location").setSummary(
+                                getString(R.string.trigger_pref_location_lat) + ": "
+                                        + pref.getFloat("geofence_lat", 0F) + "\u00B0, "
+                                        + getString(R.string.trigger_pref_location_lng) + ": "
+                                        + pref.getFloat("geofence_lng", 0F) + "\u00B0, "
+                                        + getString(R.string.trigger_pref_location_radius) + ": "
+                                        + pref.getInt("geofence_radius", 50) + "m");
+                    } else {
+                        findPreference("location").setSummary(R.string.ignored);
+                    }
+                }
+
+                // Binds the summary of the weekday.
+                if (key.equals("weekdays")) {
+
+                    int size = pref.getStringSet("weekdays", null).size();
+
+                    // If no days selected set ignored.
+                    if (pref.getStringSet("weekdays", null).isEmpty()) {
+                        findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_none);
+                        // If all days selected set every day.
+                    } else if (size == 7) {
+                        findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_all);
+                        // If week days selected set weekdays.
+                    } else if (size == 5 &&
+                            pref.getStringSet("weekdays", null).contains("1") &&
+                            pref.getStringSet("weekdays", null).contains("2") &&
+                            pref.getStringSet("weekdays", null).contains("3") &&
+                            pref.getStringSet("weekdays", null).contains("4") &&
+                            pref.getStringSet("weekdays", null).contains("5")) {
+                        findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_weekdays);
+                        // If week end selected set weekend.
+                    } else if (size == 2 && pref.getStringSet("weekdays", null).contains("6") &&
+                            pref.getStringSet("weekdays", null).contains("7")) {
+                        findPreference("weekdays").setSummary(R.string.trigger_pref_weekday_weekend);
+                        // Otherwise list days.
+                    } else {
+                        StringBuilder summary = new StringBuilder();
+                        int i = 1;
+
+                        // Monday.
+                        if ((pref.getStringSet("weekdays", null).contains("1"))) {
+                            summary.append(getResources().getString(R.string.trigger_pref_mon));
+                            if (i < size - 1) {
+                                summary.append(", ");
+                                i++;
+                            } else if (i == size - 1) {
+                                summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
+                                i++;
+                            }
                         }
-                    }
 
-                    // Tuesday.
-                    if ((pref.getStringSet("weekdays", null).contains("2"))) {
-                        summary.append(getResources().getString(R.string.trigger_pref_tue));
-                        if (i < size - 1) {
-                            summary.append(", ");
-                            i++;
-                        } else if (i == size - 1) {
-                            summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
-                            i++;
+                        // Tuesday.
+                        if ((pref.getStringSet("weekdays", null).contains("2"))) {
+                            summary.append(getResources().getString(R.string.trigger_pref_tue));
+                            if (i < size - 1) {
+                                summary.append(", ");
+                                i++;
+                            } else if (i == size - 1) {
+                                summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
+                                i++;
+                            }
                         }
-                    }
 
-                    // Wednesday.
-                    if ((pref.getStringSet("weekdays", null).contains("3"))) {
-                        summary.append(getResources().getString(R.string.trigger_pref_wed));
-                        if (i < size - 1) {
-                            summary.append(", ");
-                            i++;
-                        } else if (i == size - 1) {
-                            summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
-                            i++;
+                        // Wednesday.
+                        if ((pref.getStringSet("weekdays", null).contains("3"))) {
+                            summary.append(getResources().getString(R.string.trigger_pref_wed));
+                            if (i < size - 1) {
+                                summary.append(", ");
+                                i++;
+                            } else if (i == size - 1) {
+                                summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
+                                i++;
+                            }
                         }
-                    }
 
-                    // Thursday.
-                    if ((pref.getStringSet("weekdays", null).contains("4"))) {
-                        summary.append(getResources().getString(R.string.trigger_pref_thur));
-                        if (i < size - 1) {
-                            summary.append(", ");
-                            i++;
-                        } else if (i == size - 1) {
-                            summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
-                            i++;
+                        // Thursday.
+                        if ((pref.getStringSet("weekdays", null).contains("4"))) {
+                            summary.append(getResources().getString(R.string.trigger_pref_thur));
+                            if (i < size - 1) {
+                                summary.append(", ");
+                                i++;
+                            } else if (i == size - 1) {
+                                summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
+                                i++;
+                            }
                         }
-                    }
 
-                    // Friday.
-                    if ((pref.getStringSet("weekdays", null).contains("5"))) {
-                        summary.append(getResources().getString(R.string.trigger_pref_fri));
-                        if (i < size - 1) {
-                            summary.append(", ");
-                            i++;
-                        } else if (i == size - 1) {
-                            summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
-                            i++;
+                        // Friday.
+                        if ((pref.getStringSet("weekdays", null).contains("5"))) {
+                            summary.append(getResources().getString(R.string.trigger_pref_fri));
+                            if (i < size - 1) {
+                                summary.append(", ");
+                                i++;
+                            } else if (i == size - 1) {
+                                summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
+                                i++;
+                            }
                         }
-                    }
 
-                    // Saturday.
-                    if ((pref.getStringSet("weekdays", null).contains("6"))) {
-                        summary.append(getResources().getString(R.string.trigger_pref_sat));
-                        if (i == size - 1) {
-                            summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
-                            // i++;
+                        // Saturday.
+                        if ((pref.getStringSet("weekdays", null).contains("6"))) {
+                            summary.append(getResources().getString(R.string.trigger_pref_sat));
+                            if (i == size - 1) {
+                                summary.append(" ").append(getResources().getString(R.string.trigger_pref_and)).append(" ");
+                                // i++;
+                            }
                         }
-                    }
 
-                    // Sunday.
-                    if ((pref.getStringSet("weekdays", null).contains("7"))) {
-                        summary.append(getResources().getString(R.string.trigger_pref_sun));
-                    }
+                        // Sunday.
+                        if ((pref.getStringSet("weekdays", null).contains("7"))) {
+                            summary.append(getResources().getString(R.string.trigger_pref_sun));
+                        }
 
-                    findPreference("weekdays").setSummary(summary.toString());
+                        findPreference("weekdays").setSummary(summary.toString());
+                    }
                 }
             }
         }

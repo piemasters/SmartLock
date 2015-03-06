@@ -32,11 +32,15 @@ public class AutostartService extends Service {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         Log.i("AutostartService", "checking if notification is enabled");
 
-        // checks if the permanent notification option is enabled
+        // Checks if permanent notification preference is enabled.
         if (pref.getBoolean("notification", false)) {
             Handler handler = new Handler(this);
             handler.updateNotification();
         }
+
+        // Starts the Trigger service.
+        Intent triggerIntent = new Intent(getApplicationContext(), net.davidnorton.securityapp.services.TriggerService.class);
+        startService(triggerIntent);
 
         return super.onStartCommand(intent, flags, startId);
     }

@@ -13,7 +13,6 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import net.davidnorton.securityapp.profile.Handler;
-import net.davidnorton.securityapp.services.TriggerBroadcastReceiver;
 import net.davidnorton.securityapp.trigger.LocationTrigger;
 import net.davidnorton.securityapp.trigger.SimpleGeofence;
 import net.davidnorton.securityapp.trigger.SimpleGeofenceStore;
@@ -55,7 +54,7 @@ public class TriggerService extends Service {
      * @param intent Intent.
      * @param flags Flags.
      * @param startId Start ID.
-     * @return START_STICKY.
+     * @return START_STICKY (1).
      */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -557,11 +556,11 @@ public class TriggerService extends Service {
     /**
      * Set geo-fences.
      *
-     * @param geofences List of geo-fences.
+     * @param geofence List of geo-fences.
      */
-	public void setGeofences(String[] geofences) {
+	public void setGeofences(String[] geofence) {
         Log.i(TAG, "GEO-FENCE SET!");
-        this.geofences = geofences;
+        this.geofences = geofence;
         compareTriggers();
 	}
 

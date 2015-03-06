@@ -94,7 +94,7 @@ public class TriggerBroadcastReceiver extends BroadcastReceiver {
 		if(intent.getAction().equals("net.davidnorton.securityapp.trigger.clearGeofences")){
 			triggerservice.clearGeofences();
 		}
-        //TODO: Possible reason why geo-fence not working (not getting called?).
+
         // Set location change.
 		if(intent.getAction().equals("net.davidnorton.securityapp.trigger.location_change")){
 

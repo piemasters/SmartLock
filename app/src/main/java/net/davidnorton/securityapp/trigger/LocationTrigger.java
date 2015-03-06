@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
-import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -28,7 +26,7 @@ import com.google.android.gms.location.LocationServices;
  *
  * @author David Norton
  */
-public class LocationTrigger implements ConnectionCallbacks, OnConnectionFailedListener {
+public class LocationTrigger implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
 	final static String TAG = "LocationTrigger";
 
@@ -61,7 +59,11 @@ public class LocationTrigger implements ConnectionCallbacks, OnConnectionFailedL
 		// Instantiate the current List of geo-fences.
 		geofenceList = new ArrayList<>();
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this.context).addApi(LocationServices.API).build();
+        mGoogleApiClient = new GoogleApiClient.Builder(this.context)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
 
 	}
 
@@ -166,7 +168,6 @@ public class LocationTrigger implements ConnectionCallbacks, OnConnectionFailedL
 			return;
 		}
 
-        //TODO: Possible reason why geo-fence not working.
 		// If a request is not already underway.
 		if (!inProgress) {
 
@@ -184,7 +185,7 @@ public class LocationTrigger implements ConnectionCallbacks, OnConnectionFailedL
 	}
 
     /**
-     * When connected to LocationClient add geo-fences in geofenceList
+     * When connected to GoogleApiClient add geo-fences in geofenceList
      * to geo-fences and remove those in the removeList.
      *
      * @param arg0 Arg 0.
@@ -213,7 +214,7 @@ public class LocationTrigger implements ConnectionCallbacks, OnConnectionFailedL
 	 * locationClient to null.
 	 */
 	@Override
-	public void onDisconnected() {
+	public void onConnectionSuspended(int cause) {
 		// Turn off the request flag.
 		inProgress = false;
 		// Destroy the current location client.

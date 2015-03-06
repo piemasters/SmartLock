@@ -13,11 +13,17 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
     final static String TAG = "BootCompletedReceiver";
 
+    /**
+     * Starts the AutostartService.
+     *
+     * @param context Context.
+     * @param in Intent.
+     */
 	@Override
-	public void onReceive(Context _context, Intent _intent) {
+	public void onReceive(Context context, Intent in) {
 		Log.i(TAG, "boot completed");
 		
-		Intent intent = new Intent(_context, AutostartService.class);
-		_context.startService(intent);
+		Intent intent = new Intent(context, AutostartService.class);
+		context.startService(intent);
 	}
 }
