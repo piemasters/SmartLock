@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <PreferenceCategory
-        android:title="@string/trigger_pref_title_time">
+        android:title="@string/trigger_pref_header_time">
 
         <net.davidnorton.securityapp.trigger.TimePickerPreference
             android:title="@string/trigger_pref_title_start_time"

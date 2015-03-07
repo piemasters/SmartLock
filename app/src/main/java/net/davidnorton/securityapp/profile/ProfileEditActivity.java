@@ -123,6 +123,7 @@ public class ProfileEditActivity extends PreferenceActivity implements OnSharedP
             // Add preference pages.
             addPreferencesFromResource(R.xml.pref_profile_edit_general);
             bindPreferenceSummaryToValue(findPreference("name"));
+            addPreferencesFromResource(R.xml.pref_profile_edit_security);
             bindPreferenceSummaryToValue(findPreference("lockscreen"));
             addPreferencesFromResource(R.xml.pref_profile_edit_connectivity);
             bindPreferenceSummaryToValue(findPreference("wifi"));

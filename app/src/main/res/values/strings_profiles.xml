@@ -30,9 +30,15 @@
     <!-- Settings: General -->
     <string name="profile_pref_header_general">General</string>
 
+    <!-- Name -->
     <string name="profile_pref_title_name">Name</string>
     <string name="profile_pref_default_name">Insert name</string>
 
+
+    <!-- Settings: Security -->
+    <string name="profile_pref_header_security">Security</string>
+
+    <!-- Lockscreen -->
     <string name="profile_pref_title_lockscreen">Lock Screen</string>
     <string-array name="profile_pref_titles_lockscreen">
         <item>Enabled</item>

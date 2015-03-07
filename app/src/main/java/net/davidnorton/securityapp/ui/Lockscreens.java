@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import net.davidnorton.securityapp.R;
 
-public class Passwords extends Fragment {
+public class Lockscreens extends Fragment {
 
     ImageView ivIcon;
     TextView tvItemName;
@@ -18,7 +18,7 @@ public class Passwords extends Fragment {
     public static final String IMAGE_RESOURCE_ID = "iconResourceID";
     public static final String ITEM_NAME = "itemName";
 
-    public Passwords() {
+    public Lockscreens() {
 
     }
 

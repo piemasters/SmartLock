@@ -217,18 +217,15 @@ public class MainActivity extends Activity {
 
         dataList.add(new DrawerItem(mMenuTitles[1]));// adding a header to the list
         dataList.add(new DrawerItem(mMenuItems[3], R.drawable.ic_action_secure));
-        dataList.add(new DrawerItem(mMenuItems[4], R.drawable.ic_action_add_person));
-        dataList.add(new DrawerItem(mMenuItems[5], R.drawable.ic_action_labels));
+        dataList.add(new DrawerItem(mMenuItems[4], R.drawable.ic_action_location_found));
+        dataList.add(new DrawerItem(mMenuItems[5], R.drawable.ic_action_network_wifi));
+        dataList.add(new DrawerItem(mMenuItems[6], R.drawable.ic_action_bluetooth));
+        dataList.add(new DrawerItem(mMenuItems[7], R.drawable.ic_action_labels));
 
-        dataList.add(new DrawerItem(mMenuTitles[2]));// adding a header to the list
-        dataList.add(new DrawerItem(mMenuItems[6], R.drawable.ic_action_location_found));
-        dataList.add(new DrawerItem(mMenuItems[7], R.drawable.ic_action_network_wifi));
-        dataList.add(new DrawerItem(mMenuItems[8], R.drawable.ic_action_bluetooth));
-
-        dataList.add(new DrawerItem(mMenuTitles[3])); // adding a header to the list
-        dataList.add(new DrawerItem(mMenuItems[9], R.drawable.ic_action_about));
-        dataList.add(new DrawerItem(mMenuItems[10], R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem(mMenuItems[11], R.drawable.ic_action_help));
+        dataList.add(new DrawerItem(mMenuTitles[2])); // adding a header to the list
+        dataList.add(new DrawerItem(mMenuItems[8], R.drawable.ic_action_about));
+        dataList.add(new DrawerItem(mMenuItems[9], R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(mMenuItems[10], R.drawable.ic_action_help));
     }
 
     /**
@@ -290,46 +287,41 @@ public class MainActivity extends Activity {
                 args.putInt(ActivityLog.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
             case 5:
-                fragment = new Passwords();
-                args.putString(Passwords.ITEM_NAME, dataList.get(position).getItemName());
-                args.putInt(Passwords.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
+                fragment = new Lockscreens();
+                args.putString(Lockscreens.ITEM_NAME, dataList.get(position).getItemName());
+                args.putInt(Lockscreens.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
             case 6:
-                fragment = new Biometrics();
-                args.putString(Biometrics.ITEM_NAME, dataList.get(position).getItemName());
-                args.putInt(Biometrics.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
-                break;
-            case 7:
-                fragment = new NFC();
-                args.putString(NFC.ITEM_NAME, dataList.get(position).getItemName());
-                args.putInt(NFC.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
-                break;
-            case 9:
                 fragment = new Locations();
                 args.putString(Locations.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(Locations.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
-            case 10:
+            case 7:
                 fragment = new Networks();
                 args.putString(Networks.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(Networks.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
-            case 11:
-                fragment = new Devices();
-                args.putString(Devices.ITEM_NAME, dataList.get(position).getItemName());
-                args.putInt(Devices.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
+            case 8:
+                fragment = new Bluetooth();
+                args.putString(Bluetooth.ITEM_NAME, dataList.get(position).getItemName());
+                args.putInt(Bluetooth.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
-            case 13:
+            case 9:
+                fragment = new NFC();
+                args.putString(NFC.ITEM_NAME, dataList.get(position).getItemName());
+                args.putInt(NFC.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
+                break;
+            case 11:
                 fragment = new About();
                 args.putString(About.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(About.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
-            case 14:
+            case 12:
                 fragment = new AdvancedSettings();
                 args.putString(AdvancedSettings.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(AdvancedSettings.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
-            case 15:
+            case 13:
                 fragment = new Help();
                 args.putString(Help.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(Help.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
@@ -416,13 +408,13 @@ public class MainActivity extends Activity {
         if (id == R.id.action_settings) {
             Fragment fragment = new AdvancedSettings();
             Bundle args = new Bundle();
-            args.putString(AdvancedSettings.ITEM_NAME, dataList.get(13).getItemName());
-            args.putInt(AdvancedSettings.IMAGE_RESOURCE_ID, dataList.get(13).getImgResID());
+            args.putString(AdvancedSettings.ITEM_NAME, dataList.get(12).getItemName());
+            args.putInt(AdvancedSettings.IMAGE_RESOURCE_ID, dataList.get(12).getImgResID());
             fragment.setArguments(args);
             FragmentManager frgManager = getFragmentManager();
             frgManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-            mDrawerList.setItemChecked(13, true);
-            setTitle(dataList.get(13).getItemName());
+            mDrawerList.setItemChecked(12, true);
+            setTitle(dataList.get(12).getItemName());
             mDrawerLayout.closeDrawer(mDrawerList);
         }
 

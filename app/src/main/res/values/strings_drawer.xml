@@ -10,7 +10,6 @@
     <!-- Drawer Items -->
     <string-array name="menu_title_array">
         <item>Main</item>
-        <item>Lock Screens</item>
         <item>Stored Details</item>
         <item>Other</item>
     </string-array>
@@ -20,13 +19,11 @@
         <item>Triggers</item>
         <item>Activity Log</item>
 
-        <item>Passwords</item>
-        <item>Biometrics</item>
-        <item>NFC</item>
-
+        <item>Lockscreens</item>
         <item>Locations</item>
         <item>Networks</item>
         <item>Bluetooth Devices</item>
+        <item>NFC Tags</item>
 
         <item>About</item>
         <item>Advanced Settings</item>

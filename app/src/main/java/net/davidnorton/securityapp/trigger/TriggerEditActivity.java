@@ -124,7 +124,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
         public void onCreate(final Bundle savedInstanceState) {
 
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            previousName = pref.getString("name", "default name");
+            previousName = pref.getString("name_trigger", "default name");
             pref.registerOnSharedPreferenceChangeListener(this);
             super.onCreate(savedInstanceState);
 

@@ -12,13 +12,6 @@
             android:singleLine="true"
             android:textColor="@color/text_secondary"/>
 
-        <ListPreference
-            android:title="@string/profile_pref_title_lockscreen"
-            android:defaultValue="pref_profile_unchanged"
-            android:key="lockscreen"
-            android:entries="@array/profile_pref_titles_lockscreen"
-            android:entryValues="@array/profile_pref_values_lockscreen"/>
-
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import net.davidnorton.securityapp.R;
 
-public class Biometrics extends Fragment {
+public class Bluetooth extends Fragment {
 
     ImageView ivIcon;
     TextView tvItemName;
@@ -18,17 +18,17 @@ public class Biometrics extends Fragment {
     public static final String IMAGE_RESOURCE_ID = "iconResourceID";
     public static final String ITEM_NAME = "itemName";
 
-    public Biometrics() {
+    public Bluetooth() {
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_biometrics, container, false);
+        View view = inflater.inflate(R.layout.fragment_devices, container, false);
 
-        ivIcon = (ImageView) view.findViewById(R.id.biometrics_icon);
-        tvItemName = (TextView) view.findViewById(R.id.biometrics_title);
+        ivIcon = (ImageView) view.findViewById(R.id.devices_icon);
+        tvItemName = (TextView) view.findViewById(R.id.devices_title);
 
         tvItemName.setText(getArguments().getString(ITEM_NAME));
         ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));

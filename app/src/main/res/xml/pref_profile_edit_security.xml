@@ -1,0 +1,15 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="@string/profile_pref_header_security">
+
+        <ListPreference
+            android:title="@string/profile_pref_title_lockscreen"
+            android:defaultValue="pref_profile_unchanged"
+            android:key="lockscreen"
+            android:entries="@array/profile_pref_titles_lockscreen"
+            android:entryValues="@array/profile_pref_values_lockscreen"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

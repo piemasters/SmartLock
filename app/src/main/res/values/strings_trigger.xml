@@ -31,18 +31,25 @@
     <!-- Settings: General -->
     <string name="trigger_pref_header_general">General</string>
 
+    <!-- Name -->
     <string name="trigger_pref_title_name">Name</string>
     <string name="trigger_pref_default_name">Insert Name</string>
 
+    <!-- Profile -->
     <string name="trigger_pref_title_profile">Profile</string>
     <string name="trigger_pref_default_profile">Choose a profile</string>
 
+    <!-- Priority -->
     <string name="trigger_pref_title_priority">Priority</string>
     <string name="trigger_pref_message_priority">Select a priority between 0-99. Higher values have greater priority.</string>
 
+
     <!-- Settings: Location -->
-    <string name="trigger_location_edit_title">Set Location</string>
+    <string name="trigger_pref_header_location">Location</string>
+
+    <!-- Location -->
     <string name="trigger_pref_title_location">Location</string>
+    <string name="trigger_location_edit_title">Set Location</string>
     <string name="trigger_pref_location_lat">Latitude</string>
     <string name="trigger_pref_location_lng">Longitude</string>
     <string name="trigger_pref_location_radius">Radius</string>
@@ -53,14 +60,17 @@
     <string name="trigger_pref_map_norm">Change to normal.</string>
 
 
-
     <!-- Settings: Time -->
-    <string name="trigger_pref_title_time">Time</string>
-    <string name="trigger_pref_message_time_change">Change Value</string>
+    <string name="trigger_pref_header_time">Time</string>
+
+    <!-- Start & End Time -->
     <string name="trigger_pref_title_start_time">Start Time</string>
     <string name="trigger_pref_message_start_time">Check the box and adjust the sliders to select the start-time.</string>
     <string name="trigger_pref_title_end_time">End Time</string>
     <string name="trigger_pref_message_end_time">Check the box and adjust the sliders to select the end-time.</string>
+    <string name="trigger_pref_message_time_change">Change Value</string>
+
+    <!-- Weekday -->
     <string name="trigger_pref_title_weekday">Weekday</string>
     <string-array name="trigger_pref_values_weekday">
         <item>1</item>
@@ -95,7 +105,11 @@
     <string name="trigger_pref_sun">Sun</string>
     <string name="trigger_pref_and">and</string>
 
+
     <!-- Settings: Battery -->
+    <string name="trigger_pref_header_battery">Battery</string>
+
+    <!-- Battery State -->
     <string name="trigger_pref_title_battery_state">Battery State</string>
     <string-array name="trigger_pref_titles_battery_state">
         <item>Charging</item>
@@ -114,10 +128,12 @@
     <string name="trigger_pref_title_battery_level_end">Battery High-Level</string>
     <string name="trigger_pref_message_battery_level_end">Adjust the slider to select the higher battery level.</string>
 
-    <!-- Settings: Headphones -->
-    <string name="trigger_pref_title_headphone">Headphones</string>
-    <string name="trigger_pref_title_headphone_state">Headphone State</string>
 
+    <!-- Settings: Headphones -->
+    <string name="trigger_pref_header_headphone">Headphones</string>
+
+    <!-- Headphone State -->
+    <string name="trigger_pref_title_headphone_state">Headphone State</string>
     <string-array name="trigger_pref_titles_headphone_state">
         <item>Plugged in</item>
         <item>Unplugged</item>
