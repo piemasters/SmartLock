@@ -6,12 +6,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.transition.Fade;
-import android.transition.TransitionManager;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,13 +50,13 @@ public class AdvancedSettings extends Fragment {
         ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));
 
         // Apply correct colour scheme.
-        if (pref.getBoolean("dark_theme", false)) {
-            View cardLayout = view.findViewById(R.id.card_1);
-            cardLayout.setBackgroundColor(Color.rgb(40, 40, 40));
-            cardLayout = view.findViewById(R.id.card_2);
-            cardLayout.setBackgroundColor(Color.rgb(40, 40, 40));
-            cardLayout = view.findViewById(R.id.card_3);
-            cardLayout.setBackgroundColor(Color.rgb(40, 40, 40));
+        if (pref.getBoolean("dark_theme", false) ) {
+            CardView cardView = (CardView) view.findViewById(R.id.card_1);
+            cardView.setCardBackgroundColor(Color.rgb(40, 40, 40));
+            cardView = (CardView) view.findViewById(R.id.card_2);
+            cardView.setCardBackgroundColor(Color.rgb(40, 40, 40));
+            cardView = (CardView) view.findViewById(R.id.card_3);
+            cardView.setCardBackgroundColor(Color.rgb(40, 40, 40));
         }
 
         return view;

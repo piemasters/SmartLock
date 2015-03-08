@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,9 +73,9 @@ public class Profiles extends Fragment implements AdapterView.OnItemClickListene
         });
 
         // Apply correct colour scheme.
-        if (pref.getBoolean("dark_theme", false)) {
-            View cardLayout = view.findViewById(R.id.card_1);
-            cardLayout.setBackgroundColor(Color.rgb(40, 40, 40));
+        if (pref.getBoolean("dark_theme", false) ) {
+            CardView cardView = (CardView) view.findViewById(R.id.card_1);
+            cardView.setCardBackgroundColor(Color.rgb(40, 40, 40));
         }
 
         return view;

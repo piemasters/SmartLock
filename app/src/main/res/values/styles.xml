@@ -51,7 +51,7 @@
 </style>
 
 <style name="TextView.Title">
-    <item name="android:textAppearance">@android:style/TextAppearance.Material.Title</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.DialogWindowTitle</item>
     <item name="android:textAllCaps">true</item>
     <item name="android:textColor">?android:textColorSecondary</item>
     <item name="android:layout_width">match_parent</item>
@@ -89,13 +89,5 @@
     <style name="Test" parent="">
         <item name="android:textStyle">bold</item>
     </style>
-
-
-
-
-
-
-
-
 
 </resources>

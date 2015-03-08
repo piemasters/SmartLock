@@ -19,39 +19,40 @@
     <string name="notification_content">Touch to change profile</string>
 
     <!-- Activity Log -->
-    <string name="activity_log_intro">A log of the latest profile changes.</string>
+    <string name="activity_log_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
+    <string name="activity_log_intro1">A log of the latest profile changes.</string>
     <string name="activity_log_title">Title</string>
-    <string name="activity_log">This is the activity log...</string>
+    <string name="activity_log">This is the activity log.</string>
 
     <!-- Passwords -->
-    <string name="passwords_intro">A list of available passwords.</string>
+    <string name="passwords_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
+    <string name="passwords_intro1">A list of available passwords.</string>
     <string name="passwords_title">Title</string>
-    <string name="passwords">This is the passwords page...</string>
-
-    <!-- Biometrics -->
-    <string name="biometrics_intro">A list of available biometrics.</string>
-    <string name="biometrics_title">Title</string>
-    <string name="biometrics">This is the biometrics page...</string>
+    <string name="passwords">This is the passwords page.</string>
 
     <!-- NFC -->
-    <string name="nfc_intro">A list of stored NFC devices.</string>
+    <string name="nfc_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
+    <string name="nfc_intro1">A list of stored NFC devices.</string>
     <string name="nfc_title">Title</string>
-    <string name="nfc">This is the NFC page...</string>
+    <string name="nfc">This is the NFC page.</string>
 
     <!-- Locations -->
-    <string name="locations_intro">A list of stored locations.</string>
+    <string name="locations_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
+    <string name="locations_intro1">A list of stored locations.</string>
     <string name="locations_title">Title</string>
-    <string name="locations">This is the locations page...</string>
+    <string name="locations">This is the locations page.</string>
 
     <!-- Networks -->
-    <string name="networks_intro">A list of stored networks.</string>
+    <string name="networks_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
+    <string name="networks_intro1">A list of stored networks.</string>
     <string name="networks_title">Title</string>
-    <string name="networks">This is the networks page...</string>
+    <string name="networks">This is the networks page.</string>
 
     <!-- Devices -->
-    <string name="devices_intro">A list of stored bluetooth devices.</string>
+    <string name="devices_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
+    <string name="devices_intro1">A list of stored bluetooth devices.</string>
     <string name="devices_title">Title</string>
-    <string name="devices">This is the devices page...</string>
+    <string name="devices">This is the devices page.</string>
 
     <!-- About Page -->
     <string name="about_name"><b>SmartLock</b></string>
