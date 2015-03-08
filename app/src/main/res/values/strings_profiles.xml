@@ -2,10 +2,9 @@
 <resources>
 
     <!-- Profiles -->
+    <string name="profile_title">Profiles</string>
     <string name="profile_intro">Select a profile to activate it, or tap to edit.
                                  Press &amp; hold a profile to delete it.</string>
-    <string name="profile_create_new">+</string>
-    <string name="profile_create_new_2">[+] New Profile</string>
     <string name="profile_edit_title">Edit Profile</string>
     <string name="profile_delete">Delete</string>
     <string name="profile_applied">was applied!</string>

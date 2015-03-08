@@ -1,8 +1,7 @@
-<ScrollView
-    style="@style/ScrollView"
-    android:id="@+id/activityView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+<FrameLayout
+    xmlns:tools="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,23 +16,15 @@
 
             <!-- Profiles Icon -->
             <ImageView
-                    android:id="@+id/profiles_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                android:id="@+id/profiles_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/profile_title" />
 
             <!-- Profiles Title -->
             <TextView
                 style="@style/TextView.Title"
                 android:id="@+id/profiles_title" />
-
-            <!-- Create New Profile Button
-            <Button
-                android:id="@+id/new_profile_button"
-                android:layout_toRightOf="@id/profiles_title"
-                android:layout_gravity="right"
-                android:layout_width="45sp"
-                android:layout_height="45sp"
-                android:text="@string/profile_create_new"/>-->
 
             <!-- Text Container -->
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -54,31 +45,11 @@
                         android:text="@string/profile_intro"
                         android:paddingBottom="10sp"/>
 
-                    <!--Item border-->
-                    <View
-                        android:id="@+id/profile_button_border"
-                        android:layout_below="@id/profiles_intro"
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:background="#eeeeee"/>
-
-                    <!-- Create New Profile Button -->
-                    <Button
-                        android:id="@+id/new_profile_button"
-                        android:layout_below="@id/profile_button_border"
-                        style="?android:attr/borderlessButtonStyle"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/profile_create_new_2"
-                        android:gravity="left"
-                        android:layout_marginBottom="-20dp"/>
-
                 </RelativeLayout>
 
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
-
 
         <!-- List of Profiles -->
         <ListView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -86,11 +57,30 @@
             android:id="@+id/ListViewProfiles"
             android:layout_below="@id/card_1"
             android:layout_width="match_parent"
-            android:layout_height="330sp"
+            android:layout_height="match_parent"
             tools:context=".ProfileFragment" >
 
         </ListView>
 
     </RelativeLayout>
-</ScrollView>
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <!-- Create New Profile Button -->
+        <com.gc.materialdesign.views.ButtonFloat
+            android:id="@+id/new_profile_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="false"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="12dp"
+            materialdesign:animate="true"
+            materialdesign:iconDrawable="@drawable/ic_action_new" />
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,8 +1,7 @@
-<ScrollView
-    style="@style/ScrollView"
-    android:id="@+id/activityView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+<FrameLayout
+    xmlns:tools="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -19,21 +18,13 @@
             <ImageView
                 android:id="@+id/triggers_icon"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/trigger_title" />
 
             <!-- Triggers Title -->
             <TextView
                 style="@style/TextView.Title"
                 android:id="@+id/triggers_title" />
-
-            <!-- Create New Profile Button
-            <Button
-                android:id="@+id/new_trigger_button"
-                android:layout_toRightOf="@id/triggers_title"
-                android:layout_gravity="right"
-                android:layout_width="45sp"
-                android:layout_height="45sp"
-                android:text="@string/trigger_create_new"/> -->
 
             <!-- Text Container -->
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -54,25 +45,6 @@
                         android:text="@string/trigger_intro"
                         android:paddingBottom="10sp"/>
 
-                    <!--Item border-->
-                    <View
-                        android:id="@+id/triggers_button_border"
-                        android:layout_below="@id/triggers_intro"
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dp"
-                        android:background="#eeeeee"/>
-
-                    <!-- Create New Trigger Button -->
-                    <Button
-                        android:id="@+id/new_trigger_button"
-                        android:layout_below="@id/triggers_button_border"
-                        android:text="@string/trigger_create_new_2"
-                        style="?android:attr/borderlessButtonStyle"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:layout_marginBottom="-20dp"/>
-
                 </RelativeLayout>
 
             </LinearLayout>
@@ -85,11 +57,31 @@
             android:id="@+id/ListViewTriggers"
             android:layout_below="@id/card_1"
             android:layout_width="match_parent"
-            android:layout_height="330sp"
+            android:layout_height="match_parent"
             tools:context=".TriggerFragment" >
 
         </ListView>
 
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Create New Profile Button -->
+        <com.gc.materialdesign.views.ButtonFloat
+            android:id="@+id/new_trigger_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="false"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="12dp"
+            android:background="@color/primary"
+            materialdesign:animate="true"
+            materialdesign:iconDrawable="@drawable/ic_action_new" />
 
     </RelativeLayout>
-</ScrollView>
+
+</FrameLayout>

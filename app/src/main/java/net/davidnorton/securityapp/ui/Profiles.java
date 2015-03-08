@@ -14,10 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.gc.materialdesign.views.ButtonFloat;
 
 import net.davidnorton.securityapp.R;
 import net.davidnorton.securityapp.profile.ProfileList;
@@ -64,19 +65,23 @@ public class Profiles extends Fragment implements AdapterView.OnItemClickListene
         tvItemName.setText(getArguments().getString(ITEM_NAME));
         ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));
 
-        // Add profile button
-        final Button button1 = (Button)view.findViewById(R.id.new_profile_button);
-        button1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                onOptionsItemSelected();
-            }
-        });
+        int backgroundColor = Color.parseColor("#259b24");
 
         // Apply correct colour scheme.
         if (pref.getBoolean("dark_theme", false) ) {
             CardView cardView = (CardView) view.findViewById(R.id.card_1);
             cardView.setCardBackgroundColor(Color.rgb(40, 40, 40));
+            backgroundColor = Color.parseColor("#0277bd");
         }
+
+        // Add New Profile button.
+        final ButtonFloat button1 = (ButtonFloat) view.findViewById(R.id.new_profile_button);
+        button1.setBackgroundColor(backgroundColor);
+        button1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onOptionsItemSelected();
+            }
+        });
 
         return view;
     }

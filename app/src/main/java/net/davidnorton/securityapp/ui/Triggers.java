@@ -14,10 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.gc.materialdesign.views.ButtonFloat;
 
 import net.davidnorton.securityapp.R;
 import net.davidnorton.securityapp.services.TriggerService;
@@ -62,19 +63,25 @@ public class Triggers extends Fragment implements AdapterView.OnItemLongClickLis
         tvItemName.setText(getArguments().getString(ITEM_NAME));
         ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));
 
+        // Set button background colour to primary.
+        int backgroundColor = Color.parseColor("#259b24");
+
+        // Apply correct colour scheme.
+        if (pref.getBoolean("dark_theme", false) ) {
+            CardView cardView = (CardView) view.findViewById(R.id.card_1);
+            cardView.setCardBackgroundColor(Color.rgb(40, 40, 40));
+            backgroundColor = Color.parseColor("#0277bd");
+        }
+
         // Add trigger button
-        final Button button1 = (Button)view.findViewById(R.id.new_trigger_button);
+        final ButtonFloat button1 = (ButtonFloat) view.findViewById(R.id.new_trigger_button);
+        button1.setBackgroundColor(backgroundColor);
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onOptionsItemSelected();
             }
         });
 
-        // Apply correct colour scheme.
-        if (pref.getBoolean("dark_theme", false) ) {
-            CardView cardView = (CardView) view.findViewById(R.id.card_1);
-            cardView.setCardBackgroundColor(Color.rgb(40, 40, 40));
-        }
 
         return view;
     }

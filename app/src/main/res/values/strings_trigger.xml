@@ -2,10 +2,9 @@
 <resources>
 
     <!-- Triggers -->
+    <string name="trigger_title">Triggers</string>
     <string name="trigger_intro">Edit a trigger by selecting its settings button.
                                  Press &amp; hold a trigger to disable or delete it.</string>
-    <string name="trigger_create_new">+</string>
-    <string name="trigger_create_new_2">[+] New Trigger</string>
     <string name="trigger_edit_title">Edit Trigger</string>
     <string name="trigger_delete">Delete</string>
 
