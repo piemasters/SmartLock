@@ -86,8 +86,4 @@
     <item name="android:textStyle">bold</item>
 </style>
 
-    <style name="Test" parent="">
-        <item name="android:textStyle">bold</item>
-    </style>
-
 </resources>

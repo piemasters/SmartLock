@@ -19,4 +19,8 @@
         android:id="@+id/action_settings"
         android:title="Settings">
     </item>
+    <item android:id="@+id/rate_app"
+        android:title="@string/action_rate_app"
+        android:orderInCategory="101"
+        android:showAsAction="never" />
 </menu>

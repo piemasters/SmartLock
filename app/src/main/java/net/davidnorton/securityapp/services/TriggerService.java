@@ -577,7 +577,7 @@ public class TriggerService extends Service {
         if(trigger.getGeofence() == null){
             return true;
         }
-        //TODO: GEOFENCES IS ALWAYS NULL.
+
         // For each set geo-fence
         if(geofences != null){
             Log.i(TAG, "NUMBER OF GEO-FENCES FOUND: " + geofences.length);
@@ -619,13 +619,15 @@ public class TriggerService extends Service {
 				}
 			}
 			// If highest trigger's profile isn't the active profile, apply profile.
-			if (highestTrigger != null && !highestTrigger.getProfileName().equals(pref.getString("active_profile", "Default"))) {
+			if (highestTrigger != null &&
+                    !highestTrigger.getProfileName().equals(pref.getString("active_profile", "Default"))) {
 				Handler handler = new Handler(getApplicationContext());
 				handler.applyProfile(highestTrigger.getProfileName());
 				Log.i(TAG, "matching trigger found: " + highestTrigger.getName());
 			}
         // If only one trigger and its profile isn't the active profile.
-		} else if (triggerPriorityList.size() == 1 && !triggerPriorityList.get(0).getProfileName().equals(pref.getString("active_profile", "Default"))) {
+		} else if (triggerPriorityList.size() == 1 &&
+                !triggerPriorityList.get(0).getProfileName().equals(pref.getString("active_profile", "Default"))) {
 			Handler handler = new Handler(getApplicationContext());
 			handler.applyProfile(triggerPriorityList.get(0).getProfileName());
 			Log.i(TAG, "matching trigger found: " + triggerPriorityList.get(0).getName());

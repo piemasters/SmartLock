@@ -293,7 +293,6 @@ public class ProfileEditActivity extends PreferenceActivity implements OnSharedP
 		Profile profile = new Profile(name);
 
         // Lock Screen
-        // TODO: Add saved lock screens as preference options.
         if (pref.getString("lockscreen", "unchanged").equals("enabled")) {
             profile.setLockscreen(Profile.state.enabled);
         } else if (pref.getString("lockscreen", "unchanged").equals("disabled")) {

@@ -63,7 +63,6 @@ public class XmlCreator {
         outputProperties.setProperty(OutputKeys.ENCODING, "UTF-8");
 
         // Lock Screen
-        // TODO: Update lock screen code.
         Element lockscreenElement = xmlProfile.createElement("lockscreen");
 
         if(profile.getLockscreen() != Profile.state.unchanged){

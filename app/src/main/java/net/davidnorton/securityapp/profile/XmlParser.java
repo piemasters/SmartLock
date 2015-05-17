@@ -78,6 +78,9 @@ public class XmlParser {
 
             // Look for the entry tag.
             switch (name) {
+                case "lockscreen":
+                    setLockscreen(parser);
+                    break;
                 case "wifi":
                     setWifi(parser);
                     break;
@@ -99,6 +102,39 @@ public class XmlParser {
                     break;
             }
         }
+    }
+
+    /**
+     * Sets Lockscreen state.
+     *
+     * @param parser The parser to read the settings.
+     *
+     * @throws XmlPullParserException
+     * @throws IOException
+     */
+    private void setLockscreen(XmlPullParser parser) throws XmlPullParserException, IOException {
+
+        parser.require(XmlPullParser.START_TAG, null, "lockscreen");
+
+        // If state has changed.
+        if (parser.getAttributeValue(null, "enabled") != null) {
+            // If enabled.
+            if (parser.getAttributeValue(null, "enabled").equals("1")) {
+                setter.setLockscreen(context, true);
+                Log.i(TAG, "Lockscreen enabled.");
+                // If disabled.
+            } else if (parser.getAttributeValue(null, "enabled").equals("0")) {
+                setter.setLockscreen(context, false);
+                Log.i(TAG, "Lockscreen disabled.");
+                // If not valid.
+            } else {
+                Log.e(TAG, "Lockscreen: Invalid Argument!");
+            }
+            // If state unchanged.
+        } else {
+            Log.i(TAG, "Lockscreen: No change.");
+        }
+        parser.nextTag();
     }
 
     /**

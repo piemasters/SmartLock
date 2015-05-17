@@ -59,7 +59,7 @@ public class Profiles extends Fragment implements AdapterView.OnItemClickListene
         View view = inflater.inflate(R.layout.fragment_profiles, container, false);
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
 
-        // Set icon and title in fragments first card
+        // Set icon and title in fragments first card.
         ivIcon = (ImageView) view.findViewById(R.id.profiles_icon);
         tvItemName = (TextView) view.findViewById(R.id.profiles_title);
         tvItemName.setText(getArguments().getString(ITEM_NAME));
@@ -174,7 +174,6 @@ public class Profiles extends Fragment implements AdapterView.OnItemClickListene
         SharedPreferences.Editor prefEditor = preferences.edit();
 
         // Loads the default values into the shared preferences
-        //TODO Add correct profile preferences
         prefEditor.putString("name", getResources().getString(R.string.profile_default_name_new));
         prefEditor.putString("lockscreen", "unchanged");
         prefEditor.putString("wifi", "unchanged");

@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!-- TODO: Lockscreen. -->
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:paddingBottom="10dp" >
+
+        <!-- Title Card -->
+        <android.support.v7.widget.CardView
+            style="@style/CardView"
+            android:id="@+id/card_1">
+
+            <!-- Passwords Icon -->
+            <ImageView
+                android:id="@+id/passwords_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/lockscreen_title" />
+
+            <!-- Profiles Title -->
+            <TextView
+                style="@style/TextView.Title"
+                android:id="@+id/passwords_title" />
+
+            <!-- Text Container -->
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/LinearLayout.TopCard"
+                xmlns:tools="http://schemas.android.com/tools"
+                tools:context=".MyActivity"
+                android:paddingBottom="0dp">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:paddingBottom="0dp">
+
+                    <!-- Profiles Description -->
+                    <TextView
+                        style="@style/TextView"
+                        android:id="@+id/passwords_intro"
+                        android:text="@string/lockscreen_intro"
+                        android:paddingBottom="10sp"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/frame1"
+            android:layout_below="@+id/card_1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="170dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:id="@+id/shadow1"
+            android:layout_below="@+id/frame1"
+            android:layout_alignStart="@+id/frame1"
+            android:layout_alignLeft="@+id/frame1"
+            android:layout_alignEnd="@+id/frame1"
+            android:layout_alignRight="@+id/frame1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/lockscreen_pin_title"
+            android:id="@+id/pinTitle"
+            android:textStyle="bold"
+            android:layout_alignBottom="@+id/pinEdit"
+            android:layout_toStartOf="@+id/pinEdit"
+            android:layout_toLeftOf="@+id/pinEdit"
+            android:textColor="@color/primary" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberPassword"
+            android:ems="10"
+            android:id="@+id/pinEdit"
+            android:numeric="integer"
+            android:maxLength="6"
+            android:hint="@string/lockscreen_pin_hint"
+            android:layout_marginTop="20dp"
+            android:layout_alignTop="@+id/frame1"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/primary"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignBottom="@+id/frame1"
+            android:layout_marginBottom="20dp"
+            android:gravity="center" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            android:id="@+id/setPin"
+            android:layout_toEndOf="@+id/pinEdit"
+            android:layout_toRightOf="@+id/pinEdit"
+            android:background="@drawable/ic_lockscreen_ok_selector"
+            android:textColor="@color/text_primary"
+            android:layout_alignTop="@+id/frame1"
+            android:layout_marginTop="16dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignBottom="@+id/frame1"
+            android:layout_marginBottom="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:id="@+id/frame2"
+            android:layout_below="@+id/frame1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:id="@+id/shadow2"
+            android:layout_below="@+id/frame2"
+            android:layout_alignStart="@+id/frame2"
+            android:layout_alignLeft="@+id/frame2"
+            android:layout_alignEnd="@+id/frame2"
+            android:layout_alignRight="@+id/frame2" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/primary"
+            android:id="@+id/lockScreenSeparator"
+            android:layout_alignStart="@+id/frame2"
+            android:layout_alignLeft="@+id/frame2"
+            android:layout_alignEnd="@+id/frame2"
+            android:layout_alignRight="@+id/frame2"
+            android:layout_alignTop="@+id/frame2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/lockscreen_toggle_title"
+            android:id="@+id/lockScreenTitle"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_alignTop="@+id/frame2"
+            android:textColor="@color/text_primary"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/lockscreen_toggle_text"
+            android:id="@+id/lockscreen_enabled_disabled"
+            android:layout_below="@+id/lockScreenSeparator"
+            android:layout_alignStart="@+id/frame2"
+            android:layout_alignLeft="@+id/frame2"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/disabled"
+            android:id="@+id/lockscreen_status"
+            android:textColor="@color/warning"
+            android:layout_toEndOf="@+id/lockscreen_enabled_disabled"
+            android:layout_below="@+id/lockscreen_enabled_disabled"
+            android:layout_alignLeft="@+id/lockscreen_enabled_disabled"
+            android:layout_alignStart="@+id/frame2"
+            android:layout_marginTop="8dp" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toggle"
+            android:layout_below="@+id/lockScreenSeparator"
+            android:layout_alignEnd="@+id/frame2"
+            android:layout_alignRight="@+id/frame2"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="12dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:id="@+id/frame3"
+            android:layout_below="@+id/frame2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:id="@+id/shadow3"
+            android:layout_below="@+id/frame3"
+            android:layout_alignStart="@+id/frame3"
+            android:layout_alignLeft="@+id/frame3"
+            android:layout_alignEnd="@+id/frame3"
+            android:layout_alignRight="@+id/frame3" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/primary"
+            android:id="@+id/backgroundBlurSeparator"
+            android:layout_alignStart="@+id/frame3"
+            android:layout_alignLeft="@+id/frame3"
+            android:layout_alignEnd="@+id/frame3"
+            android:layout_alignRight="@+id/frame3"
+            android:layout_alignTop="@+id/frame3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/lockscreen_blur_title"
+            android:id="@+id/backgroundBlurTitle"
+            android:layout_alignTop="@+id/frame3"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/lockscreen_blur_text"
+            android:id="@+id/backgroundBlurMessage"
+            android:layout_below="@+id/backgroundBlurSeparator"
+            android:layout_alignLeft="@+id/pinTitle"
+            android:layout_alignStart="@+id/pinTitle"
+            android:layout_marginTop="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="15"
+            android:id="@+id/tagName"
+            android:layout_alignTop="@+id/backgroundBlurMessage"
+            android:layout_toEndOf="@+id/backgroundBlurMessage"
+            android:layout_toRightOf="@+id/backgroundBlurMessage"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp" />
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:layout_alignStart="@+id/frame3"
+            android:layout_alignLeft="@+id/frame3"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:max="25"
+            android:progress="15"
+            android:layout_below="@+id/backgroundBlurMessage"
+            android:layout_toStartOf="@+id/updateWallpaper"
+            android:layout_toLeftOf="@+id/updateWallpaper"
+            android:layout_marginRight="5dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:text="@string/lockscreen_blur_button"
+            android:id="@+id/updateWallpaper"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/ic_lockscreen_ok_selector"
+            android:layout_alignTop="@+id/backgroundBlurMessage"
+            android:layout_alignEnd="@+id/frame3"
+            android:layout_alignRight="@+id/frame3"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_below="@+id/seekBar"
+            android:layout_alignStart="@+id/frame3"
+            android:layout_alignLeft="@+id/frame3"
+            android:layout_alignEnd="@+id/frame3"
+            android:layout_alignRight="@+id/frame3"
+            android:indeterminate="true"
+            android:visibility="invisible" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/frame4"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/frame3" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/primary"
+            android:id="@+id/NFCTagsSeparator"
+            android:layout_alignStart="@+id/frame4"
+            android:layout_alignLeft="@+id/frame4"
+            android:layout_alignEnd="@+id/frame4"
+            android:layout_alignRight="@+id/frame4"
+            android:layout_alignTop="@+id/frame4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/lockscreen_nfc_title"
+            android:id="@+id/NFCTagTitle"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_alignTop="@+id/frame4"
+            android:textColor="@color/text_primary"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/newTag"
+            android:layout_alignEnd="@+id/frame4"
+            android:layout_alignRight="@+id/frame4"
+            android:src="@drawable/ic_content_new"
+            android:background="@drawable/ic_lockscreen_add_nfc_selector"
+            android:layout_alignTop="@+id/frame4"
+            android:contentDescription="@string/lockscreen_nfc_button_description"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_alignBottom="@+id/NFCTagsSeparator"
+            android:layout_marginBottom="3dp" />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"
+            android:layout_below="@+id/NFCTagsSeparator"
+            android:layout_marginRight="10dp"
+            android:drawSelectorOnTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="3dp"
+            android:layout_alignStart="@+id/frame4"
+            android:layout_alignLeft="@+id/frame4"
+            android:layout_alignEnd="@+id/frame4"
+            android:layout_alignRight="@+id/frame4"
+            android:layout_marginLeft="10dp"
+            android:dividerHeight="3dp"
+            android:divider="@null" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/lockscreen_nfc_text_no_tags"
+            android:id="@+id/noTags"
+            android:layout_below="@+id/NFCTagsSeparator"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:textColor="#696969"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+</ScrollView>

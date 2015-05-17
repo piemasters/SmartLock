@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -29,6 +33,7 @@ import android.widget.ListView;
 
 import net.davidnorton.securityapp.R;
 import net.davidnorton.securityapp.profile.Handler;
+import net.davidnorton.securityapp.services.LockScreenService;
 
 public class MainActivity extends Activity {
 
@@ -37,7 +42,6 @@ public class MainActivity extends Activity {
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle, mTitle;
-    private DrawerAdapter adapter;
     private List<DrawerItem> dataList;
     private ColorFilter filter;
 
@@ -46,7 +50,7 @@ public class MainActivity extends Activity {
     private boolean darkTheme = false, permNotification = false;
 
     /**
-     * Creates the main application.
+     * Creates the main application template.
      *
      * @param savedInstanceState Saves current state of application to be referred back to.
      */
@@ -54,6 +58,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // Starts the LockScreenService.
+        startService(new Intent(this, LockScreenService.class));
 
         // Sets the Theme
         changeTheme(pref);
@@ -70,6 +77,25 @@ public class MainActivity extends Activity {
 
         // Update Preferences
         updatePreferences(pref);
+
+        // If saving new lock screen NFC tag, pass tag ID to Lockscreens fragment.
+        parseTagID();
+    }
+
+    /**
+     * Receive NFC tag ID from NFCReader and parse to Lockscreens.
+     */
+    private void parseTagID() {
+        if(getIntent().getStringExtra("tagID") != null){
+                Bundle args = new Bundle();
+                Fragment fragment = new Lockscreens();
+                args.putString("tagID", getIntent().getStringExtra("tagID"));
+                args.putString(Lockscreens.ITEM_NAME, dataList.get(5).getItemName());
+                args.putInt(Lockscreens.IMAGE_RESOURCE_ID, dataList.get(5).getImgResID());
+                fragment.setArguments(args);
+                FragmentManager frgManager = getFragmentManager();
+                frgManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        }
     }
 
     /**
@@ -83,6 +109,8 @@ public class MainActivity extends Activity {
         prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
 
             public void onSharedPreferenceChanged(SharedPreferences pref, String key) {
+
+                //TODO: Sometimes won't update.
 
                 // Recreate if dark theme preference changed
                 if (pref.getBoolean("dark_theme", false) != darkTheme) {
@@ -115,7 +143,8 @@ public class MainActivity extends Activity {
         } else {
             // Deactivate notification
             permNotification = false;
-            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationManager notificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.cancel(123);
         }
     }
@@ -191,7 +220,7 @@ public class MainActivity extends Activity {
         // Add pages with matching icons to drawer.
         addDrawerItems(mMenuTitles, mMenuItems);
 
-        adapter = new DrawerAdapter(this, R.layout.drawer_item, dataList);
+        DrawerAdapter adapter = new DrawerAdapter(this, R.layout.drawer_item, dataList);
         mDrawerList.setAdapter(adapter);
 
         // When opening app, load first item (second item if first is a title)
@@ -235,29 +264,29 @@ public class MainActivity extends Activity {
 
         // Set icons to primary app colour.
         Drawable myIcon = getResources().getDrawable( R.drawable.ic_action_person );
-        myIcon.setColorFilter(filter);
-        myIcon = getResources().getDrawable( R.drawable.ic_action_storage );
-        myIcon.setColorFilter(filter);
-        myIcon = getResources().getDrawable( R.drawable.ic_action_event );
-        myIcon.setColorFilter(filter);
-        myIcon = getResources().getDrawable( R.drawable.ic_action_secure );
-        myIcon.setColorFilter(filter);
-        myIcon = getResources().getDrawable( R.drawable.ic_action_add_person );
-        myIcon.setColorFilter(filter);
-        myIcon = getResources().getDrawable( R.drawable.ic_action_labels );
-        myIcon.setColorFilter(filter);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
+        myIcon = getResources().getDrawable(R.drawable.ic_action_storage);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
+        myIcon = getResources().getDrawable(R.drawable.ic_action_event);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
+        myIcon = getResources().getDrawable(R.drawable.ic_action_secure);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
+        myIcon = getResources().getDrawable(R.drawable.ic_action_add_person);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
+        myIcon = getResources().getDrawable(R.drawable.ic_action_labels);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
         myIcon = getResources().getDrawable(R.drawable.ic_action_location_found);
-        myIcon.setColorFilter(filter);
-        myIcon = getResources().getDrawable( R.drawable.ic_action_network_wifi );
-        myIcon.setColorFilter(filter);
-        myIcon = getResources().getDrawable( R.drawable.ic_action_bluetooth );
-        myIcon.setColorFilter(filter);
-        myIcon = getResources().getDrawable( R.drawable.ic_action_about );
-        myIcon.setColorFilter(filter);
-        myIcon = getResources().getDrawable( R.drawable.ic_action_settings );
-        myIcon.setColorFilter(filter);
-        myIcon = getResources().getDrawable( R.drawable.ic_action_help );
-        myIcon.setColorFilter(filter);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
+        myIcon = getResources().getDrawable(R.drawable.ic_action_network_wifi);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
+        myIcon = getResources().getDrawable(R.drawable.ic_action_bluetooth);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
+        myIcon = getResources().getDrawable(R.drawable.ic_action_about);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
+        myIcon = getResources().getDrawable(R.drawable.ic_action_settings);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
+        myIcon = getResources().getDrawable(R.drawable.ic_action_help);
+        if (myIcon != null) {myIcon.setColorFilter(filter);}
     }
 
     /**
@@ -331,7 +360,9 @@ public class MainActivity extends Activity {
         }
 
         // Open selected fragment
-        fragment.setArguments(args);
+        if (fragment != null) {
+            fragment.setArguments(args);
+        }
         FragmentManager frgManager = getFragmentManager();
         frgManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
@@ -418,6 +449,38 @@ public class MainActivity extends Activity {
             mDrawerLayout.closeDrawer(mDrawerList);
         }
 
+        // Rate App Button - open dialog, then go to Play Store.
+        if (item.getItemId() == R.id.rate_app) {
+
+            // Get package name.
+            final String appPackageName = getPackageName();
+
+            // Display message.
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.action_rate_app)
+                    .setMessage(R.string.rate_app_dialog)
+                    // If yes selected open Play Store.
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            try {
+                                startActivity(new Intent(Intent.ACTION_VIEW,
+                                        Uri.parse("market://details?id=" + appPackageName)));
+                            } catch (android.content.ActivityNotFoundException anfe) {
+                                startActivity(new Intent(Intent.ACTION_VIEW,
+                                        Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
+                            }
+                        }
+                        // If no selected close dialog.
+                    }).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Do nothing, close dialog
+                }
+            }).show();
+
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

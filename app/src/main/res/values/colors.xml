@@ -19,7 +19,11 @@
     <color name="sidebar_background">#f5f5f5</color>
     <color name="notification_icon">#FFFFFF</color>
     <color name="notification_background">#259b24</color>
+    <color name="button_background">#f5f5f5</color>
 
-
+    <color name="warning">#c41411</color>
+    <color name="accept">#42bd41</color>
+    <color name="lockscreen_delete_selected">#26FFFFFF</color>
+    <color name="transparent_white">#00FFFFFF</color>
 
 </resources>
