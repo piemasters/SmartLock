@@ -370,7 +370,7 @@
             android:layout_alignEnd="@+id/frame4"
             android:layout_alignRight="@+id/frame4"
             android:src="@drawable/ic_content_new"
-            android:background="@drawable/ic_lockscreen_add_nfc_selector"
+            android:background="@drawable/ic_lockscreen_plus_selector"
             android:layout_alignTop="@+id/frame4"
             android:contentDescription="@string/lockscreen_nfc_button_description"
             android:layout_marginTop="3dp"
