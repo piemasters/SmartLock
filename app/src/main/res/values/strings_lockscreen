@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_activity_lockscreen">SmartLock</string>
+
+    <!-- Lock Screen Fragment -->
+    <string name="lockscreen_title">Lockscreens</string>
+    <string name="lockscreen_intro">Set a 4-6 digit PIN and enable the lockscreen.\nYou can also save NFC tags to unlock your device.\nBlur level hides your wallpaper on the lockscreen.</string>
+
+    <string name="lockscreen_pin_title">PIN: </string>
+    <string name="lockscreen_pin_hint">Enter PIN</string>
+    <string name="lockscreen_pin_description">Set PIN button</string>
+    <string name="lockscreen_pin_dialog_confirmation">Are you sure you want to set that PIN?</string>
+    <string name="lockscreen_pin_toast_set">PIN successfully set!</string>
+    <string name="lockscreen_pin_toast_error_short">PIN needs to be at least 4 digits long.</string>
+
+    <string name="lockscreen_toggle_title">Enable Lockscreen</string>
+    <string name="lockscreen_toggle_text">Lockscreen</string>
+    <string name="lockscreen_toggle_toast_enabled">Lockscreen Enabled!</string>
+    <string name="lockscreen_toggle_toast_disabled">Lockscreen Disabled!</string>
+    <string name="lockscreen_toggle_toast_error_pin_set">You must set a PIN before enabling the lockscreen.</string>
+
+    <string name="lockscreen_blur_title">Blur Lockscreen Background</string>
+    <string name="lockscreen_blur_text">Blur level:</string>
+    <string name="lockscreen_blur_button">Update Wallpaper</string>
+    <string name="lockscreen_blur_toast_success">Wallpaper successfully updated!</string>
+    <string name="lockscreen_blur_toast_failed">Wallpaper failed to update.</string>
+    <string name="lockscreen_blur_toast_old">Requires Android 4.2 and above.</string>
+
+    <string name="lockscreen_nfc_title">NFC Tags</string>
+    <string name="lockscreen_nfc_button_description">Add New Tag</string>
+    <string name="lockscreen_nfc_text_no_tags">Press \'+\' to add Tags.</string>
+    <string name="lockscreen_nfc_tag_nameless">Tag</string>
+    <string name="lockscreen_nfc_tag_long_press">Long press to rename or delete</string>
+    <string name="lockscreen_nfc_tag_rename">Rename Tag</string>
+    <string name="lockscreen_nfc_tag_delete">Delete Tag</string>
+    <string name="lockscreen_nfc_tag_dialog_delete">Are you sure you want to delete</string>
+    <string name="lockscreen_nfc_tag_dialog_delete_nameless">Are you sure you want to delete this tag?</string>
+    <string name="lockscreen_nfc_toast_tag_added">NFC Tag successfully added</string>
+    <string name="lockscreen_nfc_toast_tag_renamed">NFC Tag successfully renamed</string>
+    <string name="lockscreen_nfc_toast_tag_deleted">NFC Tag successfully deleted</string>
+
+    <!-- Scan NFC Tag -->
+    <string name="lockscreen_scan_title">Scan NFC Tag</string>
+    <string name="lockscreen_scan_description">Scan NFC Tag Image</string>
+    <string name="lockscreen_scan_dialog_title_set_tag_name">NFC Tag Name</string>
+    <string name="lockscreen_scan_dialog_hint_set_tag_name">Enter NFC Tag name.</string>
+    <string name="lockscreen_scan_dialog_title_nfc_off">NFC Off</string>
+    <string name="lockscreen_scan_dialog_text_nfc_off">NFC is turned off. Would you like to enable it?
+        (\'Yes\' will take you to NFC Settings)</string>
+    <string name="lockscreen_scan_dialog_title_tag_rename">Rename NFC Tag</string>
+    <string name="lockscreen_scan_dialog_button_tag_rename">Rename</string>
+
+    <!-- Lockscreen -->
+    <string name="lockscreen_time_none">13:37</string>
+    <string name="lockscreen_date_none">Fri 25 Dec</string>
+    <string name="lockscreen_battery_none">50% Battery</string>
+    <string name="lockscreen_battery_text">Battery</string>
+    <string name="lockscreen_button_zero">Zero</string>
+    <string name="lockscreen_button_one">One</string>
+    <string name="lockscreen_button_two">Two</string>
+    <string name="lockscreen_button_three">Three</string>
+    <string name="lockscreen_button_four">Four</string>
+    <string name="lockscreen_button_five">Five</string>
+    <string name="lockscreen_button_six">Six</string>
+    <string name="lockscreen_button_seven">Seven</string>
+    <string name="lockscreen_button_eight">Eight</string>
+    <string name="lockscreen_button_nine">Nine</string>
+    <string name="lockscreen_button_delete">Delete</string>
+    <string name="lockscreen_button_wifi">Wi-Fi</string>
+    <string name="lockscreen_button_mobile">Mobile Data</string>
+    <string name="lockscreen_button_torch">Torch</string>
+    <string name="lockscreen_button_brightness">Brightness</string>
+    <string name="lockscreen_button_sound">Sound Modes</string>
+    <string name="lockscreen_button_phone">Phone</string>
+    <string name="lockscreen_button_camera">Camera</string>
+    <string name="lockscreen_button_up">Show Toolbox</string>
+    <string name="lockscreen_button_down">Hide Toolbox</string>
+
+    <!-- Messages -->
+    <string name="lockscreen_toast_launcher">Select \'SmartLock\' and press \'Always\' for maximum security</string>
+
+    <string name="lockscreen_message_nfc_off">NFC is turned off. Enter PIN.</string>
+    <string name="lockscreen_message_nfc_wrong">Wrong NFC Tag.</string>
+
+    <string name="lockscreen_message_pin_wrong">Wrong PIN. Try again.</string>
+    <string name="lockscreen_message_pin_locked">PIN locked for 30s. Scan NFC Tag.</string>
+    <string name="lockscreen_message_pin_locked_nfc_off">PIN locked for 30s</string>
+
+    <string name="lockscreen_toast_phone_success">Unlock to open Phone.</string>
+    <string name="lockscreen_toast_camera_success">Unlock to open Camera.</string>
+
+    <string name="lockscreen_toast_torch_error">Torch unavailable.</string>
+    <string name="lockscreen_toast_mobile_error">Mobile Data unavailable.</string>
+    <string name="lockscreen_toast_camera_error">Camera not available.</string>
+
+</resources>

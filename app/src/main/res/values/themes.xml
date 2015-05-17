@@ -12,4 +12,13 @@
         <item name="android:textColorTertiary">@color/dark_accent</item>
         <item name="android:textColor">@color/dark_text_main</item>
     </style>
+
+    <style name="NoActionBar" parent="android:Theme.Holo.NoActionBar">
+
+    </style>
+
+    <style name="NoActionBar.Wallpaper" parent="android:Theme.Holo.Wallpaper.NoTitleBar">
+
+    </style>
+
 </resources>

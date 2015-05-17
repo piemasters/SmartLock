@@ -4,6 +4,11 @@
     <!-- Main App -->
     <string name="app_name">SmartLock</string>
     <string name="action_settings">Settings</string>
+    <string name="action_rate_app">Rate App</string>
+    <string name="rate_app_dialog">Open Play Store? Thank you for rating!</string>
+    <string name="yes">Yes</string>
+    <string name="ok">OK</string>
+    <string name="no">No</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="ignored">Ignored</string>
@@ -24,18 +29,6 @@
     <string name="activity_log_title">Title</string>
     <string name="activity_log">This is the activity log.</string>
 
-    <!-- Passwords -->
-    <string name="passwords_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
-    <string name="passwords_intro1">A list of available passwords.</string>
-    <string name="passwords_title">Title</string>
-    <string name="passwords">This is the passwords page.</string>
-
-    <!-- NFC -->
-    <string name="nfc_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
-    <string name="nfc_intro1">A list of stored NFC devices.</string>
-    <string name="nfc_title">Title</string>
-    <string name="nfc">This is the NFC page.</string>
-
     <!-- Locations -->
     <string name="locations_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
     <string name="locations_intro1">A list of stored locations.</string>
@@ -48,11 +41,17 @@
     <string name="networks_title">Title</string>
     <string name="networks">This is the networks page.</string>
 
-    <!-- Devices -->
+    <!-- Bluetooth Devices -->
     <string name="devices_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
     <string name="devices_intro1">A list of stored bluetooth devices.</string>
     <string name="devices_title">Title</string>
     <string name="devices">This is the devices page.</string>
+
+    <!-- NFC -->
+    <string name="nfc_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
+    <string name="nfc_intro1">A list of stored NFC devices.</string>
+    <string name="nfc_title">Title</string>
+    <string name="nfc">This is the NFC page.</string>
 
     <!-- About Page -->
     <string name="about_name"><b>SmartLock</b></string>

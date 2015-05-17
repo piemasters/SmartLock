@@ -39,7 +39,8 @@ public class AutostartService extends Service {
         }
 
         // Starts the Trigger service.
-        Intent triggerIntent = new Intent(getApplicationContext(), net.davidnorton.securityapp.services.TriggerService.class);
+        Intent triggerIntent = new Intent(getApplicationContext(),
+                net.davidnorton.securityapp.services.TriggerService.class);
         startService(triggerIntent);
 
         return super.onStartCommand(intent, flags, startId);

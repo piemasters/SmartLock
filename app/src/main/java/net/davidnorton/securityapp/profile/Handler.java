@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -66,6 +68,30 @@ public class Handler {
         // Show toast confirming the Profile was applied.
         Toast toast = Toast.makeText(context, name + " " + context.getResources().getString(R.string.profile_applied),Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    /**
+     * Applies a Profile, updates the notification but displays no toast.
+     *
+     * @param name Name of Profile.
+     */
+    public void applyProfileHidden(String name) {
+
+        // Apply the profile.
+        XmlParser parser = new XmlParser(context);
+        try {
+            parser.initializeXmlParser(context.openFileInput(name + "_profile.xml"));
+        } catch (Resources.NotFoundException | IOException | XmlPullParserException e) {
+            e.printStackTrace();
+        }
+
+        // Save profile as current active profile.
+        pref.edit().putString("active_profile", name).apply();
+
+        // Update the notification.
+        if (pref.getBoolean("notification", true)) {
+            updateNotification();
+        }
     }
 
     /**
@@ -139,16 +165,27 @@ public class Handler {
         Intent resultIntent = new Intent(context, MainActivity.class);
         PendingIntent resultPendingIntent = PendingIntent.getActivity(context,0, resultIntent, 0);
         NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(context);
+        Bitmap largeIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
 
         // Set the background colour and icon.
         int color = context.getResources().getColor(R.color.notification_background);
         nBuilder.setColor(color);
-        nBuilder.setSmallIcon(R.drawable.notification_icon);
+        nBuilder.setLargeIcon(largeIcon);
 
         // Set text and hide time.
         nBuilder.setContentText(context.getResources().getString(R.string.notification_content));
         nBuilder.setContentTitle(pref.getString("active_profile", context.getResources().getString(R.string.notification_title_no_profile)));
         nBuilder.setWhen(0);
+
+        // Set small icon based on Profile selected.
+        nBuilder.setSmallIcon(R.drawable.notification_icon);
+        if(pref.getString("active_profile", context.getResources().getString(R.string.notification_title_no_profile)).equals("Home")) {
+            nBuilder.setSmallIcon(R.drawable.notification_icon_home);
+        } else if (pref.getString("active_profile", context.getResources().getString(R.string.notification_title_no_profile)).equals("Travel")) {
+            nBuilder.setSmallIcon(R.drawable.notification_icon_travel);
+        } else if (pref.getString("active_profile", context.getResources().getString(R.string.notification_title_no_profile)).equals("Work")) {
+            nBuilder.setSmallIcon(R.drawable.notification_icon_work);
+        }
 
         // Open app when selected, set priority level and make permanent.
         nBuilder.setContentIntent(resultPendingIntent);
@@ -166,10 +203,9 @@ public class Handler {
      */
     public void createDefaultProfiles() {
 
-        //TODO Add correct profile preferences
-
         // Assign Default Profile preference settings.
         Profile pDefault = new Profile("Default");
+        pDefault.setLockscreen(Profile.state.enabled);
         pDefault.setWifi(Profile.state.disabled);
         pDefault.setMobileData(Profile.state.enabled);
         pDefault.setBluetooth(Profile.state.disabled);
@@ -178,14 +214,16 @@ public class Handler {
 
         // Assign Home Profile preference settings.
         Profile pHome = new Profile("Home");
+        pDefault.setLockscreen(Profile.state.disabled);
         pHome.setWifi(Profile.state.enabled);
-        pDefault.setMobileData(Profile.state.disabled);
+        pHome.setMobileData(Profile.state.disabled);
         pHome.setBluetooth(Profile.state.enabled);
         pHome.setScreenBrightnessAutoMode(Profile.state.enabled);
         pHome.setRingerMode(Profile.mode.normal);
 
         // Assign Travel Profile preference settings.
         Profile pTravel = new Profile("Travel");
+        pDefault.setLockscreen(Profile.state.enabled);
         pTravel.setWifi(Profile.state.disabled);
         pTravel.setMobileData(Profile.state.enabled);
         pTravel.setBluetooth(Profile.state.disabled);
@@ -194,6 +232,7 @@ public class Handler {
 
         // Assign Work Profile preference settings.
         Profile pWork = new Profile("Work");
+        pDefault.setLockscreen(Profile.state.enabled);
         pWork.setWifi(Profile.state.enabled);
         pWork.setMobileData(Profile.state.disabled);
         pWork.setBluetooth(Profile.state.disabled);

@@ -6,11 +6,14 @@ import java.lang.reflect.Method;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.util.Log;
+
+import net.davidnorton.securityapp.services.LockScreenService;
 
 /**
  * Applies the preference settings to the device.
@@ -18,6 +21,28 @@ import android.util.Log;
  * @author David Norton
  */
 public class Setter {
+
+    /**
+     * Sets WiFi to the given state.
+     *
+     * @param context Context.
+     * @param enable User preference state.
+     */
+    public void setLockscreen(Context context, boolean enable) {
+
+        if (enable) {
+            // enable if currently disabled
+            context.startService(new Intent(context, LockScreenService.class));
+            Log.i("Setter", "Lockscreen enabled.");
+        } else if (!enable) {
+            // disable if currently enabled
+            context.stopService(new Intent(context, LockScreenService.class));
+            Log.i("Setter", "Lockscreen disabled.");
+        } else {
+            Log.i("Setter", "Lockscreen not changed.");
+        }
+
+    }
 
     /**
      * Sets WiFi to the given state.

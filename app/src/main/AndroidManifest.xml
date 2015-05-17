@@ -9,33 +9,55 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppThemeLight" >
+
+        <!-- Main Activity -->
         <activity
             android:name=".ui.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Edit Profile Activity -->
         <activity
             android:name=".profile.ProfileEditActivity"
             android:label="@string/activity_profile_title_edit" >
@@ -43,12 +65,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="net.davidnorton.securityapp.ui.MainActivity" />
         </activity>
-        <receiver android:name="net.davidnorton.securityapp.services.BootCompletedReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-        <service android:name="net.davidnorton.securityapp.services.AutostartService" />
+
+        <!-- Edit Trigger Activity -->
         <activity
             android:name=".trigger.TriggerEditActivity"
             android:label="@string/activity_trigger_title_edit" >
@@ -56,7 +74,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="net.davidnorton.securityapp.ui.MainActivity" />
         </activity>
-        <service android:name=".services.TriggerService" />
+
+        <!-- Map View Activity -->
         <activity
             android:name="net.davidnorton.securityapp.trigger.MapViewActivity"
             android:label="@string/activity_title_map"
@@ -69,6 +88,62 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+
+        <!-- Lockscreen Activity -->
+        <activity
+            android:name=".lockscreen.LockscreenActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/title_activity_lockscreen"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar.Wallpaper" >
+        </activity>
+
+        <!-- Lock Activity -->
+        <activity-alias
+            android:name=".SmartLockLauncher"
+            android:label="@string/title_activity_lockscreen"
+            android:enabled="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:targetActivity=".lockscreen.LockscreenActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- NFC Reader Activity -->
+        <activity
+            android:name=".lockscreen.NFCReader"
+            android:label="@string/lockscreen_scan_title"
+            android:launchMode="singleTop" />
+
+        <!-- Boot Completed Receiver -->
+        <receiver android:name="net.davidnorton.securityapp.services.BootCompletedReceiver" >
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Lock Screen Receiver -->
+        <receiver
+            android:name=".services.LockScreenReceiver"
+            android:enabled="true" >
+            <intent-filter android:priority="999" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Autostart Service -->
+        <service android:name="net.davidnorton.securityapp.services.AutostartService" />
+
+        <!-- Trigger Service -->
+        <service android:name=".services.TriggerService" />
+
+        <!-- Lockscreen Service -->
+        <service android:name=".services.LockScreenService" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
