@@ -104,6 +104,13 @@ public class Handler {
 
         Setter setter = new Setter();
 
+        // Lockscreen
+        if (profile.getLockscreen() == Profile.state.enabled) {
+            setter.setLockscreen(context, true);
+        } else if (profile.getLockscreen() == Profile.state.disabled) {
+            setter.setLockscreen(context, false);
+        }
+
         // WiFi
         if (profile.getWifi() == Profile.state.enabled) {
             setter.setWifi(context, true);

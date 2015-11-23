@@ -23,7 +23,7 @@ import net.davidnorton.securityapp.services.LockScreenService;
 public class Setter {
 
     /**
-     * Sets WiFi to the given state.
+     * Sets Lockscreen to the given state.
      *
      * @param context Context.
      * @param enable User preference state.

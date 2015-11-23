@@ -59,9 +59,6 @@ public class MainActivity extends Activity {
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 
-        // Starts the LockScreenService.
-        startService(new Intent(this, LockScreenService.class));
-
         // Sets the Theme
         changeTheme(pref);
 
@@ -246,10 +243,10 @@ public class MainActivity extends Activity {
 
         dataList.add(new DrawerItem(mMenuTitles[1]));// adding a header to the list
         dataList.add(new DrawerItem(mMenuItems[3], R.drawable.ic_action_secure));
-        dataList.add(new DrawerItem(mMenuItems[4], R.drawable.ic_action_location_found));
+        /*dataList.add(new DrawerItem(mMenuItems[4], R.drawable.ic_action_location_found));
         dataList.add(new DrawerItem(mMenuItems[5], R.drawable.ic_action_network_wifi));
         dataList.add(new DrawerItem(mMenuItems[6], R.drawable.ic_action_bluetooth));
-        dataList.add(new DrawerItem(mMenuItems[7], R.drawable.ic_action_labels));
+        dataList.add(new DrawerItem(mMenuItems[7], R.drawable.ic_action_labels));*/
 
         dataList.add(new DrawerItem(mMenuTitles[2])); // adding a header to the list
         dataList.add(new DrawerItem(mMenuItems[8], R.drawable.ic_action_about));
@@ -320,7 +317,7 @@ public class MainActivity extends Activity {
                 args.putString(Lockscreens.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(Lockscreens.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
-            case 6:
+            /*case 6:
                 fragment = new Locations();
                 args.putString(Locations.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(Locations.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
@@ -339,18 +336,18 @@ public class MainActivity extends Activity {
                 fragment = new NFC();
                 args.putString(NFC.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(NFC.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
-                break;
-            case 11:
+                break;*/
+            case 7:
                 fragment = new About();
                 args.putString(About.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(About.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
-            case 12:
+            case 8:
                 fragment = new AdvancedSettings();
                 args.putString(AdvancedSettings.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(AdvancedSettings.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
                 break;
-            case 13:
+            case 9:
                 fragment = new Help();
                 args.putString(Help.ITEM_NAME, dataList.get(position).getItemName());
                 args.putInt(Help.IMAGE_RESOURCE_ID, dataList.get(position).getImgResID());
