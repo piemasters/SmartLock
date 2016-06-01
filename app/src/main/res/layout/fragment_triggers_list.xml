@@ -12,7 +12,7 @@
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <!-- Edit Button -->
@@ -22,7 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
-        android:gravity="right"
-        android:src="@drawable/ic_action_settings" />
+        android:gravity="end"
+        android:src="@drawable/ic_action_settings"
+        android:contentDescription="@string/trigger_button_edit" />
 
 </LinearLayout>

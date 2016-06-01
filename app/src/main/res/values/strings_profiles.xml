@@ -23,6 +23,8 @@
     <string name="profile_alert_discard_no">No</string>
     <string name="profile_pref_unchanged">unchanged</string>
 
+    <!-- Profile List -->
+    <string name="profile_button_edit">Edit Button</string>
 
     <!-- Profile Preference Page -->
 

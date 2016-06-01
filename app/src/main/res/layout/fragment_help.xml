@@ -12,6 +12,8 @@
 
         <!-- Title Card -->
         <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/card_1"
             style="@style/CardView" >
 
@@ -19,7 +21,8 @@
             <ImageView
                 android:id="@+id/help_icon"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/help_icon" />
 
             <!-- About Title -->
             <TextView
@@ -41,14 +44,12 @@
                 <!-- Question 01 -->
                 <TextView
                     style="@style/TextView.Paragraph.Bold"
-                    android:layout_below="@id/help_faq"
                     android:id="@+id/help_question_01"
                     android:text="@string/help_question_01"/>
 
                 <!-- Answer 01 -->
                 <TextView
                     style="@style/TextView.Paragraph"
-                    android:layout_below="@id/help_question_01"
                     android:id="@+id/help_answer_01"
                     android:text="@string/help_answer_01"/>
 
@@ -58,12 +59,16 @@
 
         <!-- Card 2 -->
         <android.support.v7.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/card_2"
             style="@style/CardView"
             android:layout_below="@id/card_1">
 
             <!--Text Container -->
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 style="@style/CardView"
                 xmlns:tools="http://schemas.android.com/tools"
                 tools:context=".MyActivity">
@@ -71,14 +76,12 @@
                 <!-- Question 02 -->
                 <TextView
                     style="@style/TextView.Paragraph.Bold"
-                    android:layout_below="@id/help_answer_01"
                     android:id="@+id/help_question_02"
                     android:text="@string/help_question_02"/>
 
                 <!-- Answer 02 -->
                 <TextView
                     style="@style/TextView.Paragraph"
-                    android:layout_below="@id/help_question_02"
                     android:id="@+id/help_answer_02"
                     android:text="@string/help_answer_02"/>
 
@@ -88,12 +91,16 @@
 
         <!-- Card 3 -->
         <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/card_3"
             style="@style/CardView"
             android:layout_below="@id/card_2">
 
             <!--Text Container -->
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 style="@style/CardView"
                 xmlns:tools="http://schemas.android.com/tools"
                 tools:context=".MyActivity">
@@ -101,14 +108,12 @@
                 <!-- Question 03 -->
                 <TextView
                     style="@style/TextView.Paragraph.Bold"
-                    android:layout_below="@id/help_answer_02"
                     android:id="@+id/help_question_03"
                     android:text="@string/help_question_03"/>
 
                 <!-- Answer 03 -->
                 <TextView
                     style="@style/TextView.Paragraph"
-                    android:layout_below="@id/help_question_02"
                     android:id="@+id/help_answer_03"
                     android:text="@string/help_answer_03"/>
 

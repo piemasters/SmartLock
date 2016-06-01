@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.location.Criteria;
@@ -12,7 +13,10 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -26,6 +30,7 @@ import android.widget.EditText;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
@@ -38,7 +43,7 @@ import net.davidnorton.securityapp.R;
  *
  * @author David Norton
  */
-public class MapViewActivity extends Activity implements GoogleMap.OnMapLongClickListener, OnClickListener {
+public class MapViewActivity extends Activity implements GoogleMap.OnMapLongClickListener, OnClickListener, OnMapReadyCallback {
 
     // Indicates if there are unsaved changes in the preferences.
     private static boolean preferencesChanged = false;
@@ -64,35 +69,83 @@ public class MapViewActivity extends Activity implements GoogleMap.OnMapLongClic
 
         // Sets the Theme
         changeTheme(pref);
-		
+
 		super.onCreate(savedInstanceState);
 
         // Apply title and back button.
-        getActionBar().setTitle(R.string.trigger_location_edit_title);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getActionBar() != null) {
+            getActionBar().setTitle(R.string.trigger_location_edit_title);
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
+        // Checks Location Permissions
+        int coarseStatus = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+        int fineStatus = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+
+        if (coarseStatus != PackageManager.PERMISSION_GRANTED && fineStatus != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION}, 255);
+        }
         // Create map screen.
-		setContentView(R.layout.activity_trigger_map);
+        setContentView(R.layout.activity_trigger_map);
 
-		// Check if map has not already been obtained.
-		if (geoMap == null) {
-			geoMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-		}
+        // Get Map
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+	}
 
-		// If map has been obtained, manipulate.
-		if (geoMap != null) {
+    /**
+     * Sets up map when permission is given.
+     *
+     * @param requestCode The requested permission code.
+     * @param permissions List of permissions.
+     * @param grantResults The granted permissions.
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull  String[] permissions, @NonNull  int[] grantResults) {
+        setUpMap();
+    }
 
-			geoMap.setPadding(0, 100, 0, 0);
-			geoMap.setMyLocationEnabled(true);
-			geoMap.setOnMapLongClickListener(this);
+    /**
+     * Initialises the map once ready.
+     *
+     * @param map The Google Map.
+     */
+    @Override
+    public void onMapReady(GoogleMap map) {
+        geoMap = map;
+
+        // Checks Location Permissions
+        int coarseStatus = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+        int fineStatus = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+
+        // Set Up Map
+        if (coarseStatus == PackageManager.PERMISSION_GRANTED && fineStatus == PackageManager.PERMISSION_GRANTED) {
+            setUpMap();
+        }
+    }
+
+    public void setUpMap(){
+
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // Checks Location Permissions
+        int coarseStatus = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+        int fineStatus = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+
+        // If map has been obtained, manipulate.
+        if (geoMap != null) {
+
+            geoMap.setPadding(0, 100, 0, 0);
+            geoMap.setMyLocationEnabled(true);
+            geoMap.setOnMapLongClickListener(this);
 
             // Set clear button.
             Button clear = (Button) findViewById(R.id.clear_map_button);
-			clear.setOnClickListener(this);
+            clear.setOnClickListener(this);
 
             // Set radius input area.
-			EditText editRadius = (EditText) findViewById(R.id.radius_selection);
-			editRadius.addTextChangedListener(new TextWatcher() {
+            EditText editRadius = (EditText) findViewById(R.id.radius_selection);
+            editRadius.addTextChangedListener(new TextWatcher() {
 
                 /**
                  * Change radius to match user input.
@@ -125,56 +178,61 @@ public class MapViewActivity extends Activity implements GoogleMap.OnMapLongClic
                     }
                 }
 
-				@Override
-				public void afterTextChanged(Editable s) {}
+                @Override
+                public void afterTextChanged(Editable s) {}
 
-				@Override
-				public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-			});
+            });
 
-			// If a geo-fence has already been defined.
-			if (pref.getInt("geofence_radius", -1) > 0) {
+            // If a geo-fence has already been defined.
+            if (pref.getInt("geofence_radius", -1) > 0) {
 
                 preferencesChanged = false;
 
                 // Get saved geo-fence details.
-				point = new LatLng(pref.getFloat("geofence_lat", 0), pref.getFloat("geofence_lng", 0));
-				radius = pref.getInt("geofence_radius", 50);
-				editRadius.setText(String.valueOf(radius));
+                point = new LatLng(pref.getFloat("geofence_lat", 0), pref.getFloat("geofence_lng", 0));
+                radius = pref.getInt("geofence_radius", 50);
+                editRadius.setText(String.valueOf(radius));
 
-				geoMap.clear();
+                geoMap.clear();
 
                 // Set and display visual for selected location.
-				geoMap.addMarker(new MarkerOptions().position(point));
-				if (radius > 0) {
-					geoMap.addCircle(new CircleOptions().radius(radius).center(point).fillColor(0x5533B5E5).strokeColor(0xEE33B5E5).strokeWidth(2));
-				}
+                geoMap.addMarker(new MarkerOptions().position(point));
+                if (radius > 0) {
+                    geoMap.addCircle(new CircleOptions().radius(radius).center(point).fillColor(0x5533B5E5).strokeColor(0xEE33B5E5).strokeWidth(2));
+                }
 
                 // Set camera over drawn geo-fence.
-				geoMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(point.latitude, point.longitude), 15));
-				CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(point.latitude, point.longitude)).zoom(15).build();
-				geoMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                geoMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(point.latitude, point.longitude), 15));
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(point.latitude, point.longitude)).zoom(15).build();
+                geoMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-            // Create a new geo-fence.
-			} else {
+                // Create a new geo-fence.
+            } else {
 
-                // Get location.
-                LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-				Criteria criteria = new Criteria();
-				Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+                if (coarseStatus == PackageManager.PERMISSION_GRANTED && fineStatus == PackageManager.PERMISSION_GRANTED) {
 
-                // If location is set.
-                if (location != null) {
+                    // Get location.
+                    LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                    Criteria criteria = new Criteria();
+                    Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
 
-                    // Set camera over drawn geo-fence.
-                    geoMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 15));
-					CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(location.getLatitude(), location.getLongitude())).zoom(15).build();
-					geoMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-				}
-			}
-		}
-	}
+                    // If location is set.
+                    if (location != null) {
+
+                        // Set camera over drawn geo-fence.
+                        geoMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 15));
+                        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(location.getLatitude(), location.getLongitude())).zoom(15).build();
+                        geoMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                    }
+                }
+            }
+        }
+
+
+    }
 
     /**
      * Creates the save and cancel options on the action bar.
@@ -197,17 +255,19 @@ public class MapViewActivity extends Activity implements GoogleMap.OnMapLongClic
      */
     private void changeTheme(SharedPreferences pref) {
 
+        Context context = getApplicationContext();
+
         // Set dark theme if selected
         if (pref.getBoolean("dark_theme", false)) {
             setTheme(R.style.AppThemeDark);
             // Set primary colour for icons.
-            filter = new LightingColorFilter( getResources().getColor(R.color.dark_primary_dark),getResources().getColor(R.color.dark_primary_dark));
+            filter = new LightingColorFilter( ContextCompat.getColor(context, R.color.dark_primary_dark), ContextCompat.getColor(context, R.color.dark_primary_dark));
 
             // Set light theme if selected
         } else {
             setTheme(R.style.AppThemeLight);
             // Set primary colour for icons.
-            filter = new LightingColorFilter( getResources().getColor(R.color.primary_dark),getResources().getColor(R.color.primary_dark));
+            filter = new LightingColorFilter( ContextCompat.getColor(context, R.color.primary_dark), ContextCompat.getColor(context, R.color.primary_dark));
         }
     }
 
@@ -350,7 +410,7 @@ public class MapViewActivity extends Activity implements GoogleMap.OnMapLongClic
 
             // Set radius value back to default.
 			EditText editRadius = (EditText) findViewById(R.id.radius_selection);
-			editRadius.setText("50");
+			editRadius.setText(R.string.trigger_pref_map_radius_default);
 
 			preferencesChanged = true;
 		}

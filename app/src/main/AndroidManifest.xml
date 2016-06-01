@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.davidnorton.securityapp">
+    package="net.davidnorton.securityapp" >
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -24,18 +24,16 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.REORDER_TASKS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature
         android:name="android.hardware.nfc"
         android:required="true" />
-
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
-
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
@@ -53,6 +51,7 @@
             android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -77,9 +76,9 @@
 
         <!-- Map View Activity -->
         <activity
-            android:name="net.davidnorton.securityapp.trigger.MapViewActivity"
+            android:name=".trigger.MapViewActivity"
             android:label="@string/activity_title_map"
-            android:parentActivityName="net.davidnorton.securityapp.trigger.TriggerEditActivity" >
+            android:parentActivityName=".trigger.TriggerEditActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="net.davidnorton.securityapp.trigger.TriggerEditActivity" />
@@ -102,13 +101,14 @@
         <!-- Lock Activity -->
         <activity-alias
             android:name=".SmartLockLauncher"
-            android:label="@string/title_activity_lockscreen"
             android:enabled="false"
             android:excludeFromRecents="true"
+            android:label="@string/title_activity_lockscreen"
             android:launchMode="singleInstance"
             android:targetActivity=".lockscreen.LockscreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -121,8 +121,8 @@
             android:launchMode="singleTop" />
 
         <!-- Boot Completed Receiver -->
-        <receiver android:name="net.davidnorton.securityapp.services.BootCompletedReceiver" >
-            <intent-filter android:priority="999">
+        <receiver android:name=".services.BootCompletedReceiver" >
+            <intent-filter android:priority="999" >
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
@@ -137,7 +137,7 @@
         </receiver>
 
         <!-- Autostart Service -->
-        <service android:name="net.davidnorton.securityapp.services.AutostartService" />
+        <service android:name=".services.AutostartService" />
 
         <!-- Trigger Service -->
         <service android:name=".services.TriggerService" />
@@ -148,7 +148,6 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyC2qZwMLqiSoGgK3oWxrgo3ITTtVSQM7zQ" />
-
     </application>
 
 </manifest>

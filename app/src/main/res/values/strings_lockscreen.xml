@@ -22,6 +22,7 @@
 
     <string name="lockscreen_blur_title">Blur Lockscreen Background</string>
     <string name="lockscreen_blur_text">Blur level:</string>
+    <string name="lockscreen_blur_default">15</string>
     <string name="lockscreen_blur_button">Update Wallpaper</string>
     <string name="lockscreen_blur_toast_success">Wallpaper successfully updated!</string>
     <string name="lockscreen_blur_toast_failed">Wallpaper failed to update.</string>

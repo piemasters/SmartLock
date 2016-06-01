@@ -3,7 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-
     <!--Header-->
     <LinearLayout
         android:id="@+id/headerLayout"
@@ -18,7 +17,7 @@
             android:id="@+id/drawerTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:textSize="18sp"/>
 
         <!--Header border-->
@@ -36,7 +35,7 @@
         android:id="@+id/itemLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:orientation="vertical"
         android:background="?android:attr/activatedBackgroundIndicator">
 
@@ -51,7 +50,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginStart="16dp"
+                android:contentDescription="@string/drawer_icon" />
 
             <!--Item text-->
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginLeft="36dp"
+                android:layout_marginStart="36dp"
                 android:textSize="16sp"/>
 
         </LinearLayout>

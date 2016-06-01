@@ -20,6 +20,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -33,7 +35,7 @@ import android.widget.ListView;
 
 import net.davidnorton.securityapp.R;
 import net.davidnorton.securityapp.profile.Handler;
-import net.davidnorton.securityapp.services.LockScreenService;
+//import net.davidnorton.securityapp.services.LockScreenService;
 
 public class MainActivity extends Activity {
 
@@ -153,19 +155,21 @@ public class MainActivity extends Activity {
      */
     private void changeTheme(SharedPreferences pref) {
 
+        Context context = getApplicationContext();
+
         // Set dark theme if selected
         if (pref.getBoolean("dark_theme", false)) {
             darkTheme = true;
             setTheme(R.style.AppThemeDark);
             // Set primary colour for icons.
-            filter = new LightingColorFilter( getResources().getColor(R.color.dark_primary_dark),getResources().getColor(R.color.dark_primary_dark));
+            filter = new LightingColorFilter(ContextCompat.getColor(context, R.color.dark_primary_dark), ContextCompat.getColor(context, R.color.dark_primary_dark));
 
         // Set light theme if selected
         } else {
             darkTheme = false;
             setTheme(R.style.AppThemeLight);
             // Set primary colour for icons.
-            filter = new LightingColorFilter( getResources().getColor(R.color.primary_dark),getResources().getColor(R.color.primary_dark));
+            filter = new LightingColorFilter( ContextCompat.getColor(context, R.color.primary_dark), ContextCompat.getColor(context, R.color.primary_dark));
         }
     }
 
@@ -191,21 +195,27 @@ public class MainActivity extends Activity {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
 
             public void onDrawerClosed(View view) {
-                getActionBar().setTitle(mTitle);
+                if(getActionBar() != null) {
+                    getActionBar().setTitle(mTitle);
+                }
                 invalidateOptionsMenu();
             }
 
             public void onDrawerOpened(View drawerView) {
-                getActionBar().setTitle(mDrawerTitle);
+                if(getActionBar() != null) {
+                    getActionBar().setTitle(mDrawerTitle);
+                }
                 invalidateOptionsMenu();
             }
         };
 
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+        if(getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+            getActionBar().setHomeButtonEnabled(true);
+        }
 
         // Get menu and item values from array.
         mMenuTitles = getResources().getStringArray(R.array.menu_title_array);
@@ -260,29 +270,29 @@ public class MainActivity extends Activity {
     private void setIconColour() {
 
         // Set icons to primary app colour.
-        Drawable myIcon = getResources().getDrawable( R.drawable.ic_action_person );
+        Drawable myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_person, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
-        myIcon = getResources().getDrawable(R.drawable.ic_action_storage);
+        myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_storage, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
-        myIcon = getResources().getDrawable(R.drawable.ic_action_event);
+        myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_event, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
-        myIcon = getResources().getDrawable(R.drawable.ic_action_secure);
+        myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_secure, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
-        myIcon = getResources().getDrawable(R.drawable.ic_action_add_person);
+        myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_add_person, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
-        myIcon = getResources().getDrawable(R.drawable.ic_action_labels);
+        myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_labels, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
-        myIcon = getResources().getDrawable(R.drawable.ic_action_location_found);
+        myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_location_found, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
-        myIcon = getResources().getDrawable(R.drawable.ic_action_network_wifi);
+        myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_network_wifi, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
-        myIcon = getResources().getDrawable(R.drawable.ic_action_bluetooth);
+        myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_bluetooth, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
-        myIcon = getResources().getDrawable(R.drawable.ic_action_about);
+        myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_about, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
-        myIcon = getResources().getDrawable(R.drawable.ic_action_settings);
+        myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_settings, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
-        myIcon = getResources().getDrawable(R.drawable.ic_action_help);
+        myIcon = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_help, null);
         if (myIcon != null) {myIcon.setColorFilter(filter);}
     }
 
@@ -377,7 +387,9 @@ public class MainActivity extends Activity {
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
-        getActionBar().setTitle(mTitle);
+        if(getActionBar() != null){
+            getActionBar().setTitle(mTitle);
+        }
     }
 
     /**
@@ -436,13 +448,13 @@ public class MainActivity extends Activity {
         if (id == R.id.action_settings) {
             Fragment fragment = new AdvancedSettings();
             Bundle args = new Bundle();
-            args.putString(AdvancedSettings.ITEM_NAME, dataList.get(12).getItemName());
-            args.putInt(AdvancedSettings.IMAGE_RESOURCE_ID, dataList.get(12).getImgResID());
+            args.putString(AdvancedSettings.ITEM_NAME, dataList.get(8).getItemName());
+            args.putInt(AdvancedSettings.IMAGE_RESOURCE_ID, dataList.get(8).getImgResID());
             fragment.setArguments(args);
             FragmentManager frgManager = getFragmentManager();
             frgManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-            mDrawerList.setItemChecked(12, true);
-            setTitle(dataList.get(12).getItemName());
+            mDrawerList.setItemChecked(8, true);
+            setTitle(dataList.get(8).getItemName());
             mDrawerLayout.closeDrawer(mDrawerList);
         }
 

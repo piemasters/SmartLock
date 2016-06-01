@@ -28,30 +28,35 @@
     <string name="activity_log_intro1">A log of the latest profile changes.</string>
     <string name="activity_log_title">Title</string>
     <string name="activity_log">This is the activity log.</string>
+    <string name="activity_log_icon">Activity Log Icon</string>
 
     <!-- Locations -->
     <string name="locations_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
     <string name="locations_intro1">A list of stored locations.</string>
     <string name="locations_title">Title</string>
     <string name="locations">This is the locations page.</string>
+    <string name="location_icon">Location Icon</string>
 
     <!-- Networks -->
     <string name="networks_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
     <string name="networks_intro1">A list of stored networks.</string>
     <string name="networks_title">Title</string>
     <string name="networks">This is the networks page.</string>
+    <string name="networks_icon">Networks Icon</string>
 
     <!-- Bluetooth Devices -->
     <string name="devices_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
     <string name="devices_intro1">A list of stored bluetooth devices.</string>
     <string name="devices_title">Title</string>
     <string name="devices">This is the devices page.</string>
+    <string name="devices_icon">Devices Icon</string>
 
     <!-- NFC -->
     <string name="nfc_intro">THIS PAGE IS CURRENTLY UNDER DEVELOPMENT!</string>
     <string name="nfc_intro1">A list of stored NFC devices.</string>
     <string name="nfc_title">Title</string>
     <string name="nfc">This is the NFC page.</string>
+    <string name="nfc_icon">NFC Icon</string>
 
     <!-- About Page -->
     <string name="about_name"><b>SmartLock</b></string>
@@ -63,6 +68,7 @@
     <string name="about_bug_contact">To report a bug or an enhancement, please contact <a href="david2.norton@live.uwe.ac.uk">david2.norton@live.uwe.ac.uk</a></string>
     <string name="about_uwe">UWE</string>
     <string name="about_uwe_description">This application is a Computer Security final year project at the University of the West of England. It is currently in the alpha phase of development. </string>
+    <string name="about_icon">About Icon</string>
 
     <!-- Advanced Settings -->
     <string name="advanced_settings_intro">Below are the advanced settings:</string>
@@ -71,6 +77,7 @@
     <string name="advanced_settings_pref_title_dark_theme">Dark Theme</string>
     <string name="advanced_settings_pref_on_dark_theme">Dark theme is enabled.</string>
     <string name="advanced_settings_pref_off_dark_theme">Dark theme is disabled.</string>
+    <string name="advanced_settings_icon">Advanced Settings Icon</string>
 
     <!-- Help -->
     <string name="help_faq">F.A.Q</string>
@@ -89,5 +96,6 @@
                                     <li>NFC (Scan NFC tag or wearable to unlock)\n</li>
                                   </ul>
      </string>
+    <string name="help_icon">Help Icon</string>
 
 </resources>

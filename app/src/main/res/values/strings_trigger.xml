@@ -25,6 +25,9 @@
     <string name="trigger_alert_discard_no">No</string>
     <string name="trigger_pref_unchanged">unchanged</string>
 
+    <!-- Trigger List -->
+    <string name="trigger_button_edit">Edit Button</string>
+
     <!-- Trigger Preference Page -->
 
     <!-- Settings: General -->

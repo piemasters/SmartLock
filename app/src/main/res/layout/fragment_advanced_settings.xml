@@ -6,6 +6,8 @@
 
         <!-- Title Card -->
         <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             style="@style/CardView"
             android:id="@+id/card_1">
 
@@ -13,7 +15,8 @@
             <ImageView
                 android:id="@+id/advanced_settings_icon"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/advanced_settings_icon" />
 
             <!-- Advanced Settings Title -->
             <TextView
@@ -38,6 +41,8 @@
 
         <!-- Permanent Notification Card -->
         <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             style="@style/CardView"
             android:id="@+id/card_2"
             android:layout_below="@id/card_1">
@@ -51,6 +56,8 @@
 
         <!-- Dark Theme Card -->
         <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             style="@style/CardView"
             android:id="@+id/card_3"
             android:layout_below="@id/card_2">
