@@ -21,13 +21,13 @@ import java.util.Set;
  *
  * @author David Norton
  */
-public class XmlParserPrefTrigger {
+class XmlParserPrefTrigger {
 
-	final static String TAG = "XmlParserPrefTrigger";
+	private final static String TAG = "XmlParserPrefTrigger";
 	
-	Context context;
-	Editor prefEdit;
-	String triggerName;
+	private final Context context;
+	private final Editor prefEdit;
+	private final String triggerName;
 
     /**
      * Initializes the xml parser with given context.
@@ -294,7 +294,7 @@ public class XmlParserPrefTrigger {
 				prefEdit.putString("battery_state", "ignored");
 				Log.i(TAG, "BatteryState ignored.");
 			} else {
-				Log.i(TAG, "BateryState: ignore.");
+				Log.i(TAG, "BatteryState: ignore.");
 			}
 		} else {
 			Log.e(TAG, "BatteryState: Invalid Argument!");

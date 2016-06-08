@@ -17,13 +17,13 @@ import java.io.InputStream;
  *
  * @author David Norton
  */
-public class XmlParserPref {
+class XmlParserPref {
 
-	final static String TAG = "XmlParserPref";
+	private final static String TAG = "XmlParserPref";
 
-	Context context;
-	Editor prefEdit;
-	String profileName;
+	private final Context context;
+	private final Editor prefEdit;
+	private final String profileName;
 
     /**
      * Initializes the xml parser with given context.

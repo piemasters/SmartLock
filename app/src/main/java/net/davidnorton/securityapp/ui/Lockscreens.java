@@ -18,6 +18,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.CardView;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -71,11 +73,12 @@ import java.io.OutputStreamWriter;
  * @author David Norton
  *
  */
+@SuppressWarnings("UnusedAssignment")
 public class Lockscreens extends DialogFragment implements View.OnClickListener,
         CompoundButton.OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener {
 
-    ImageView ivIcon;
-    TextView tvItemName;
+    private ImageView ivIcon;
+    private TextView tvItemName;
 
     public static final String IMAGE_RESOURCE_ID = "iconResourceID";
     public static final String ITEM_NAME = "itemName";
@@ -132,12 +135,13 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
 
         View view = inflater.inflate(R.layout.fragment_lockscreens, container, false);
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
+        Context context = getActivity().getApplicationContext();
 
         // Set icon and title in fragments first card.
         ivIcon = (ImageView) view.findViewById(R.id.passwords_icon);
         tvItemName = (TextView) view.findViewById(R.id.passwords_title);
         tvItemName.setText(getArguments().getString(ITEM_NAME));
-        ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));
+        ivIcon.setImageDrawable(ResourcesCompat.getDrawable(getResources(), getArguments().getInt(IMAGE_RESOURCE_ID), null));
 
         // Apply correct colour scheme.
         if (pref.getBoolean("dark_theme", false) ) {
@@ -148,14 +152,15 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
 
             // PIN OK Button.
             final Button  setPinButton = (Button) view.findViewById(R.id.setPin);
-            setPinButton.setBackgroundColor(getResources().getColor(R.color.dark_primary));
+            setPinButton.setBackgroundColor(ContextCompat.getColor(context, R.color.dark_primary));
             setPinButton.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent event) {
+                    Context context = getActivity().getApplicationContext();
                     if (event.getAction() == MotionEvent.ACTION_UP) {
-                        setPinButton.setBackgroundColor(getResources().getColor(R.color.dark_primary));
+                        setPinButton.setBackgroundColor(ContextCompat.getColor(context, R.color.dark_primary));
                     } else if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        setPinButton.setBackgroundColor(getResources().getColor(R.color.dark_primary_dark));
+                        setPinButton.setBackgroundColor(ContextCompat.getColor(context, R.color.dark_primary_dark));
                     }
                     return false;
                 }
@@ -163,14 +168,15 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
 
             // Update Wallpaper Button.
             final Button updateWallpaperButton = (Button) view.findViewById(R.id.updateWallpaper);
-            updateWallpaperButton.setBackgroundColor(getResources().getColor(R.color.dark_primary));
+            updateWallpaperButton.setBackgroundColor(ContextCompat.getColor(context, R.color.dark_primary));
             updateWallpaperButton.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent event) {
+                    Context context = getActivity().getApplicationContext();
                     if (event.getAction() == MotionEvent.ACTION_UP) {
-                        updateWallpaperButton.setBackgroundColor(getResources().getColor(R.color.dark_primary));
+                        updateWallpaperButton.setBackgroundColor(ContextCompat.getColor(context, R.color.dark_primary));
                     } else if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        updateWallpaperButton.setBackgroundColor(getResources().getColor(R.color.dark_primary_dark));
+                        updateWallpaperButton.setBackgroundColor(ContextCompat.getColor(context, R.color.dark_primary_dark));
                     }
                     return false;
                 }
@@ -178,14 +184,15 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
 
             // Save New NFC Tag Button.
             final ImageButton newTagButton = (ImageButton) view.findViewById(R.id.newTag);
-            newTagButton.setBackgroundColor(getResources().getColor(R.color.button_background));
+            newTagButton.setBackgroundColor(ContextCompat.getColor(context, R.color.button_background));
             newTagButton.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent event) {
+                    Context context = getActivity().getApplicationContext();
                     if (event.getAction() == MotionEvent.ACTION_UP) {
-                        newTagButton.setBackgroundColor(getResources().getColor(R.color.button_background));
+                        newTagButton.setBackgroundColor(ContextCompat.getColor(context, R.color.button_background));
                     } else if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        newTagButton.setBackgroundColor(getResources().getColor(R.color.dark_accent));
+                        newTagButton.setBackgroundColor(ContextCompat.getColor(context, R.color.dark_accent));
                     }
                     return false;
                 }
@@ -193,23 +200,23 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
 
             // PIN Title:
             TextView pinTitle = (TextView) view.findViewById(R.id.pinTitle);
-            pinTitle.setTextColor(getResources().getColor(R.color.dark_primary));
+            pinTitle.setTextColor(ContextCompat.getColor(context, R.color.dark_primary));
 
             // Enter PIN text.
             TextView pinEdit = (TextView) view.findViewById(R.id.pinEdit);
-            pinEdit.setTextColor(getResources().getColor(R.color.dark_primary));
+            pinEdit.setTextColor(ContextCompat.getColor(context, R.color.dark_primary));
 
             // NFC Lockscreen Header.
             View lockScreenSeparator = view.findViewById(R.id.lockScreenSeparator);
-            lockScreenSeparator.setBackgroundColor(getResources().getColor(R.color.dark_primary));
+            lockScreenSeparator.setBackgroundColor(ContextCompat.getColor(context, R.color.dark_primary));
 
             // NFC Lockscreen Backgroundd Blur Header.
             View backgroundBlurSeparator = view.findViewById(R.id.backgroundBlurSeparator);
-            backgroundBlurSeparator.setBackgroundColor(getResources().getColor(R.color.dark_primary));
+            backgroundBlurSeparator.setBackgroundColor(ContextCompat.getColor(context, R.color.dark_primary));
 
             // NFC Tags Header.
             View NFCTagsSeparator = view.findViewById(R.id.NFCTagsSeparator);
-            NFCTagsSeparator.setBackgroundColor(getResources().getColor(R.color.dark_primary));
+            NFCTagsSeparator.setBackgroundColor(ContextCompat.getColor(context, R.color.dark_primary));
         }
 
         // Hide keyboard on app launch.
@@ -273,7 +280,7 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
             if (settings.getBoolean("lockscreen")) {
                 onStart = true;
                 lockscreenStatus.setText(R.string.enabled);
-                lockscreenStatus.setTextColor(getResources().getColor(R.color.accept));
+                lockscreenStatus.setTextColor(ContextCompat.getColor(context, R.color.accept));
 
                 toggle.setChecked(true);
             }
@@ -676,7 +683,9 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
     /**
      * If NFC tag scanned, open save name dialog and save ID.
      */
-    protected void NFCIntent() {
+    private void NFCIntent() {
+
+        Context context = getActivity().getApplicationContext();
 
         if (!tagID.equals(null)) {
 
@@ -686,7 +695,7 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
             // Set tag name message in dialog.
             final EditText tagTitle = new EditText(getActivity());
             tagTitle.setHint(getResources().getString(R.string.lockscreen_scan_dialog_hint_set_tag_name));
-            tagTitle.setTextColor(getResources().getColor(R.color.text_secondary));
+            tagTitle.setTextColor(ContextCompat.getColor(context, R.color.text_secondary));
             tagTitle.setSingleLine(true);
             tagTitle.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
 
@@ -767,6 +776,8 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
      */
     public void onCheckedChanged(final CompoundButton buttonView, boolean isChecked) {
 
+        Context context = getActivity().getApplicationContext();
+
         // If lock screen is set to enabled.
         if (isChecked) {
             try {
@@ -788,7 +799,7 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
 
                             // Set lock screen status text to enabled.
                             lockscreenStatus.setText(R.string.enabled);
-                            lockscreenStatus.setTextColor(getResources().getColor(R.color.accept));
+                            lockscreenStatus.setTextColor(ContextCompat.getColor(context, R.color.accept));
 
                             // Apply active Profile to update lock screen status.
                             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
@@ -843,7 +854,7 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
 
             // Set lock screen status text to disabled.
             lockscreenStatus.setText(R.string.disabled);
-            lockscreenStatus.setTextColor(getResources().getColor(R.color.warning));
+            lockscreenStatus.setTextColor(ContextCompat.getColor(context, R.color.warning));
 
             // Stop lock screen service.
             killService(getActivity());
@@ -881,7 +892,7 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
     /**
      * Read from JSON file.
      */
-    public void readFromJSON() {
+    private void readFromJSON() {
 
         // Read root object, or put if they don't exist.
         try {
@@ -936,7 +947,7 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
     /**
      * Write to JSON file.
      */
-    public void writeToJSON() {
+    private void writeToJSON() {
 
         // Write JSON root object.
         try {
@@ -954,9 +965,9 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
      */
     private class TagAdapter extends BaseAdapter implements ListAdapter {
 
-        Activity parentActivity;
+        final Activity parentActivity;
         JSONArray adapterData;
-        LayoutInflater inflater;
+        final LayoutInflater inflater;
 
         public TagAdapter(Activity activity, JSONArray adapterData) {
             this.parentActivity = activity;
@@ -1048,7 +1059,7 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
      *
      * @param context Context.
      */
-    public void killService(Context context) {
+    private void killService(Context context) {
         getActivity().stopService(new Intent(context, LockScreenService.class));
     }
 
@@ -1057,7 +1068,7 @@ public class Lockscreens extends DialogFragment implements View.OnClickListener,
      *
      * @param listView View containing NFC tags.
      */
-    public static boolean updateListViewHeight(ListView listView) {
+    private static boolean updateListViewHeight(ListView listView) {
 
         // Get listView.
         ListAdapter listAdapter = listView.getAdapter();

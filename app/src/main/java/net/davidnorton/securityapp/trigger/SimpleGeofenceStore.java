@@ -15,22 +15,22 @@ import java.util.List;
  */
 public class SimpleGeofenceStore {
 
-	final static String TAG = "SimpleGeofenceStore";
+	private final static String TAG = "SimpleGeofenceStore";
 
 	// Keys for flattened geo-fences stored in SharedPreferences.
-	public static final String KEY_LATITUDE = "net.davidnorton.securityapp.geofence.KEY_LATITUDE";
-	public static final String KEY_LONGITUDE = "net.davidnorton.securityapp.geofence.KEY_LONGITUDE";
-	public static final String KEY_RADIUS = "net.davidnorton.securityapp.geofence.KEY_RADIUS";
-	public static final String KEY_EXPIRATION_DURATION = "net.davidnorton.securityapp.geofence.KEY_EXPIRATION_DURATION";
-	public static final String KEY_TRANSITION_TYPE = "net.davidnorton.securityapp.geofence.KEY_TRANSITION_TYPE";
+	private static final String KEY_LATITUDE = "net.davidnorton.securityapp.geofence.KEY_LATITUDE";
+	private static final String KEY_LONGITUDE = "net.davidnorton.securityapp.geofence.KEY_LONGITUDE";
+	private static final String KEY_RADIUS = "net.davidnorton.securityapp.geofence.KEY_RADIUS";
+	private static final String KEY_EXPIRATION_DURATION = "net.davidnorton.securityapp.geofence.KEY_EXPIRATION_DURATION";
+	private static final String KEY_TRANSITION_TYPE = "net.davidnorton.securityapp.geofence.KEY_TRANSITION_TYPE";
 
 	// The prefix for flattened geofence keys
-	public static final String KEY_PREFIX = "net.davidnorton.securityapp.geofence.KEY";
+	private static final String KEY_PREFIX = "net.davidnorton.securityapp.geofence.KEY";
 
 	// Invalid values to test geo-fence storage when retrieving geo-fences.
-	public static final long INVALID_LONG_VALUE = -999l;
-	public static final float INVALID_FLOAT_VALUE = -999.0f;
-	public static final int INVALID_INT_VALUE = -999;
+	private static final long INVALID_LONG_VALUE = -999L;
+	private static final float INVALID_FLOAT_VALUE = -999.0f;
+	private static final int INVALID_INT_VALUE = -999;
 
 	// The SharedPreferences object that stores geo-fences.
 	private final SharedPreferences mPrefs;
@@ -107,7 +107,7 @@ public class SimpleGeofenceStore {
      *
      * @param id The ID of a stored geofence.
      */
-    public void clearGeofence(String id) {
+	private void clearGeofence(String id) {
 
         Editor editor = mPrefs.edit();
         editor.remove(getGeofenceFieldKey(id, KEY_LATITUDE));

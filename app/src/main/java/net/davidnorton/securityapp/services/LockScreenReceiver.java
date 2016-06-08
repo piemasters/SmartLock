@@ -71,7 +71,7 @@ public class LockScreenReceiver extends BroadcastReceiver {
     /**
      * Read from JSON file to determine if lock screen is enabled.
      */
-    public void readFromJSON() {
+    private void readFromJSON() {
 
         try {
             // Get JSON file.

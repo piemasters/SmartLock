@@ -1,10 +1,10 @@
 package net.davidnorton.securityapp.ui;
 
-public class DrawerItem {
+class DrawerItem {
 
-    String ItemName;
-    int imgResID;
-    String title;
+    private String ItemName;
+    private int imgResID;
+    private String title;
 
     public DrawerItem(String itemName, int imgResID) {
         super();

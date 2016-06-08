@@ -11,7 +11,7 @@ import android.util.Log;
  */
 public class BootCompletedReceiver extends BroadcastReceiver {
 
-    final static String TAG = "BootCompletedReceiver";
+	private final static String TAG = "BootCompletedReceiver";
 
     /**
      * Starts the AutostartService.

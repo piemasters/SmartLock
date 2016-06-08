@@ -43,7 +43,7 @@
 
     <!-- Priority -->
     <string name="trigger_pref_title_priority">Priority</string>
-    <string name="trigger_pref_message_priority">Select a priority between 0-99. Higher values have greater priority.</string>
+    <string name="trigger_pref_message_priority">Select a priority between 0–99. Higher values have greater priority.</string>
 
 
     <!-- Settings: Location -->

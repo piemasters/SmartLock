@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,9 +36,9 @@ import java.util.Set;
 
 public class Triggers extends Fragment implements AdapterView.OnItemLongClickListener {
 
-    ImageView ivIcon;
-    TextView tvItemName;
-    List<String> triggerList = new ArrayList<>();
+    private ImageView ivIcon;
+    private TextView tvItemName;
+    private final List<String> triggerList = new ArrayList<>();
 
     public static final String IMAGE_RESOURCE_ID = "iconResourceID";
     public static final String ITEM_NAME = "itemName";
@@ -61,7 +62,7 @@ public class Triggers extends Fragment implements AdapterView.OnItemLongClickLis
         ivIcon = (ImageView) view.findViewById(R.id.triggers_icon);
         tvItemName = (TextView) view.findViewById(R.id.triggers_title);
         tvItemName.setText(getArguments().getString(ITEM_NAME));
-        ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));
+        ivIcon.setImageDrawable(ResourcesCompat.getDrawable(getResources(), getArguments().getInt(IMAGE_RESOURCE_ID), null));
 
         // Set button background colour to primary.
         int backgroundColor = Color.parseColor("#259b24");
@@ -148,7 +149,7 @@ public class Triggers extends Fragment implements AdapterView.OnItemLongClickLis
     /**
      * Create new trigger when button selected.
      */
-    public void onOptionsItemSelected() {
+    private void onOptionsItemSelected() {
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
             SharedPreferences.Editor prefEditor = preferences.edit();
@@ -187,7 +188,7 @@ public class Triggers extends Fragment implements AdapterView.OnItemLongClickLis
     @Override
     public boolean onItemLongClick(AdapterView<?> av, View v, int position, long arg3) {
 
-        // used to notify the user of the longpress.
+        // used to notify the user of the long press.
         Vibrator vib = (Vibrator) getActivity().getSystemService(getActivity().VIBRATOR_SERVICE);
         vib.vibrate(100);
 
@@ -212,8 +213,8 @@ public class Triggers extends Fragment implements AdapterView.OnItemLongClickLis
      */
     private class LongPressMenuListener implements DialogInterface.OnClickListener {
 
-        AdapterView<?> av;
-        int position;
+        final AdapterView<?> av;
+        final int position;
 
         LongPressMenuListener(AdapterView<?> a, int pos) {
             av = a;

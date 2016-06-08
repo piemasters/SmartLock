@@ -47,13 +47,13 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.android.support:gridlayout-v7:23.4.0'
     compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.google.android.gms:play-services:9.0.1'
+    compile 'com.google.android.gms:play-services:9.0.2'
     compile 'com.github.navasmdc:MaterialDesign:1.4'
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.google.android.gms:play-services-ads:9.0.1'
-    compile 'com.google.android.gms:play-services-auth:9.0.1'
+    compile 'com.google.android.gms:play-services-ads:9.0.2'
+    compile 'com.google.android.gms:play-services-auth:9.0.2'
     compile 'com.firebase:firebase-client-android:2.3.1'
-    compile 'com.google.android.gms:play-services-gcm:9.0.1'
+    compile 'com.google.android.gms:play-services-gcm:9.0.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

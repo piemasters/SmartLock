@@ -1,3 +1,28 @@
 <component name="ProjectDictionaryState">
-  <dictionary name="David" />
+  <dictionary name="David">
+    <words>
+      <w>apptag</w>
+      <w>autostart</w>
+      <w>batterylevel</w>
+      <w>batterystate</w>
+      <w>davidnorton</w>
+      <w>firebase</w>
+      <w>firebaseio</w>
+      <w>geofence</w>
+      <w>geofences</w>
+      <w>github</w>
+      <w>googleusercontent</w>
+      <w>inputstream</w>
+      <w>lockscreen</w>
+      <w>lockscreens</w>
+      <w>newintent</w>
+      <w>piemasters</w>
+      <w>securityapp</w>
+      <w>seekbar</w>
+      <w>smartlock</w>
+      <w>timepicker</w>
+      <w>websearch</w>
+      <w>xmlpull</w>
+    </words>
+  </dictionary>
 </component>

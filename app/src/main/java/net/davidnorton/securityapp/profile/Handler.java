@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -34,8 +35,8 @@ import javax.xml.transform.TransformerException;
  */
 public class Handler {
 
-    private Context context;
-    SharedPreferences pref;
+    private final Context context;
+    private final SharedPreferences pref;
 
     public Handler(Context cont) {
         context = cont;
@@ -175,7 +176,8 @@ public class Handler {
         Bitmap largeIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
 
         // Set the background colour and icon.
-        int color = context.getResources().getColor(R.color.notification_background);
+        int color = ContextCompat.getColor(context, R.color.notification_background);
+
         nBuilder.setColor(color);
         nBuilder.setLargeIcon(largeIcon);
 

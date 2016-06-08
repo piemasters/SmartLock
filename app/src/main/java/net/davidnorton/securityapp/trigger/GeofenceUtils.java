@@ -90,7 +90,7 @@ public final class GeofenceUtils {
             "com.example.android.geofence.KEY";
 
     // Invalid values, used to test geofence storage when retrieving geofences
-    public static final long INVALID_LONG_VALUE = -999l;
+    public static final long INVALID_LONG_VALUE = -999L;
 
     public static final float INVALID_FLOAT_VALUE = -999.0f;
 

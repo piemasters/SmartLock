@@ -5,7 +5,7 @@
 
     <!-- Lock Screen Fragment -->
     <string name="lockscreen_title">Lockscreens</string>
-    <string name="lockscreen_intro">Set a 4-6 digit PIN and enable the lockscreen.\nYou can also save NFC tags to unlock your device.\nBlur level hides your wallpaper on the lockscreen.</string>
+    <string name="lockscreen_intro">Set a 4&#8211;6 digit PIN and enable the lockscreen.\nYou can also save NFC tags to unlock your device.\nBlur level hides your wallpaper on the lockscreen.</string>
 
     <string name="lockscreen_pin_title">PIN: </string>
     <string name="lockscreen_pin_hint">Enter PIN</string>
@@ -55,7 +55,7 @@
     <!-- Lockscreen -->
     <string name="lockscreen_time_none">13:37</string>
     <string name="lockscreen_date_none">Fri 25 Dec</string>
-    <string name="lockscreen_battery_none">50% Battery</string>
+    <string name="lockscreen_battery_none">50&#37; Battery</string>
     <string name="lockscreen_battery_text">Battery</string>
     <string name="lockscreen_button_zero">Zero</string>
     <string name="lockscreen_button_one">One</string>

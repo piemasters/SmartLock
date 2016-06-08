@@ -20,7 +20,7 @@ import net.davidnorton.securityapp.services.LockScreenService;
  *
  * @author David Norton
  */
-public class Setter {
+class Setter {
 
     /**
      * Sets Lockscreen to the given state.
@@ -131,7 +131,7 @@ public class Setter {
      */
     public void setScreenBrightnessMode(Context context, boolean autoModeEnabled) {
 
-        if (autoModeEnabled == true) {
+        if (autoModeEnabled) {
 
             android.provider.Settings.System.putInt(
                     context.getContentResolver(),

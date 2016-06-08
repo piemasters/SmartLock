@@ -25,14 +25,14 @@ import javax.xml.transform.stream.StreamResult;
  *
  * @author David Norton
  */
-public class XmlCreator {
+class XmlCreator {
 
-	final static String TAG = "XmlCreator";
-	
-	DocumentBuilderFactory buildFactory = DocumentBuilderFactory.newInstance();
-	DocumentBuilder builder;
-	TransformerFactory transFactory = TransformerFactory.newInstance();
-	Transformer transformer;
+    private final static String TAG = "XmlCreator";
+
+    private final DocumentBuilderFactory buildFactory = DocumentBuilderFactory.newInstance();
+    private DocumentBuilder builder;
+    private final TransformerFactory transFactory = TransformerFactory.newInstance();
+    private Transformer transformer;
 
     /**
      * Creates a string storing the selected user preferences and saves to an xml.

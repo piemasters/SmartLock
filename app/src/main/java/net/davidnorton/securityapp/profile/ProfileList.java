@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,12 +14,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import net.davidnorton.securityapp.R;
-import net.davidnorton.securityapp.profile.ProfileEditActivity;
-import net.davidnorton.securityapp.profile.XmlParserPref;
 
 import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -29,9 +27,9 @@ import java.util.List;
  */
 public class ProfileList extends ArrayAdapter<String> implements OnClickListener {
 
-	List<String> list;
-	Context context;
-	String element;
+    private final List<String> list;
+    private final Context context;
+    private String element;
 
 	public ProfileList(Context cont, int textViewResourceId, List<String> objects) {
 		super(cont, textViewResourceId, objects);
@@ -64,7 +62,7 @@ public class ProfileList extends ArrayAdapter<String> implements OnClickListener
 
         // Change edit button colour when using dark theme.
         if (pref.getBoolean("dark_theme", true)) {
-			buttonEdit.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_action_settings));
+			buttonEdit.setImageDrawable(ResourcesCompat.getDrawable(getContext().getResources(), R.drawable.ic_action_settings, null));
 		}
 
 		element = list.get(position);

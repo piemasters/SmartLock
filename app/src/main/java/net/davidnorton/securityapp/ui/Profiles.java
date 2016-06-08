@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,9 +39,9 @@ import java.util.List;
  */
 public class Profiles extends Fragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
-    ImageView ivIcon;
-    TextView tvItemName;
-    List<String> profileList = new ArrayList<>();
+    private ImageView ivIcon;
+    private TextView tvItemName;
+    private final List<String> profileList = new ArrayList<>();
 
     public static final String IMAGE_RESOURCE_ID = "iconResourceID";
     public static final String ITEM_NAME = "itemName";
@@ -63,7 +64,7 @@ public class Profiles extends Fragment implements AdapterView.OnItemClickListene
         ivIcon = (ImageView) view.findViewById(R.id.profiles_icon);
         tvItemName = (TextView) view.findViewById(R.id.profiles_title);
         tvItemName.setText(getArguments().getString(ITEM_NAME));
-        ivIcon.setImageDrawable(view.getResources().getDrawable(getArguments().getInt(IMAGE_RESOURCE_ID)));
+        ivIcon.setImageDrawable(ResourcesCompat.getDrawable(getResources(), getArguments().getInt(IMAGE_RESOURCE_ID), null));
 
         int backgroundColor = Color.parseColor("#259b24");
 
@@ -168,7 +169,7 @@ public class Profiles extends Fragment implements AdapterView.OnItemClickListene
     /**
      * Create new profile when button selected.
      */
-    public void onOptionsItemSelected() {
+    private void onOptionsItemSelected() {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         SharedPreferences.Editor prefEditor = preferences.edit();
@@ -232,8 +233,8 @@ public class Profiles extends Fragment implements AdapterView.OnItemClickListene
      */
     private class LongPressMenuListener implements DialogInterface.OnClickListener {
 
-        AdapterView<?> av;
-        int position;
+        final AdapterView<?> av;
+        final int position;
 
         LongPressMenuListener(AdapterView<?> a, int pos) {
             av = a;

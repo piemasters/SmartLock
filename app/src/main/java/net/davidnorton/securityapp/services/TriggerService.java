@@ -32,20 +32,21 @@ import java.util.List;
  * @author David Norton
  * 
  */
+@SuppressWarnings("RedundantIfStatement")
 public class TriggerService extends Service {
 
-    final static String TAG = "TriggerService";
+    private final static String TAG = "TriggerService";
 
 	private TriggerBroadcastReceiver triggerReceiver;
-    Context context;
+    private Context context;
 	private int currentHours;
 	private int currentMinutes;
 	private String currentWeekday;
 	private boolean headphones;
 	private boolean batteryCharging;
 	private int batteryLevel;
-	private List<Trigger> triggerList = new ArrayList<>();
-	private List<Trigger> triggerPriorityList = new ArrayList<>();
+	private final List<Trigger> triggerList = new ArrayList<>();
+	private final List<Trigger> triggerPriorityList = new ArrayList<>();
 	private String[] geofences;
 
     /**
@@ -397,7 +398,7 @@ public class TriggerService extends Service {
      *
      * @param currentDay Current day.
      */
-    public void setWeekday(String currentDay) {
+    private void setWeekday(String currentDay) {
         currentWeekday = currentDay;
         Log.i(TAG, "current weekday updated: " + currentWeekday);
 
@@ -438,7 +439,7 @@ public class TriggerService extends Service {
      *
      * @param intent Intent.
      */
-	protected void setInitialBatteryState(Intent intent){
+    private void setInitialBatteryState(Intent intent){
 
         // Get battery charging state.
 		int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
@@ -526,7 +527,7 @@ public class TriggerService extends Service {
     /**
      * Registers all the geo-fences already stored in a trigger.
      */
-    public void registerExistingGeofences() {
+    private void registerExistingGeofences() {
 
         SimpleGeofence geofence;
         SimpleGeofenceStore store = new SimpleGeofenceStore(getApplicationContext());

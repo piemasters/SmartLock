@@ -11,6 +11,8 @@ import android.content.ContentResolver;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.GestureDetector;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -100,13 +102,13 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
     // PIN.
     private String pinEntered = ""; // The PIN the user inputs.
     private int pinAttempts = 5; // Number of attempts before PIN locked for 30s.
-    private Handler delayHandler = new Handler(); // Sets 30s delay.
+    private final Handler delayHandler = new Handler(); // Sets 30s delay.
     private static final int PIN_LOCKED_RUNNABLE_DELAY = 30000; // Unlock after 3s.
     private Vibrator vibrator;
 
     // NFC.
     private NfcAdapter nfcAdapter;
-    final protected static char[] hexArray = "0123456789ABCDEF".toCharArray(); // For bytes to hex.
+    private final static char[] hexArray = "0123456789ABCDEF".toCharArray(); // For bytes to hex.
     private PendingIntent NFCIntent; // For tag discovery.
 
     // Brightness & Volume.
@@ -144,7 +146,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
     private View toolboxFrame;
 
     // View animations.
-    protected Animation slideUp, slideDown, fadeIn, fadeOut;
+    private Animation slideUp, slideDown, fadeIn, fadeOut;
 
     /**
      * Create the lock screen.
@@ -331,27 +333,27 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
             if (Settings.System.getInt(brightnessResolver, Settings.System.SCREEN_BRIGHTNESS_MODE) ==
                     Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
                 brightnessMode = 3;
-                brightness.setImageDrawable(getResources().getDrawable(R.drawable.ic_bright_auto));
+                brightness.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(),R.drawable.ic_bright_auto, null));
             } else {
                 // If set to low.
                 if (Settings.System.getInt(brightnessResolver, Settings.System.SCREEN_BRIGHTNESS) >= LOW_BRIGHTNESS &&
                         Settings.System.getInt(brightnessResolver, Settings.System.SCREEN_BRIGHTNESS) < MEDIUM_BRIGHTNESS) {
 
                     brightnessMode = 0;
-                    brightness.setImageDrawable(getResources().getDrawable(R.drawable.ic_bright_0));
+                    brightness.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_bright_0, null));
                 }
                 // If set to medium.
                 else if (Settings.System.getInt(brightnessResolver, Settings.System.SCREEN_BRIGHTNESS) >= MEDIUM_BRIGHTNESS &&
                         Settings.System.getInt(brightnessResolver, Settings.System.SCREEN_BRIGHTNESS) < HIGH_BRIGHTNESS) {
 
                     brightnessMode = 1;
-                    brightness.setImageDrawable(getResources().getDrawable(R.drawable.ic_bright_1));
+                    brightness.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_bright_1, null));
                 }
                 // If set to high.
                 else if (Settings.System.getInt(brightnessResolver, Settings.System.SCREEN_BRIGHTNESS) == HIGH_BRIGHTNESS) {
 
                     brightnessMode = 2;
-                    brightness.setImageDrawable(getResources().getDrawable(R.drawable.ic_bright_2));
+                    brightness.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_bright_2, null));
                 }
             }
         } catch (Settings.SettingNotFoundException e) {
@@ -360,17 +362,17 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
 
         // Set correct WiFi image.
         if (wifiManager.isWifiEnabled()) {
-            wifi.setImageDrawable(getResources().getDrawable(R.drawable.ic_wifi_on));
+            wifi.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_wifi_on, null));
         } else {
-            wifi.setImageDrawable(getResources().getDrawable(R.drawable.ic_wifi_off));
+            wifi.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_wifi_off, null));
         }
 
         // Set correct mobile data image if supported.
         if (isMobileDataOn != null) {
             if (isMobileDataOn.isConnected()) {
-                data.setImageDrawable(getResources().getDrawable(R.drawable.ic_data_on));
+                data.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_data_on, null));
             } else {
-                data.setImageDrawable(getResources().getDrawable(R.drawable.ic_data_off));
+                data.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_data_off, null));
             }
         }
 
@@ -378,17 +380,17 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
         switch (audioManager.getRingerMode()) {
 
             case AudioManager.RINGER_MODE_NORMAL:
-                sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_speaker));
+                sound.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_speaker, null));
                 ringerMode = 1;
                 break;
 
             case AudioManager.RINGER_MODE_VIBRATE:
-                sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_vibration));
+                sound.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_vibration, null));
                 ringerMode = 2;
                 break;
 
             case AudioManager.RINGER_MODE_SILENT:
-                sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_silent));
+                sound.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_silent, null));
                 ringerMode = 3;
                 break;
         }
@@ -420,7 +422,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
      *
      * @return If is default launcher.
      */
-    public boolean isDefaultLauncher() {
+    private boolean isDefaultLauncher() {
 
         final IntentFilter filter = new IntentFilter(Intent.ACTION_MAIN);
         filter.addCategory(Intent.CATEGORY_HOME);
@@ -447,7 +449,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
      * Broadcast receiver to run in background and detect changes
      * in time, date and battery and update on screen.
      */
-    private BroadcastReceiver mChangeReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mChangeReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
@@ -471,7 +473,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
     /**
      * Update time.
      */
-    public void updateTime() {
+    private void updateTime() {
 
         calendar = Calendar.getInstance();
 
@@ -496,7 +498,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
     /**
      * Update date.
      */
-    public void updateDate() {
+    private void updateDate() {
 
         calendar = Calendar.getInstance();
 
@@ -513,7 +515,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
      * Get battery level.
      * @return Battery level.
      */
-    public int getBatteryLevel() {
+    private int getBatteryLevel() {
 
         int level = -1;
         Intent batteryIntent = getApplicationContext().registerReceiver(null,
@@ -532,15 +534,17 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
      *
      * @param batteryLevel Battery level.
      */
-    public void updateBattery(int batteryLevel) {
+    private void updateBattery(int batteryLevel) {
+
+        Context context = getApplicationContext();
 
         battery.setText(String.valueOf(batteryLevel) + "% " + getResources().getString(R.string.lockscreen_battery_text));
 
         // Set text color based on battery level.
         if (batteryLevel > 15) {
-            battery.setTextColor(getResources().getColor(R.color.accept));
+            battery.setTextColor(ContextCompat.getColor(context, R.color.accept));
         } else {
-            battery.setTextColor(getResources().getColor(R.color.warning));
+            battery.setTextColor(ContextCompat.getColor(context, R.color.warning));
         }
     }
 
@@ -845,7 +849,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
     /**
      * Handle different phone call states.
      */
-    class StateListener extends PhoneStateListener {
+    private class StateListener extends PhoneStateListener {
 
         @Override
         public void onCallStateChanged(int state, String incomingNumber) {
@@ -919,10 +923,10 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
 
         if (enabled) {
             wifiManager.setWifiEnabled(true);
-            wifi.setImageDrawable(getResources().getDrawable(R.drawable.ic_wifi_on));
+            wifi.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_wifi_on, null));
         } else {
             wifiManager.setWifiEnabled(false);
-            wifi.setImageDrawable(getResources().getDrawable(R.drawable.ic_wifi_off));
+            wifi.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_wifi_off, null));
         }
     }
 
@@ -946,9 +950,9 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
         mobileData.invoke(connectivityManager, enabled);
 
         if (enabled) {
-            data.setImageDrawable(getResources().getDrawable(R.drawable.ic_data_on));
+            data.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_data_on, null));
         } else {
-            data.setImageDrawable(getResources().getDrawable(R.drawable.ic_data_off));
+            data.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_data_off, null));
         }
     }
 
@@ -1016,7 +1020,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
             }
 
             isFlashOn = true;
-            torch.setImageDrawable(getResources().getDrawable(R.drawable.ic_flashlight_on));
+            torch.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_flashlight_on, null));
         }
 
         // Turn torch off.
@@ -1041,7 +1045,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
                 re.printStackTrace();
             }
 
-            torch.setImageDrawable(getResources().getDrawable(R.drawable.ic_flashlight_off));
+            torch.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_flashlight_off, null));
 
             releaseCamera();
             isFlashOn = false;
@@ -1060,7 +1064,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
 
             // Update image.
             if (brightness != null) {
-                brightness.setImageDrawable(getResources().getDrawable(R.drawable.ic_bright_0));
+                brightness.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_bright_0, null));
             }
 
             // Update brightness.
@@ -1077,7 +1081,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
 
             // Update image.
             if (brightness != null) {
-                brightness.setImageDrawable(getResources().getDrawable(R.drawable.ic_bright_1));
+                brightness.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_bright_1, null));
             }
 
             // Update brightness.
@@ -1091,7 +1095,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
 
             // Update image.
             if (brightness != null)
-                brightness.setImageDrawable(getResources().getDrawable(R.drawable.ic_bright_2));
+                brightness.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_bright_2, null));
 
             // Update brightness.
             if (brightnessResolver != null) {
@@ -1104,7 +1108,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
 
             // Update image.
             if (brightness != null)
-                brightness.setImageDrawable(getResources().getDrawable(R.drawable.ic_bright_auto));
+                brightness.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_bright_auto, null));
 
             // Update brightness.
             if (brightnessResolver != null) {
@@ -1123,17 +1127,17 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
 
         // Set to normal mode.
         if (mode == 1) {
-            sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_speaker));
+            sound.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_speaker, null));
             audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
         }
         // Set to vibrate.
         else if (mode == 2) {
-            sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_vibration));
+            sound.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_vibration, null));
             audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
         }
         // Set to silent
         else if (mode == 3) {
-            sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_silent));
+            sound.setImageDrawable(ResourcesCompat.getDrawable(getApplicationContext().getResources(), R.drawable.ic_silent, null));
             audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
         }
     }
@@ -1141,7 +1145,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
     /**
      * Check PIN entered is correct.
      */
-    public void checkPIN() {
+    private void checkPIN() {
 
         // If PIN not locked from too many incorrect attempts.
         if (!pinLocked) {
@@ -1230,7 +1234,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
      * Enable the PIN after being disabled from too many
      * incorrect attempts.
      */
-    protected Runnable pinLockedRunnable = new Runnable() {
+    private final Runnable pinLockedRunnable = new Runnable() {
         @Override
         public void run() {
 
@@ -1453,7 +1457,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
      *
      * @return NFC tag ID as hex.
      */
-    public static String bytesToHex(byte[] bytes) {
+    private static String bytesToHex(byte[] bytes) {
 
         char[] hexChars = new char[bytes.length * 2];
 
@@ -1571,7 +1575,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
     /**
      * Read from JSON file.
      */
-    public void readFromJSON() {
+    private void readFromJSON() {
 
         // Read root object.
         try {
@@ -1602,7 +1606,7 @@ public class LockscreenActivity extends Activity implements View.OnClickListener
     /**
      * Write to JSON file.
      */
-    public void writeToJSON() {
+    private void writeToJSON() {
 
         // Write JSON root object.
         try {

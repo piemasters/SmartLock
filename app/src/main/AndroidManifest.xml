@@ -40,6 +40,8 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_scheme"
+        android:supportsRtl="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppThemeLight" >
@@ -85,6 +87,10 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="http"
+                      android:host="www.davidnorton.net" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 

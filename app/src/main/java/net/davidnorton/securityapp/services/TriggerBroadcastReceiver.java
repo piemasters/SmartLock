@@ -21,9 +21,9 @@ import java.util.List;
  */
 public class TriggerBroadcastReceiver extends BroadcastReceiver {
 
-	final static String TAG = "TriggerReceiver";
-	
-	TriggerService triggerservice;
+    private final static String TAG = "TriggerReceiver";
+
+    private final TriggerService triggerservice;
 	
 	TriggerBroadcastReceiver(TriggerService service){
 		triggerservice = service;

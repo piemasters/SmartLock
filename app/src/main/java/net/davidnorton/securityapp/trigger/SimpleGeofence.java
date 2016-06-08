@@ -11,8 +11,8 @@ public class SimpleGeofence {
 	private final double mLatitude;
 	private final double mLongitude;
 	private final float mRadius;
-	private long mExpirationDuration;
-	private int mTransitionType;
+	private final long mExpirationDuration;
+	private final int mTransitionType;
 
     /**
      * Initialize geo-fence.

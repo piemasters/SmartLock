@@ -20,9 +20,9 @@ import java.util.Set;
  */
 public class XmlParserTrigger {
 
-	final static String TAG = "XmlParserTrigger";
+	private final static String TAG = "XmlParserTrigger";
 
-	Context context;
+	private final Context context;
 
     /**
      *  Initializes the xml parser with the given context.
@@ -283,7 +283,7 @@ public class XmlParserTrigger {
 				trigger.setBatteryState(Trigger.listen_state.listen_off);
 				Log.i(TAG, "BatteryState listen off.");
 			} else {
-				Log.i(TAG, "BateryState: ignore.");
+				Log.i(TAG, "BatteryState: ignore.");
 			}
 		} else {
 			Log.e(TAG, "BatteryState: Invalid Argument!");

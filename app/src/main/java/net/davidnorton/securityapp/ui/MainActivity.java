@@ -35,7 +35,6 @@ import android.widget.ListView;
 
 import net.davidnorton.securityapp.R;
 import net.davidnorton.securityapp.profile.Handler;
-//import net.davidnorton.securityapp.services.LockScreenService;
 
 public class MainActivity extends Activity {
 
@@ -301,7 +300,7 @@ public class MainActivity extends Activity {
      *
      * @param position Position of the selected drawer item.
      */
-    public void selectItem(int position) {
+    private void selectItem(int position) {
 
         Fragment fragment = null;
         Bundle args = new Bundle();

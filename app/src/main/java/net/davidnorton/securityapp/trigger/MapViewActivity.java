@@ -55,7 +55,7 @@ public class MapViewActivity extends Activity implements GoogleMap.OnMapLongClic
 	private boolean normView = true;
 
     // Preference Settings.
-    ColorFilter filter;
+    private ColorFilter filter;
 
     /**
      * Creates the geo-fence preference menu.
@@ -124,7 +124,7 @@ public class MapViewActivity extends Activity implements GoogleMap.OnMapLongClic
         }
     }
 
-    public void setUpMap(){
+    private void setUpMap(){
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 

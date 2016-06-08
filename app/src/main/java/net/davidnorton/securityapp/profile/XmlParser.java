@@ -17,12 +17,12 @@ import java.io.IOException;
  *
  * @author David Norton
  */
-public class XmlParser {
+class XmlParser {
 
-    final static String TAG = "XmlParser";
+    private final static String TAG = "XmlParser";
 
-    Context context;
-    Setter setter = new Setter();
+    private final Context context;
+    private final Setter setter = new Setter();
 
     /**
      *  Initializes the xml parser with the given context.

@@ -14,6 +14,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -47,7 +48,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
 	private static String previousName;
 
     // Preference Settings.
-    ColorFilter filter;
+    private ColorFilter filter;
 
      /**
      * Sets up the actionbar and main preference page.
@@ -96,17 +97,19 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
      */
     private void changeTheme(SharedPreferences pref) {
 
+        Context context = getApplicationContext();
+
         // Set dark theme if selected
         if (pref.getBoolean("dark_theme", false)) {
             setTheme(R.style.AppThemeDark);
             // Set primary colour for icons.
-            filter = new LightingColorFilter( getResources().getColor(R.color.dark_primary_dark),getResources().getColor(R.color.dark_primary_dark));
+            filter = new LightingColorFilter( ContextCompat.getColor(context, R.color.dark_primary_dark), ContextCompat.getColor(context, R.color.dark_primary_dark));
 
             // Set light theme if selected
         } else {
             setTheme(R.style.AppThemeLight);
             // Set primary colour for icons.
-            filter = new LightingColorFilter( getResources().getColor(R.color.primary_dark),getResources().getColor(R.color.primary_dark));
+            filter = new LightingColorFilter( ContextCompat.getColor(context, R.color.primary_dark), ContextCompat.getColor(context, R.color.primary_dark));
         }
     }
 
@@ -587,7 +590,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
 	 * Saves the current settings of the activity to a profile object and lets
 	 * it be written by the XmlCreator.
 	 */
-	public void saveTrigger() {
+    private void saveTrigger() {
 
 		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 		LocationTrigger locationTrigger = new LocationTrigger(this);
@@ -685,7 +688,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
 			e1.printStackTrace();
 		}
 
-        // If editting file, delete old file.
+        // If editing file, delete old file.
         if (!(name.equals(previousName))) {
 			File file = new File(String.valueOf(getFilesDir()) + "/" + previousName + "_trigger.xml");
 			file.delete();
@@ -700,7 +703,7 @@ public class TriggerEditActivity extends PreferenceActivity implements OnSharedP
 	 * A preference value change listener that updates the preference's summary
 	 * to reflect its new value.
 	 */
-	private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+	private static final Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
 
         /**
          * Updates the preference summary text.

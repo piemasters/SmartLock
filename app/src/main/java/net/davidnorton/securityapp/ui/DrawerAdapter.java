@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +15,11 @@ import android.widget.TextView;
 
 import net.davidnorton.securityapp.R;
 
-public class DrawerAdapter extends ArrayAdapter<DrawerItem> {
+class DrawerAdapter extends ArrayAdapter<DrawerItem> {
 
-    Context context;
-    List<DrawerItem> drawerItemList;
-    int layoutResID;
+    private final Context context;
+    private final List<DrawerItem> drawerItemList;
+    private final int layoutResID;
 
     public DrawerAdapter(Context context, int layoutResourceID, List<DrawerItem> listItems) {
         super(context, layoutResourceID, listItems);
@@ -68,7 +69,8 @@ public class DrawerAdapter extends ArrayAdapter<DrawerItem> {
             drawerHolder.headerLayout.setVisibility(LinearLayout.INVISIBLE);
             drawerHolder.itemLayout.setVisibility(LinearLayout.VISIBLE);
 
-            drawerHolder.icon.setImageDrawable(view.getResources().getDrawable( dItem.getImgResID()));
+             drawerHolder.icon.setImageDrawable(ResourcesCompat.getDrawable(getContext().getResources(), dItem.getImgResID(), null));
+
             drawerHolder.ItemName.setText(dItem.getItemName());
         }
         return view;

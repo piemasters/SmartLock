@@ -1,10 +1,11 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/cancel_trigger"
         android:title="@string/cancel"
         android:icon="@drawable/ic_action_cancel"
-        android:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:visible="true">
     </item>
 
@@ -12,7 +13,7 @@
         android:id="@+id/save_trigger"
         android:title="@string/save"
         android:icon="@drawable/ic_action_accept"
-        android:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:visible="true">
     </item>
 

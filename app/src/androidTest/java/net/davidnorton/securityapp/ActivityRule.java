@@ -64,7 +64,7 @@ public class ActivityRule<T extends Activity> implements TestRule {
         this.activityClass = activityClass;
     }
 
-    protected Intent getLaunchIntent(String targetPackage, Class<T> activityClass) {
+    private Intent getLaunchIntent(String targetPackage, Class<T> activityClass) {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.setClassName(targetPackage, activityClass.getName());
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

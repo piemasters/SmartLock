@@ -2,6 +2,7 @@ package net.davidnorton.securityapp.lockscreen;
 
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -11,6 +12,7 @@ import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 
 import net.davidnorton.securityapp.R;
 import net.davidnorton.securityapp.ui.MainActivity;
@@ -24,13 +26,13 @@ import net.davidnorton.securityapp.ui.MainActivity;
  */
 public class NFCReader extends Activity {
 
-    NfcAdapter nfcAdapter;
+    private NfcAdapter nfcAdapter;
 
     // Preference Settings.
-    ColorFilter filter;
+    private ColorFilter filter;
 
     // Char array for bytes to hex string method
-    final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
+    private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +51,13 @@ public class NFCReader extends Activity {
      */
     private void changeTheme(SharedPreferences pref) {
 
+        Context context = getApplicationContext();
+
         // Set dark theme if selected
         if (pref.getBoolean("dark_theme", false)) {
             setTheme(R.style.AppThemeDark);
             // Set primary colour for icons.
-            filter = new LightingColorFilter(getResources().getColor(R.color.dark_primary_dark),getResources().getColor(R.color.dark_primary_dark));
+            filter = new LightingColorFilter( ContextCompat.getColor(context, R.color.dark_primary_dark), ContextCompat.getColor(context, R.color.dark_primary_dark));
             // Display image.
             setContentView(R.layout.activity_nfc_reader_dark);
 
@@ -61,7 +65,7 @@ public class NFCReader extends Activity {
         } else {
             setTheme(R.style.AppThemeLight);
             // Set primary colour for icons.
-            filter = new LightingColorFilter(getResources().getColor(R.color.primary_dark),getResources().getColor(R.color.primary_dark));
+            filter = new LightingColorFilter( ContextCompat.getColor(context, R.color.primary_dark), ContextCompat.getColor(context, R.color.primary_dark));
             // Display image.
             setContentView(R.layout.activity_nfc_reader);
         }
@@ -121,7 +125,7 @@ public class NFCReader extends Activity {
      *
      * @return NFC tag ID as hex.
      */
-    public static String bytesToHex(byte[] bytes) {
+    private static String bytesToHex(byte[] bytes) {
 
         char[] hexChars = new char[bytes.length * 2];
 

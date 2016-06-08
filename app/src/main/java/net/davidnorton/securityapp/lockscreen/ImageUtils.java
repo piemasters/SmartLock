@@ -32,7 +32,7 @@ public class ImageUtils {
             int width = Math.round(sentBitmap.getWidth() * BITMAP_SCALE);
             int height = Math.round(sentBitmap.getHeight() * BITMAP_SCALE);
 
-            Bitmap inputBitmap = null;
+            Bitmap inputBitmap;
             try {
                 inputBitmap = Bitmap.createScaledBitmap(sentBitmap, width, height, false);
 
@@ -137,14 +137,14 @@ public class ImageUtils {
 
 
     // Return true if external storage is writable, false otherwise
-    public static boolean isExternalStorageWritable() {
+    private static boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
 
         return Environment.MEDIA_MOUNTED.equals(state);
     }
 
     // Return true if external storage is readable, false otherwise
-    public static boolean isExternalStorageReadable() {
+    private static boolean isExternalStorageReadable() {
         String state = Environment.getExternalStorageState();
 
         return Environment.MEDIA_MOUNTED.equals(state) ||

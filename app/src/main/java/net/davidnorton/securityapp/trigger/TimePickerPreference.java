@@ -18,6 +18,7 @@ import net.davidnorton.securityapp.R;
  *
  * @author David Norton
  */
+@SuppressWarnings("UnusedAssignment")
 public class TimePickerPreference extends DialogPreference implements OnCheckedChangeListener {
 	
 	private int lastHour = 0;
@@ -129,7 +130,7 @@ public class TimePickerPreference extends DialogPreference implements OnCheckedC
     }
 
     // Gets the hour by taking the value left of the :.
-	public static int getHour(String time) {
+	private static int getHour(String time) {
 
         String[] pieces = time.split(":");
 
@@ -137,7 +138,7 @@ public class TimePickerPreference extends DialogPreference implements OnCheckedC
 	}
 
     // Gets the minutes by taking the value right of the :.
-	public static int getMinute(String time) {
+	private static int getMinute(String time) {
 
         String[] pieces = time.split(":");
 
